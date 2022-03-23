@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">FindLawyer</string>
+    <string name="title_activity_lawyer_search">LawyerSearch</string>
 </resources>
