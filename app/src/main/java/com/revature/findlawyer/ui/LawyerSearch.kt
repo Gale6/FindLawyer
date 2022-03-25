@@ -31,6 +31,6 @@ class LawyerSearch : ComponentActivity() {
 
 @Composable
 fun LawyerSearchScreen() {
-
+    Text(text = "Lawyer Search")
 }
 
