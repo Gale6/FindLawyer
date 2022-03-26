@@ -64,7 +64,7 @@ fun BottomAppBar () {
         }
     ){
         Scaffold(bottomBar = {
-            BottomAppBar(){
+            BottomAppBar(elevation = 4.dp){
                 IconButton(onClick = { scope.launch{state.open()} }) {
                     Icon(imageVector = Icons.Filled.Menu, contentDescription = "")
                 }
@@ -81,28 +81,7 @@ fun BottomAppBar () {
     }
 }
 
-////////////////////////////////////  Logo  /////////////////////////////////////////
-
-@Preview
-@Composable
-fun previewTest(){
-    Test()
-}
-@Composable
-fun Test (){
-
-    Scaffold(modifier = Modifier.fillMaxSize()/*.border(2.dp,color= Color.Red)*/) {
-        //Image(painter = painterResource(id = R.drawable.ic_launcher_background), contentDescription = "",modifier = Modifier.size(400.dp,400.dp).offset(y=200.dp))
-        Image(painter = painterResource(id = R.drawable.searching), contentDescription = "",contentScale = ContentScale.FillBounds,alpha = .4f)
-
-        //Logo()
-        LogoMain()
-
-
-
-    }
-
-}
+////////////////////////////////////  LOGO  /////////////////////////////////////////
 
 @Preview
 @Composable
@@ -113,7 +92,7 @@ fun previewLogo(){
 @Composable
 fun Logo(){
     Box(modifier=Modifier/*.border(2.dp,color=Color.Black)*/.fillMaxSize(),contentAlignment = Alignment.TopCenter) {
-        Image(painter = painterResource(id = R.drawable.scalelogo), contentDescription = "",alignment = Alignment.TopCenter,
+        Image(painter = painterResource(id = R.drawable.scales), contentDescription = "",alignment = Alignment.TopCenter,
             modifier = Modifier
                 .width(160.dp)
                 .offset(y = 70.dp)
@@ -122,13 +101,15 @@ fun Logo(){
 
 
 }
+
+//////////////////////////////  THIS IS FOR THE MAIN SCREEN ////////////////////////////////////
 @Composable
 fun LogoMain(){
     Box(modifier=Modifier/*.border(2.dp,color=Color.Black)*/.fillMaxSize(),contentAlignment = Alignment.TopCenter) {
-        Image(painter = painterResource(id = R.drawable.scalelogo), contentDescription = "",alignment = Alignment.TopCenter,
+        Image(painter = painterResource(id = R.drawable.scales), contentDescription = "",alignment = Alignment.TopCenter,
             modifier = Modifier
                 .width(130.dp)
-                .offset(x = 40.dp, y = 50.dp)
+                .offset(x = 61.dp, y = 50.dp)
         )
     }
 
