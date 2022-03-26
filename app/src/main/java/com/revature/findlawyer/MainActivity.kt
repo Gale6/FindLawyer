@@ -10,6 +10,9 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.revature.findlawyer.ui.BottomAppBar
+import com.revature.findlawyer.ui.Logo
+import com.revature.findlawyer.ui.Test
 import com.revature.findlawyer.ui.theme.FindLawyerTheme
 
 class MainActivity : ComponentActivity() {
@@ -22,22 +25,12 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting("Android")
+                    BottomAppBar ()
+                    //Test()
+                    //Logo()
                 }
             }
         }
     }
 }
 
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    FindLawyerTheme {
-        Greeting("Android")
-    }
-}
