@@ -68,7 +68,7 @@ fun BottomAppBar () {
         Scaffold(modifier=Modifier
             .fillMaxWidth()
             .height(58.dp)
-            .border(1.dp,color= Color.Red).offset(y=660.dp),
+            .offset(y=660.dp),
             bottomBar = {
             BottomAppBar(elevation = 4.dp){
                 IconButton(onClick = { scope.launch{state.open()} }) {

@@ -28,8 +28,8 @@ class MainActivity : ComponentActivity() {
                     //MainOverllScreen ()
                     //MainLawyer()
                     //MainUser()
-                    LawyerLogIn()
-                    //UserLogIn()
+                    //LawyerLogIn()
+                    UserLogIn()
                 }
             }
         }

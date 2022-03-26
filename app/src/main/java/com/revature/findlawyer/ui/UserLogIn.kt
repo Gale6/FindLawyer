@@ -41,7 +41,9 @@ fun UserLogIn(){
             .fillMaxSize()/*.border(2.dp,color= Color.Red)*/
             .padding(4.dp),verticalArrangement = Arrangement.Center,horizontalAlignment = Alignment.CenterHorizontally) {
 
-            Text(text = "PATRONS",textAlign = TextAlign.Center, modifier = Modifier.padding(2.dp).offset(y=-35.dp),color= Color.Black,fontFamily = Cormorantgaramond,fontWeight = FontWeight.Bold,fontSize = 25.sp )
+            Text(text = "PATRONS",textAlign = TextAlign.Center, modifier = Modifier
+                .padding(2.dp)
+                .offset(y = -35.dp),color= Color.Black,fontFamily = Cormorantgaramond,fontWeight = FontWeight.Bold,fontSize = 25.sp )
 
             OutlinedTextField(
                 value = "",
@@ -71,6 +73,7 @@ fun UserLogIn(){
 
 
         }
+        BottomAppBar()
 
 
     }
