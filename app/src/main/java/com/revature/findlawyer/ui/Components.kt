@@ -7,9 +7,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
@@ -53,12 +51,12 @@ fun BottomAppBar () {
         drawerState = state,
         drawerContent = {
             Column(Modifier.size(300.dp,400.dp).border(1.dp,color= Color.Black)) {
-                DropdownMenuItem(onClick = {scope.launch{state.close()} }) {
-                    Icon(imageVector = Icons.Default.Star, contentDescription = "")
-                    Text(text = "/*To Do*/",Modifier.padding(start = 16.dp))
+                DropdownMenuItem(onClick = {}) {
+                    Icon(imageVector = Icons.Default.Home, contentDescription = "")
+                    Text(text = "Home",Modifier.padding(start = 16.dp))
                 }
-                DropdownMenuItem(onClick = {scope.launch{state.close()} }) {
-                    Icon(imageVector = Icons.Default.Star, contentDescription = "")
+                DropdownMenuItem(onClick = {}) {
+                    Icon(imageVector = Icons.Default.KeyboardArrowRight, contentDescription = "")
                     Text(text = "/*To Do*/",Modifier.padding(start = 16.dp))
                 }
 
@@ -75,7 +73,7 @@ fun BottomAppBar () {
                     Icon(imageVector = Icons.Filled.Menu, contentDescription = "")
                 }
                 Spacer(Modifier.weight(1f,true))
-                IconButton(onClick = { /*scope.launch{state.open()}*/ }) {
+                IconButton(onClick = {}) {
                     Icon(imageVector = Icons.Filled.Search, contentDescription = "")
                 }
 
