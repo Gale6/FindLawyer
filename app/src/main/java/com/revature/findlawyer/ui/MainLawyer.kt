@@ -26,10 +26,10 @@ fun previewMainLawyer(){
 @Composable
 fun MainLawyer (){
 
-    Scaffold(modifier = Modifier.fillMaxSize()/*.border(2.dp,color= Color.Red)*/) {
+    Surface(modifier = Modifier.fillMaxSize()/*.border(2.dp,color= Color.Red)*/,color = MaterialTheme.colors.background) {
         //Image(painter = painterResource(id = R.drawable.ic_launcher_background), contentDescription = "",modifier = Modifier.size(400.dp,400.dp).offset(y=200.dp))
-        Image(painter = painterResource(id = R.drawable.searching), contentDescription = "",contentScale = ContentScale.FillBounds,alpha = .4f)
-
+        Image(painter = painterResource(id = R.drawable.citypersp), contentDescription = "",contentScale = ContentScale.FillBounds,alpha = .3f)
+        //Image(painter = painterResource(id = R.drawable.loginimg), contentDescription = "",contentScale = ContentScale.FillBounds,alpha = .4f)
         Logo()
         //LogoMain()
 
