@@ -13,6 +13,7 @@ import androidx.compose.material.icons.filled.Star
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.BiasAlignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.draw.shadow
@@ -48,9 +49,10 @@ fun BottomAppBar () {
     val scope = rememberCoroutineScope()
 
     BottomDrawer(
+        modifier=Modifier.border(1.dp,color= Color.Black),
         drawerState = state,
         drawerContent = {
-            Column(Modifier.size(300.dp,400.dp)) {
+            Column(Modifier.size(300.dp,400.dp).border(1.dp,color= Color.Black)) {
                 DropdownMenuItem(onClick = {scope.launch{state.close()} }) {
                     Icon(imageVector = Icons.Default.Star, contentDescription = "")
                     Text(text = "/*To Do*/",Modifier.padding(start = 16.dp))
@@ -63,7 +65,11 @@ fun BottomAppBar () {
             }
         }
     ){
-        Scaffold(bottomBar = {
+        Scaffold(modifier=Modifier
+            .fillMaxWidth()
+            .height(58.dp)
+            .border(1.dp,color= Color.Red).offset(y=660.dp),
+            bottomBar = {
             BottomAppBar(elevation = 4.dp){
                 IconButton(onClick = { scope.launch{state.open()} }) {
                     Icon(imageVector = Icons.Filled.Menu, contentDescription = "")

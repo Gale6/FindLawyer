@@ -70,7 +70,9 @@ fun LawyerLogIn(){
             }
 
 
+
         }
+        BottomAppBar ()
 
 
     }
