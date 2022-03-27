@@ -83,11 +83,11 @@ fun LawyerLogIn(){
 ////////////////////////////////////  USER LOG-IN  /////////////////////////////////////////
 
 
-@Preview
-@Composable
-fun previewUserLogiIn(){
-    UserLogIn()
-}
+//@Preview
+//@Composable
+//fun previewUserLogiIn(){
+//    UserLogIn()
+//}
 
 @Composable
 fun UserLogIn(){
@@ -145,8 +145,8 @@ fun UserLogIn(){
 
 
     }
-
     AppBarBottom()
+    //BotBar()
 
 
 }

@@ -35,6 +35,38 @@ import com.revature.findlawyer.ui.theme.Shapes
 import kotlinx.coroutines.launch
 
 
+/////////////////////////////  Bot App Bar FO NAV (DRAWER, SCREENS)  ///////////////////////////////
+
+@Composable
+fun BotBar(){
+
+
+
+    Column(modifier= Modifier
+        .fillMaxSize()
+        /*.border(3.dp, color = Color.Red)*/,verticalArrangement = Arrangement.Bottom) {
+
+        BottomAppBar(){
+            IconButton(onClick = { /*scope.launch{state.open()}*/ }) {
+                Icon(imageVector = Icons.Filled.Menu, contentDescription = "")
+            }
+            Spacer(Modifier.weight(1f,true))
+            IconButton(onClick = { /*scope.launch{state.open()}*/ }) {
+                Icon(imageVector = Icons.Filled.Settings, contentDescription = "")
+            }
+
+        }
+
+
+    }
+
+
+}
+
+
+
+/////////////////////////////  Bot App Bar w/Drawer  ///////////////////////////////
+
 @Preview
 @Composable
 fun preBotApp(){
