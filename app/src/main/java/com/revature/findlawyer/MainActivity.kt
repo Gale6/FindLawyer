@@ -23,13 +23,14 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
+                    //AppBarBottom()
                     //BottomAppBar ()
                     //Logo()
                     //MainOverllScreen ()
                     //MainLawyer()
                     //MainUser()
-                    LawyerLogIn()
-                    //UserLogIn()
+                    //LawyerLogIn()
+                    UserLogIn()
                 }
             }
         }

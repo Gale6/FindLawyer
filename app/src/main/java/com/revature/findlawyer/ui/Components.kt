@@ -1,7 +1,9 @@
 package com.revature.findlawyer.ui
 
+import android.view.MenuItem
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -18,6 +20,7 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.res.fontResource
@@ -28,7 +31,60 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.revature.findlawyer.R
 import com.revature.findlawyer.ui.theme.Cormorantgaramond
+import com.revature.findlawyer.ui.theme.Shapes
 import kotlinx.coroutines.launch
+
+
+@Preview
+@Composable
+fun preBotApp(){
+    AppBarBottom()
+}
+
+@OptIn(ExperimentalMaterialApi::class)
+@Composable
+fun AppBarBottom(){
+    val state= rememberBottomDrawerState(initialValue = BottomDrawerValue.Closed)
+    val scope = rememberCoroutineScope()
+
+
+    BottomDrawer(
+        drawerElevation = 10.dp,
+        drawerState = state,
+        drawerContent = {
+            Column(horizontalAlignment = Alignment.Start,modifier=Modifier.size(300.dp,400.dp)) {
+                DropdownMenuItem(onClick = {/*scope.launch{state.close()}*/ }) {
+                    Icon(imageVector = Icons.Default.Home, contentDescription = "")
+                    Text(text = "/*To Do*/",Modifier.padding(start = 16.dp))
+                }
+                DropdownMenuItem(onClick = {/*scope.launch{state.close()} */}) {
+                    Icon(imageVector = Icons.Default.KeyboardArrowRight, contentDescription = "")
+                    Text(text = "/*To Do*/",Modifier.padding(start = 16.dp))
+                }
+
+            }
+        }
+    ){}
+
+    Column(modifier= Modifier
+        .fillMaxSize()
+        /*.border(3.dp, color = Color.Red)*/,verticalArrangement = Arrangement.Bottom) {
+
+        BottomAppBar(){
+            IconButton(onClick = { scope.launch{state.open()} }) {
+                Icon(imageVector = Icons.Filled.Menu, contentDescription = "")
+            }
+            Spacer(Modifier.weight(1f,true))
+            IconButton(onClick = { /*scope.launch{state.open()}*/ }) {
+                Icon(imageVector = Icons.Filled.Settings, contentDescription = "")
+            }
+
+        }
+
+
+    }
+
+}
 
 
 /////////////////////////////  Bot App Bar w/Drawer  ///////////////////////////////
@@ -46,38 +102,30 @@ fun BottomAppBar () {
     val state= rememberBottomDrawerState(initialValue = BottomDrawerValue.Closed)
     val scope = rememberCoroutineScope()
 
-
     BottomDrawer(
-        modifier=Modifier.border(1.dp,color= Color.Black),
         drawerState = state,
         drawerContent = {
-            Column(
-                Modifier
-                    .size(300.dp, 400.dp)
-                    .border(1.dp, color = Color.Black)) {
-                DropdownMenuItem(onClick = {}) {
+            Column(Modifier.size(300.dp,400.dp)) {
+                DropdownMenuItem(onClick = {/*scope.launch{state.close()}*/ }) {
                     Icon(imageVector = Icons.Default.Home, contentDescription = "")
-                    Text(text = "Home",Modifier.padding(start = 16.dp))
+                    Text(text = "/*To Do*/",Modifier.padding(start = 16.dp))
                 }
-                DropdownMenuItem(onClick = {}) {
+                DropdownMenuItem(onClick = {/*scope.launch{state.close()} */}) {
                     Icon(imageVector = Icons.Default.KeyboardArrowRight, contentDescription = "")
                     Text(text = "/*To Do*/",Modifier.padding(start = 16.dp))
                 }
+
             }
         }
     ){
-        Scaffold(modifier= Modifier
-            .fillMaxWidth()
-            .height(58.dp)
-            .offset(y = 660.dp),
-            bottomBar = {
-            BottomAppBar(elevation = 4.dp){
+        Scaffold(bottomBar = {
+            BottomAppBar(){
                 IconButton(onClick = { scope.launch{state.open()} }) {
                     Icon(imageVector = Icons.Filled.Menu, contentDescription = "")
                 }
                 Spacer(Modifier.weight(1f,true))
-                IconButton(onClick = {}) {
-                    Icon(imageVector = Icons.Filled.Search, contentDescription = "")
+                IconButton(onClick = { /*scope.launch{state.open()}*/ }) {
+                    Icon(imageVector = Icons.Filled.Settings, contentDescription = "")
                 }
 
             }
