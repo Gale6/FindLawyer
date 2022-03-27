@@ -10,6 +10,8 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.revature.findlawyer.data.room_database.Appointment
+import com.revature.findlawyer.ui.CurrentAppointmentScreen
 import com.revature.findlawyer.ui.theme.FindLawyerTheme
 
 class MainActivity : ComponentActivity() {
@@ -22,22 +24,26 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting("Android")
+                    val appointsList = listOf<Appointment>(
+                        Appointment("lawyer1","client1","3/5/22 14:00"),
+                        Appointment("lawyer1","client1","3/5/22 14:00"),
+                        Appointment("lawyer1","client1","3/5/22 14:00"))
+
+                    CurrentAppointmentScreen(appointsList =appointsList)
+
+
                 }
             }
         }
     }
 }
 
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
+
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     FindLawyerTheme {
-        Greeting("Android")
+
     }
 }
