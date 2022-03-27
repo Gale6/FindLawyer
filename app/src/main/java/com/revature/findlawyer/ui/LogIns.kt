@@ -89,12 +89,14 @@ fun LawyerLogIn(){
 //    UserLogIn()
 //}
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun UserLogIn(){
+    
     var userName by rememberSaveable { mutableStateOf("")}
     var userPassword by rememberSaveable { mutableStateOf("")}
 
-    Box(modifier = Modifier.fillMaxSize()) {
+    Scaffold(modifier = Modifier.fillMaxSize(),bottomBar = { BotBar() },drawerContent = {bottDrawer()}) {
         Surface(modifier = Modifier.fillMaxHeight()/*.border(2.dp,color= Color.Red)*/,color = MaterialTheme.colors.background) {
             //Image(painter = painterResource(id = R.drawable.ic_launcher_background), contentDescription = "",modifier = Modifier.size(400.dp,400.dp).offset(y=200.dp))
             //Image(painter = painterResource(id = R.drawable.citypersp), contentDescription = "",contentScale = ContentScale.FillBounds,alpha = .3f)
@@ -145,8 +147,7 @@ fun UserLogIn(){
 
 
     }
-    AppBarBottom()
-    //BotBar()
+
 
 
 }
