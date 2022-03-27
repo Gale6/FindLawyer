@@ -46,11 +46,15 @@ fun BottomAppBar () {
     val state= rememberBottomDrawerState(initialValue = BottomDrawerValue.Closed)
     val scope = rememberCoroutineScope()
 
+
     BottomDrawer(
         modifier=Modifier.border(1.dp,color= Color.Black),
         drawerState = state,
         drawerContent = {
-            Column(Modifier.size(300.dp,400.dp).border(1.dp,color= Color.Black)) {
+            Column(
+                Modifier
+                    .size(300.dp, 400.dp)
+                    .border(1.dp, color = Color.Black)) {
                 DropdownMenuItem(onClick = {}) {
                     Icon(imageVector = Icons.Default.Home, contentDescription = "")
                     Text(text = "Home",Modifier.padding(start = 16.dp))
@@ -59,14 +63,13 @@ fun BottomAppBar () {
                     Icon(imageVector = Icons.Default.KeyboardArrowRight, contentDescription = "")
                     Text(text = "/*To Do*/",Modifier.padding(start = 16.dp))
                 }
-
             }
         }
     ){
-        Scaffold(modifier=Modifier
+        Scaffold(modifier= Modifier
             .fillMaxWidth()
             .height(58.dp)
-            .offset(y=660.dp),
+            .offset(y = 660.dp),
             bottomBar = {
             BottomAppBar(elevation = 4.dp){
                 IconButton(onClick = { scope.launch{state.open()} }) {
