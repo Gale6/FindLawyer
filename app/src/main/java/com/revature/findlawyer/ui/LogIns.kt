@@ -33,13 +33,10 @@ fun LawyerLogIn(){
     var userPassword by rememberSaveable { mutableStateOf("")}
 
 
-    Surface(modifier = Modifier.fillMaxSize()/*.border(2.dp,color= Color.Red)*/,color = MaterialTheme.colors.background) {
-        //Image(painter = painterResource(id = R.drawable.ic_launcher_background), contentDescription = "",modifier = Modifier.size(400.dp,400.dp).offset(y=200.dp))
-        //Image(painter = painterResource(id = R.drawable.citypersp), contentDescription = "",contentScale = ContentScale.FillBounds,alpha = .3f)
+    Scaffold(modifier = Modifier.fillMaxSize()/*.border(2.dp,color= Color.Red)*/) {
+
         Image(painter = painterResource(id = R.drawable.sign), contentDescription = ""/*,contentScale = ContentScale.Fit*/,alpha = .4f,alignment = Alignment.TopCenter)
 
-        //Logo()
-        //LogoMain()
 
         Column(modifier = Modifier
             .fillMaxSize()/*.border(2.dp,color= Color.Red)*/
@@ -92,18 +89,16 @@ fun LawyerLogIn(){
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun UserLogIn(){
-    
+    val scaffoldState = rememberScaffoldState()
+    val scope = rememberCoroutineScope()
     var userName by rememberSaveable { mutableStateOf("")}
     var userPassword by rememberSaveable { mutableStateOf("")}
 
-    Scaffold(modifier = Modifier.fillMaxSize(),bottomBar = { BotBar() },drawerContent = {bottDrawer()}) {
+    Scaffold(modifier = Modifier.fillMaxSize(),bottomBar = { BotBar(scaffoldState,scope) },drawerContent = { bottDrawer()}) {
         Surface(modifier = Modifier.fillMaxHeight()/*.border(2.dp,color= Color.Red)*/,color = MaterialTheme.colors.background) {
-            //Image(painter = painterResource(id = R.drawable.ic_launcher_background), contentDescription = "",modifier = Modifier.size(400.dp,400.dp).offset(y=200.dp))
-            //Image(painter = painterResource(id = R.drawable.citypersp), contentDescription = "",contentScale = ContentScale.FillBounds,alpha = .3f)
+
             Image(painter = painterResource(id = R.drawable.agreement), contentDescription = ""/*,contentScale = ContentScale.Fit*/,alpha = .4f,alignment = Alignment.TopCenter)
 
-            //Logo()
-            //LogoMain()
 
             Column(modifier = Modifier
                 .fillMaxSize()/*.border(2.dp,color= Color.Red)*/

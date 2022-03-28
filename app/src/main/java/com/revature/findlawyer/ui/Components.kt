@@ -1,15 +1,14 @@
 package com.revature.findlawyer.ui
 
 import android.view.MenuItem
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.rounded.Menu
+import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
@@ -30,175 +29,114 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.revature.findlawyer.R
+import com.revature.findlawyer.Screens
 import com.revature.findlawyer.ui.theme.Cormorantgaramond
 import com.revature.findlawyer.ui.theme.Shapes
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
+
+@Preview
+@Composable
+fun botdrawer(){
+    bottDrawer()
+}
 
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun bottDrawer(){
-    val state= rememberBottomDrawerState(initialValue = BottomDrawerValue.Closed)
-    val scope = rememberCoroutineScope()
-
-
-    BottomDrawer(
-        drawerElevation = 10.dp,
-        drawerState = state,
-        drawerContent = {
-            Column(horizontalAlignment = Alignment.Start,modifier=Modifier.size(300.dp,400.dp)) {
-                DropdownMenuItem(onClick = {scope.launch{state.close()} }) {
-                    Icon(imageVector = Icons.Default.Home, contentDescription = "")
-                    Text(text = "/*To Do*/",Modifier.padding(start = 16.dp))
-                }
-                DropdownMenuItem(onClick = {/*scope.launch{state.close()} */}) {
-                    Icon(imageVector = Icons.Default.KeyboardArrowRight, contentDescription = "")
-                    Text(text = "/*To Do*/",Modifier.padding(start = 16.dp))
-                }
-
-            }
-        }
-    ){}
-
-
-}
-
-/////////////////////////////  Bot App Bar FO NAV (DRAWER, SCREENS)  ///////////////////////////////
-
-@OptIn(ExperimentalMaterialApi::class)
-@Composable
-fun BotBar(){
-    val state= rememberBottomDrawerState(initialValue = BottomDrawerValue.Closed)
-    val scope = rememberCoroutineScope()
-
-    BottomAppBar(){
-        IconButton(onClick = { scope.launch{state.open()} }) {
-            Icon(imageVector = Icons.Filled.Menu, contentDescription = "")
-        }
-        Spacer(Modifier.weight(1f,true))
-        IconButton(onClick = { /*scope.launch{state.open()}*/ }) {
-            Icon(imageVector = Icons.Filled.Settings, contentDescription = "")
-        }
-
-    }
-
-
-
-}
-
-
-
-/////////////////////////////  Bot App Bar w/Drawer  ///////////////////////////////
-
-@Preview
-@Composable
-fun preBotApp(){
-    AppBarBottom()
-}
-
-@OptIn(ExperimentalMaterialApi::class)
-@Composable
-fun AppBarBottom(){
-    val state= rememberBottomDrawerState(initialValue = BottomDrawerValue.Closed)
-    val scope = rememberCoroutineScope()
-
-
-    BottomDrawer(
-        drawerElevation = 10.dp,
-        drawerState = state,
-        drawerContent = {
-            Column(horizontalAlignment = Alignment.Start,modifier=Modifier.size(300.dp,400.dp)) {
-                DropdownMenuItem(onClick = {/*scope.launch{state.close()}*/ }) {
-                    Icon(imageVector = Icons.Default.Home, contentDescription = "")
-                    Text(text = "/*To Do*/",Modifier.padding(start = 16.dp))
-                }
-                DropdownMenuItem(onClick = {/*scope.launch{state.close()} */}) {
-                    Icon(imageVector = Icons.Default.KeyboardArrowRight, contentDescription = "")
-                    Text(text = "/*To Do*/",Modifier.padding(start = 16.dp))
-                }
-
-            }
-        }
-    ){}
 
     Column(modifier= Modifier
         .fillMaxSize()
-        /*.border(3.dp, color = Color.Red)*/,verticalArrangement = Arrangement.Bottom) {
+        .padding(start = 24.dp, top = 48.dp)
+        .shadow(8.dp)) {
+        Image(
+            painter = painterResource(id = R.drawable.scales),
+            contentDescription = "",
+            alignment = Alignment.TopCenter,
+            modifier = Modifier
+                .width(160.dp)
+                .offset(y = 70.dp)
+        )
+        Spacer(Modifier.height(24.dp))
 
-        BottomAppBar(){
-            IconButton(onClick = { scope.launch{state.open()} }) {
-                Icon(imageVector = Icons.Filled.Menu, contentDescription = "")
-            }
-            Spacer(Modifier.weight(1f,true))
-            IconButton(onClick = { /*scope.launch{state.open()}*/ }) {
-                Icon(imageVector = Icons.Filled.Settings, contentDescription = "")
-            }
+        Screens.forEach { screen ->
+            Spacer(Modifier.height(24.dp))
+            Text(
+                text = screen.title,
+                style = MaterialTheme.typography.h4,
+                modifier = Modifier.clickable {/*onDestinationClicked(screen.route) */ })
 
         }
-
-
     }
 
+//    BottomDrawer(
+//        drawerElevation = 10.dp,
+//
+//        drawerContent = {
+//            Column(horizontalAlignment = Alignment.Start,modifier=Modifier.size(300.dp,400.dp)) {
+//
+//                Icon(imageVector = Icons.Default.Home, contentDescription = "")
+//                Text(text = "/*To Do*/",Modifier.padding(start = 16.dp))
+//
+//                DropdownMenuItem(onClick = {/*scope.launch{state.close()} */}) {
+//                    Icon(imageVector = Icons.Default.KeyboardArrowRight, contentDescription = "")
+//                    Text(text = "/*To Do*/",Modifier.padding(start = 16.dp))
+//                }
+//
+//            }
+//        }
+//    ){}
+
+
+
+
 }
 
 
-/////////////////////////////  Bot App Bar w/Drawer  ///////////////////////////////
 
-@Preview
-@Composable
-fun prevBotApp(){
-    BottomAppBar()
-}
 
+//
+//
+
+
+/////////////////////////////  Bot App Bar  ///////////////////////////////
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun BottomAppBar () {
-    val state= rememberBottomDrawerState(initialValue = BottomDrawerValue.Closed)
-    val scope = rememberCoroutineScope()
+fun BotBar(scaffoldState: ScaffoldState,scope:CoroutineScope){
 
-    BottomDrawer(
-        drawerState = state,
-        drawerContent = {
-            Column(Modifier.size(300.dp,400.dp)) {
-                DropdownMenuItem(onClick = {/*scope.launch{state.close()}*/ }) {
-                    Icon(imageVector = Icons.Default.Home, contentDescription = "")
-                    Text(text = "/*To Do*/",Modifier.padding(start = 16.dp))
+    BottomAppBar() {
+        Icon(Icons.Rounded.Menu, contentDescription = "test", Modifier.clickable {
+            scope.launch {
+                scaffoldState.drawerState.apply {
+                    if (isClosed) open() else close()
                 }
-                DropdownMenuItem(onClick = {/*scope.launch{state.close()} */}) {
-                    Icon(imageVector = Icons.Default.KeyboardArrowRight, contentDescription = "")
-                    Text(text = "/*To Do*/",Modifier.padding(start = 16.dp))
-                }
-
             }
         }
-    ){
-        Scaffold(bottomBar = {
-            BottomAppBar(){
-                IconButton(onClick = { scope.launch{state.open()} }) {
-                    Icon(imageVector = Icons.Filled.Menu, contentDescription = "")
+        )
+        Spacer(Modifier.weight(1f,true))
+        Icon(Icons.Rounded.Settings, contentDescription = "test", Modifier.clickable {
+            scope.launch {
+                scaffoldState.drawerState.apply {
+                    if (isClosed) open() else close()
                 }
-                Spacer(Modifier.weight(1f,true))
-                IconButton(onClick = { /*scope.launch{state.open()}*/ }) {
-                    Icon(imageVector = Icons.Filled.Settings, contentDescription = "")
-                }
-
             }
         }
-        ) {
-
-        }
+        )
     }
+
 }
+
 
 ////////////////////////////////////  LOGO  /////////////////////////////////////////
 
-@Preview
-@Composable
-fun previewLogo(){
-    Logo()
-}
+//@Preview
+//@Composable
+//fun previewLogo(){
+//    Logo()
+//}
 
 @Composable
 fun Logo(){
@@ -223,6 +161,5 @@ fun LogoMain(){
                 .offset(x = 61.dp, y = 50.dp)
         )
     }
-
-
 }
+
