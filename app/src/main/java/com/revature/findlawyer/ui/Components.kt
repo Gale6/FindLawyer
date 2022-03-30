@@ -63,6 +63,7 @@ fun bottDrawer(/*onDestinationClicked:(route:String)->Unit,scaffoldState: Scaffo
         )
         Spacer(Modifier.height(100.dp))
 
+        //change this to start from search
         Screens.forEach { screen ->
             Spacer(Modifier.height(24.dp))
             Row(modifier = Modifier

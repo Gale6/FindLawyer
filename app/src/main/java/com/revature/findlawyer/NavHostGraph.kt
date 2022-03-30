@@ -11,82 +11,99 @@ import com.revature.findlawyer.ui.bottDrawer
 import kotlinx.coroutines.launch
 
 @Composable
-fun NavHostGraph(navController: NavHostController){
+fun NavHostGraph(navController: NavHostController) {
 
-    val navController= rememberNavController()
+    val navController = rememberNavController()
+    NavHost(navController = navController, startDestination = DrawerScreens.MainOverallScreen.route)
+    {
 
-    Surface(
-        color= MaterialTheme.colors.background
-
-    ) {
-
-        var drawerState= rememberDrawerState(DrawerValue.Closed )
-        var scope= rememberCoroutineScope() //corouitines
-        var openDrawer = {
-
-            scope.launch {
-
-                drawerState.open()
-            }
-        }
-
-        ////////////////////////////////  ModalDrawer  ///////////////////////////////////////
-
-        ModalDrawer(
-
-            drawerState=drawerState,
-            gesturesEnabled = drawerState.isOpen,
-            drawerContent = {
-
-                bottDrawer(onDestinationClicked = { route ->
-
-                    scope.launch {
-
-                        drawerState.close()
-
-                    }
-                    navController.navigate(route)
-                    {
-                        popUpTo=navController.graph.startDestinationId //replaced
-                        //popUpToId=navController.graph.startDestinationId
-                        launchSingleTop=true
-                    }
-                })
-            }
-
-
-        ) {
-
-            NavHost(navController = navController, startDestination = DrawerScreens.Home.route)
-            {
-
-                composable(DrawerScreens.Home.route)//change name
-                {
+        composable(DrawerScreens.MainOverallScreen.route)//change name
+        {
 
 //                    Home (openDrawer ={ openDrawer() })
-                }
+        }
 
 
-                composable(DrawerScreens.Account.route)//change name
-                {
+        composable(DrawerScreens.MainLawyer.route)//change name
+        {
 
 //                    Account (openDrawer ={ openDrawer() })
-                }
+        }
 
 
 
-                composable(DrawerScreens.Help.route)//change name
-                {
+        composable(DrawerScreens.MainUser.route)//change name
+        {
 
 //                    Help ( navController=navController)
-                }
+        }
 
-                //add more composabe Screens here
 
-            }
+        composable(DrawerScreens.LawyerLogin.route)//change name
+        {
 
+//                    Help ( navController=navController)
+        }
+
+
+        composable(DrawerScreens.UserLogIn.route)//change name
+        {
+
+//                    Help ( navController=navController)
         }
 
     }
-
 }
+
+
+
+///////////////////// These below maybe go with the drawer ///////////////////////////////////////
+
+//    Surface(
+//        color= MaterialTheme.colors.background
+//
+//    ) {
+//
+//        var drawerState= rememberDrawerState(DrawerValue.Closed )
+//        var scope= rememberCoroutineScope() //corouitines
+//        var openDrawer = {
+//
+//            scope.launch {
+//
+//                drawerState.open()
+//            }
+//        }
+//
+//        ////////////////////////////////  ModalDrawer  ///////////////////////////////////////
+//
+//        ModalDrawer(
+//
+//            drawerState=drawerState,
+//            gesturesEnabled = drawerState.isOpen,
+//            drawerContent = {
+//
+//                bottDrawer(onDestinationClicked = { route ->
+//
+//                    scope.launch {
+//
+//                        drawerState.close()
+//
+//                    }
+//                    navController.navigate(route)
+//                    {
+//                        popUpTo=navController.graph.startDestinationId //replaced
+//                        //popUpToId=navController.graph.startDestinationId
+//                        launchSingleTop=true
+//                    }
+//                })
+//            }
+//
+//
+//        ) {
+//
+//
+//
+//        }
+//
+//    }
+//

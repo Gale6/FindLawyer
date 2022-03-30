@@ -18,17 +18,18 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.revature.findlawyer.R
 import com.revature.findlawyer.ui.theme.Cormorantgaramond
 
 
-@Preview
+//@Preview
+//@Composable
+//fun previewTest(){
+//    MainOverllScreen ()
+//}
 @Composable
-fun previewTest(){
-    MainOverllScreen ()
-}
-@Composable
-fun MainOverllScreen (){
+fun MainOverllScreen (navController: NavController){
 
     Scaffold(modifier = Modifier.fillMaxSize()/*.border(2.dp,color= Color.Red)*/) {
 
@@ -39,11 +40,11 @@ fun MainOverllScreen (){
 
         Column(modifier = Modifier.fillMaxSize()/*.border(2.dp,color= Color.Red)*/.padding(4.dp),verticalArrangement = Arrangement.Bottom,horizontalAlignment = Alignment.End) {
             Text(text = "IN THE WEEDS? ADVOCATE CAN HELP. ",textAlign = TextAlign.Center, modifier = Modifier.padding(2.dp).offset(x=-20.dp,y=-55.dp).width(220.dp),color= Color.Black,fontFamily = Cormorantgaramond,fontWeight = FontWeight.Bold,fontSize = 17.sp )
-            Button(onClick = { /*TODO*/ },modifier=Modifier.padding(4.dp).width(220.dp).offset(x=-18.dp,y=-50.dp)/*.border(1.dp,color= Color.Black)*/) {
+            Button(onClick = { /*navController.navigate(Screen.Signup.route)*/ },modifier=Modifier.padding(4.dp).width(220.dp).offset(x=-18.dp,y=-50.dp)/*.border(1.dp,color= Color.Black)*/) {
                 Text(text = "Patron", modifier = Modifier.padding(2.dp),color=Color.White)
 
             }
-            Button(onClick = { /*TODO*/ },modifier=Modifier.padding(4.dp).width(220.dp).offset(x=-18.dp,y=-50.dp)/*.border(1.dp,color= Color.Black)*/) {
+            Button(onClick = { /*navController.navigate(Screen.Signup.route)*/ },modifier=Modifier.padding(4.dp).width(220.dp).offset(x=-18.dp,y=-50.dp)/*.border(1.dp,color= Color.Black)*/) {
                 Text(text = "Lawyer", modifier = Modifier.padding(2.dp),color=Color.White)
 
             }
