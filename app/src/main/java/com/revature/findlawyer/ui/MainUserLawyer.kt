@@ -33,23 +33,22 @@ fun previewMainLawyer(){
 fun MainLawyer (){
 
     Surface(modifier = Modifier.fillMaxSize()/*.border(2.dp,color= Color.Red)*/,color = MaterialTheme.colors.background) {
-        //Image(painter = painterResource(id = R.drawable.ic_launcher_background), contentDescription = "",modifier = Modifier.size(400.dp,400.dp).offset(y=200.dp))
+
         Image(painter = painterResource(id = R.drawable.citypersp), contentDescription = "",contentScale = ContentScale.FillBounds,alpha = .3f)
         //Image(painter = painterResource(id = R.drawable.loginimg), contentDescription = "",contentScale = ContentScale.FillBounds,alpha = .4f)
-        Logo()
-        //LogoMain()
 
+        Logo()
 
 
         Column(modifier = Modifier.fillMaxSize()/*.border(2.dp,color= Color.Red)*/.padding(4.dp),verticalArrangement = Arrangement.Bottom,horizontalAlignment = Alignment.CenterHorizontally) {
 
             Text(text = "LOG IN OR REGISTER TO CONNECT WITH CLIENTS",textAlign = TextAlign.Center, modifier = Modifier.padding(2.dp).offset(y=-55.dp),color= Color.Black,fontFamily = Cormorantgaramond,fontWeight = FontWeight.Bold,fontSize = 17.sp )
 
-            Button(onClick = { /*TODO*/ },modifier= Modifier.padding(4.dp).width(330.dp).offset(y=-50.dp)/*.border(1.dp,color= Color.Black)*/) {
+            Button(onClick = { /*navController.navigate(Screen.LawyerLogin.route)*/ },modifier= Modifier.padding(4.dp).width(330.dp).offset(y=-50.dp)/*.border(1.dp,color= Color.Black)*/) {
                 Text(text = "Log In", modifier = Modifier.padding(2.dp),color= Color.White)
 
             }
-            Button(onClick = { /*TODO*/ },modifier= Modifier.padding(4.dp).width(330.dp).offset(y=-50.dp)/*.border(1.dp,color= Color.Black)*/) {
+            Button(onClick = { /*navController.navigate(Screen."Lawyer Register Screen".route)*/ },modifier= Modifier.padding(4.dp).width(330.dp).offset(y=-50.dp)/*.border(1.dp,color= Color.Black)*/) {
                 Text(text = "Register", modifier = Modifier.padding(2.dp),color= Color.White)
 
             }
@@ -75,24 +74,22 @@ fun previewMainUser(){
 fun MainUser (){
 
     Surface(modifier = Modifier.fillMaxSize()/*.border(2.dp,color= Color.Red)*/) {
-        //Image(painter = painterResource(id = R.drawable.ic_launcher_background), contentDescription = "",modifier = Modifier.size(400.dp,400.dp).offset(y=200.dp))
-        Image(painter = painterResource(id = R.drawable.citypersp), contentDescription = "",contentScale = ContentScale.FillBounds,alpha = .3f)
-        //Image(painter = painterResource(id = R.drawable.loginimg), contentDescription = "",contentScale = ContentScale.FillBounds,alpha = .4f)
+
+        //Image(painter = painterResource(id = R.drawable.citypersp), contentDescription = "",contentScale = ContentScale.FillBounds,alpha = .3f)
+        Image(painter = painterResource(id = R.drawable.loginimg), contentDescription = "",contentScale = ContentScale.FillBounds,alpha = .4f)
 
         Logo()
-        //LogoMain()
-
 
 
         Column(modifier = Modifier.fillMaxSize()/*.border(2.dp,color= Color.Red)*/.padding(4.dp),verticalArrangement = Arrangement.Bottom,horizontalAlignment = Alignment.CenterHorizontally) {
 
             Text(text = "LOG IN OR REGISTER TO CONNECT WITH LAW PROFESSIONALS",textAlign = TextAlign.Center, modifier = Modifier.padding(2.dp).offset(y=-55.dp),color= Color.Black,fontFamily = Cormorantgaramond,fontWeight = FontWeight.Bold,fontSize = 17.sp )
 
-            Button(onClick = { /*TODO*/ },modifier= Modifier.padding(4.dp).width(330.dp).offset(y=-50.dp)/*.border(1.dp,color= Color.Black)*/) {
+            Button(onClick = {/*navController.navigate(Screen.UserLogIn.route)*/},modifier= Modifier.padding(4.dp).width(330.dp).offset(y=-50.dp)/*.border(1.dp,color= Color.Black)*/) {
                 Text(text = "Log In", modifier = Modifier.padding(2.dp),color= Color.White)
 
             }
-            Button(onClick = { /*TODO*/ },modifier= Modifier.padding(4.dp).width(330.dp).offset(y=-50.dp)/*.border(1.dp,color= Color.Black)*/) {
+            Button(onClick = {/*navController.navigate(Screen."User Register Screen".route)*/ },modifier= Modifier.padding(4.dp).width(330.dp).offset(y=-50.dp)/*.border(1.dp,color= Color.Black)*/) {
                 Text(text = "Register", modifier = Modifier.padding(2.dp),color= Color.White)
 
             }

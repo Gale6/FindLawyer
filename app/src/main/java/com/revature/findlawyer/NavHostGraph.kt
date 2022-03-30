@@ -7,27 +7,31 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.revature.findlawyer.ui.MainLawyer
+import com.revature.findlawyer.ui.MainOverllScreen
 import com.revature.findlawyer.ui.bottDrawer
 import kotlinx.coroutines.launch
 
 @Composable
 fun NavHostGraph(navController: NavHostController) {
 
-    val navController = rememberNavController()
+    //val navController = rememberNavController()
+
+
     NavHost(navController = navController, startDestination = DrawerScreens.MainOverallScreen.route)
     {
 
         composable(DrawerScreens.MainOverallScreen.route)//change name
         {
 
-//                    Home (openDrawer ={ openDrawer() })
+//                    MainOverllScreen (navController = navController)
         }
 
 
         composable(DrawerScreens.MainLawyer.route)//change name
         {
 
-//                    Account (openDrawer ={ openDrawer() })
+//                    MainLawyer (navController = navController)
         }
 
 
@@ -35,21 +39,21 @@ fun NavHostGraph(navController: NavHostController) {
         composable(DrawerScreens.MainUser.route)//change name
         {
 
-//                    Help ( navController=navController)
+//                    MainUser ( navController=navController)
         }
 
 
         composable(DrawerScreens.LawyerLogin.route)//change name
         {
 
-//                    Help ( navController=navController)
+//                    LawyerLogin ( navController=navController)
         }
 
 
         composable(DrawerScreens.UserLogIn.route)//change name
         {
 
-//                    Help ( navController=navController)
+//                    UserLogIn ( navController=navController)
         }
 
     }
@@ -100,6 +104,8 @@ fun NavHostGraph(navController: NavHostController) {
 //
 //
 //        ) {
+//              //maybe use this call for the rest of the screens
+//              MainLawyer (openDrawer ={ openDrawer() })
 //
 //
 //

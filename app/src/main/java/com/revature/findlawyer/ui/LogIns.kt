@@ -74,18 +74,17 @@ fun LawyerLogIn(){
             }
         }
     }
-
 }
 
 
 ////////////////////////////////////  USER LOG-IN  /////////////////////////////////////////
 
 
-//@Preview
-//@Composable
-//fun previewUserLogiIn(){
-//    UserLogIn()
-//}
+@Preview
+@Composable
+fun previewUserLogiIn(){
+    UserLogIn()
+}
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
@@ -135,16 +134,7 @@ fun UserLogIn(){
                     Text(text = "Log In", modifier = Modifier.padding(2.dp),color= Color.White)
 
                 }
-
-
             }
-
-
         }
-
-
     }
-
-
-
 }
