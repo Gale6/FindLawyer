@@ -16,6 +16,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.rememberNavController
 import com.revature.findlawyer.R
 import com.revature.findlawyer.ui.theme.Cormorantgaramond
 
@@ -89,12 +90,13 @@ fun LawyerLogIn(){
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun UserLogIn(){
-    val scaffoldState = rememberScaffoldState()
-    val scope = rememberCoroutineScope()
+//    val scaffoldState = rememberScaffoldState(rememberDrawerState(initialValue = DrawerValue.Closed))
+//    val scope = rememberCoroutineScope()
+//    val navController= rememberNavController()
     var userName by rememberSaveable { mutableStateOf("")}
     var userPassword by rememberSaveable { mutableStateOf("")}
 
-    Scaffold(modifier = Modifier.fillMaxSize(),bottomBar = { BotBar(scaffoldState,scope) },drawerContent = { bottDrawer()}) {
+    Scaffold(modifier = Modifier.fillMaxSize()/*,bottomBar = { BotBar(scaffoldState,scope) },drawerContent = { bottDrawer(*//*scaffoldState,scope,navController*//*)}*/) {
         Surface(modifier = Modifier.fillMaxHeight()/*.border(2.dp,color= Color.Red)*/,color = MaterialTheme.colors.background) {
 
             Image(painter = painterResource(id = R.drawable.agreement), contentDescription = ""/*,contentScale = ContentScale.Fit*/,alpha = .4f,alignment = Alignment.TopCenter)
