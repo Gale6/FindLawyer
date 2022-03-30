@@ -1,5 +1,6 @@
 package com.revature.findlawyer.ui.lawyersearch
 
+import android.widget.RatingBar
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -18,7 +19,7 @@ import coil.compose.rememberImagePainter
 
 @OptIn(ExperimentalCoilApi::class)
 @Composable
-fun LawyerCard(firstName:String,lastName:String,typeOfPractice:String,rating:Float,image:String) {
+fun LawyerCard(firstName:String,lastName:String,typeOfPractice:String,rating:Float,image:String,numCases:Int) {
     var context = LocalContext.current
     Card(
 
@@ -41,7 +42,7 @@ fun LawyerCard(firstName:String,lastName:String,typeOfPractice:String,rating:Flo
                 painter = rememberImagePainter(image),
                 contentDescription = null,
                 modifier = Modifier
-                    .size(130.dp)
+                    .size(120.dp)
                     .padding(8.dp),
                 contentScale = ContentScale.Fit
             )
@@ -65,6 +66,8 @@ fun LawyerCard(firstName:String,lastName:String,typeOfPractice:String,rating:Flo
                     color = MaterialTheme.colors.onSurface,
                     modifier = Modifier.padding(bottom = 4.dp)
                 )
+                RatingBar(context).rating
+
 
             }
 
