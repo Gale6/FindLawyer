@@ -12,6 +12,8 @@ import androidx.compose.material.icons.rounded.Menu
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import com.google.android.material.datepicker.MaterialDatePicker
 import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -34,29 +36,6 @@ fun Screen_ScheduleNewAppointment() {
     var res = LocalDate.parse(result,formatter)
 
     Log.d("hih",res.toString())
-
-    val state = rememberScaffoldState()
-    val scope = rememberCoroutineScope()
-    Scaffold(
-        scaffoldState = state,
-        topBar = {
-            TopAppBar(
-                title = { Text(text = "AppBar") },
-                navigationIcon = {
-                    Icon(Icons.Rounded.Menu, contentDescription = "Localized description", modifier = Modifier.clickable {
-                        scope.launch {
-                            state.drawerState.open()
-                        }
-                    })
-                }
-            )
-        },
-        drawerContent = {
-            Text(text = "Drawer")
-        }
-    ) {
-        // Scaffold body
-    }
 
 
 
