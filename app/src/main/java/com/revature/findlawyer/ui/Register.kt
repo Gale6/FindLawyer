@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
+import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
@@ -50,6 +51,10 @@ fun Registeruser()
             }, label = {
                 Text(text = "password")
             }, visualTransformation = PasswordVisualTransformation())
+            Spacer(modifier = Modifier.height(10.dp))
+            Button(onClick = {  }) {
+                Text(text = "Register")
+            }
         }
     }
 }
@@ -61,6 +66,8 @@ fun Registerlawyer()
     var firstname= rememberSaveable { mutableStateOf("")}
     var lastname= rememberSaveable { mutableStateOf("")}
     var password= rememberSaveable { mutableStateOf("")}
+    var location= rememberSaveable { mutableStateOf("")}
+    var types= rememberSaveable { mutableStateOf("")}
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Text("Register")
         Spacer(modifier = Modifier.height(15.dp))
@@ -90,6 +97,22 @@ fun Registerlawyer()
             }, label = {
                 Text(text = "password")
             }, visualTransformation = PasswordVisualTransformation())
+            Spacer(modifier = Modifier.height(10.dp))
+            TextField(value = location.value, onValueChange = {
+                location.value = it
+            }, label = {
+                Text(text = "location")
+            })
+            Spacer(modifier = Modifier.height(10.dp))
+            TextField(value = types.value, onValueChange = {
+                types.value = it
+            }, label = {
+                Text(text = "Types of cases")
+            })
+            Spacer(modifier = Modifier.height(10.dp))
+            Button(onClick = {  }) {
+                Text(text = "Register")
+            }
         }
     }
 }
