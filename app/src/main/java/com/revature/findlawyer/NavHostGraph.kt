@@ -9,6 +9,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.revature.findlawyer.ui.MainLawyer
 import com.revature.findlawyer.ui.MainOverllScreen
+import com.revature.findlawyer.ui.MainUser
 import com.revature.findlawyer.ui.bottDrawer
 import kotlinx.coroutines.launch
 
@@ -104,6 +105,47 @@ fun NavHostGraph(navController: NavHostController) {
 //
 //
 //        ) {
+//            NavHost(navController = navController, startDestination = DrawerScreens.MainOverallScreen.route)
+//            {
+//
+//                composable(DrawerScreens.MainOverallScreen.route)//change name
+//                {
+//
+////                    MainOverllScreen (navController = navController)
+//                }
+//
+//
+//                composable(DrawerScreens.MainLawyer.route)//change name
+//                {
+//
+////                    MainLawyer (navController = navController)
+//                }
+//
+//
+//
+//                composable(DrawerScreens.MainUser.route)//change name
+//                {
+//
+////                    MainUser ( navController=navController)
+//                }
+//
+//
+//                composable(DrawerScreens.LawyerLogin.route)//change name
+//                {
+//
+////                    LawyerLogin ( navController=navController)
+//                }
+//
+//
+//                composable(DrawerScreens.UserLogIn.route)//change name
+//                {
+//
+////                    UserLogIn ( navController=navController)
+//                }
+//
+//            }
+//        }
+//
 //              //maybe use this call for the rest of the screens
 //              MainLawyer (openDrawer ={ openDrawer() })
 //
@@ -112,4 +154,4 @@ fun NavHostGraph(navController: NavHostController) {
 //        }
 //
 //    }
-//
+

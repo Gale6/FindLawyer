@@ -52,8 +52,7 @@ fun botdrawer(){
 fun bottDrawer(/*onDestinationClicked:(route:String)->Unit,scaffoldState: ScaffoldState,scope:CoroutineScope,navController: NavController*/){
 
     Column(horizontalAlignment = Alignment.CenterHorizontally,modifier= Modifier
-        .fillMaxSize()
-        .shadow(elevation = 8.dp)) {
+        .fillMaxSize()) {
         Image(
             painter = painterResource(id = R.drawable.scales),
             contentDescription = "",
@@ -84,7 +83,6 @@ fun bottDrawer(/*onDestinationClicked:(route:String)->Unit,scaffoldState: Scaffo
         }
     }
 
-
 }
 
 
@@ -98,14 +96,12 @@ fun BotBar(scaffoldState: ScaffoldState,scope:CoroutineScope){
     BottomAppBar() {
         Icon(Icons.Rounded.Menu, contentDescription = "Menu", Modifier.clickable {
             scope.launch {
-                scaffoldState.drawerState.apply {
-                    if (isClosed) open() else close()
-                }
+                scaffoldState.drawerState.open()
             }
         }
         )
         Spacer(Modifier.weight(1f,true))
-        Icon(Icons.Rounded.Person, contentDescription = "Profile",modifier = Modifier.clickable {  })
+        Icon(Icons.Rounded.Person, contentDescription = "Profile",modifier = Modifier.clickable { /*Todo*/ })
     }
 
 }

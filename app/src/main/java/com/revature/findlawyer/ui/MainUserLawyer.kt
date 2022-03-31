@@ -17,20 +17,21 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.revature.findlawyer.R
 import com.revature.findlawyer.ui.theme.Cormorantgaramond
 
 
 ////////////////////////////////////  MAIN LAWYER  /////////////////////////////////////////
 
-@Preview
-@Composable
-fun previewMainLawyer(){
-    MainLawyer()
-}
+//@Preview
+//@Composable
+//fun previewMainLawyer(){
+//    MainLawyer()
+//}
 
 @Composable
-fun MainLawyer (){
+fun MainLawyer (navController: NavController){
 
     Surface(modifier = Modifier.fillMaxSize()/*.border(2.dp,color= Color.Red)*/,color = MaterialTheme.colors.background) {
 
@@ -64,14 +65,14 @@ fun MainLawyer (){
 ////////////////////////////////////  MAIN USER  /////////////////////////////////////////
 
 
-@Preview
-@Composable
-fun previewMainUser(){
-    MainUser()
-}
+//@Preview
+//@Composable
+//fun previewMainUser(){
+//    MainUser()
+//}
 
 @Composable
-fun MainUser (){
+fun MainUser (navController: NavController){
 
     Surface(modifier = Modifier.fillMaxSize()/*.border(2.dp,color= Color.Red)*/) {
 

@@ -10,13 +10,17 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.revature.findlawyer.ui.*
 import com.revature.findlawyer.ui.theme.FindLawyerTheme
 
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+            var navController: NavHostController
             FindLawyerTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
@@ -30,7 +34,9 @@ class MainActivity : ComponentActivity() {
                     //MainLawyer()
                     //MainUser()
                     //LawyerLogIn()
-                    UserLogIn()
+                    //UserLogIn()
+                    navController = rememberNavController()
+                    NavHostGraph(navController= navController)
                 }
             }
         }

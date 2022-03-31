@@ -89,13 +89,13 @@ fun previewUserLogiIn(){
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun UserLogIn(){
-//    val scaffoldState = rememberScaffoldState(rememberDrawerState(initialValue = DrawerValue.Closed))
-//    val scope = rememberCoroutineScope()
+    val scaffoldState = rememberScaffoldState(rememberDrawerState(initialValue = DrawerValue.Closed))
+    val scope = rememberCoroutineScope()
 //    val navController= rememberNavController()
     var userName by rememberSaveable { mutableStateOf("")}
     var userPassword by rememberSaveable { mutableStateOf("")}
 
-    Scaffold(modifier = Modifier.fillMaxSize()/*,bottomBar = { BotBar(scaffoldState,scope) },drawerContent = { bottDrawer(*//*scaffoldState,scope,navController*//*)}*/) {
+    Scaffold(modifier = Modifier.fillMaxSize(),bottomBar = { BotBar(scaffoldState,scope) },drawerContent = { bottDrawer(/*scaffoldState,scope,navController*/)}) {
         Surface(modifier = Modifier.fillMaxHeight()/*.border(2.dp,color= Color.Red)*/,color = MaterialTheme.colors.background) {
 
             Image(painter = painterResource(id = R.drawable.agreement), contentDescription = ""/*,contentScale = ContentScale.Fit*/,alpha = .4f,alignment = Alignment.TopCenter)
