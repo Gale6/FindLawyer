@@ -16,20 +16,21 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.revature.findlawyer.R
 import com.revature.findlawyer.ui.theme.Cormorantgaramond
 
 ////////////////////////////////////  LAWYER LOG-IN  /////////////////////////////////////////
 
-@Preview
-@Composable
-fun previewLawyerLogiIn(){
-    LawyerLogIn()
-}
+//@Preview
+//@Composable
+//fun previewLawyerLogiIn(){
+//    LawyerLogIn()
+//}
 
 @Composable
-fun LawyerLogIn(){
+fun LawyerLogIn(/*navController: NavController*/){
     var userName by rememberSaveable { mutableStateOf("")}
     var userPassword by rememberSaveable { mutableStateOf("")}
 
@@ -80,22 +81,22 @@ fun LawyerLogIn(){
 ////////////////////////////////////  USER LOG-IN  /////////////////////////////////////////
 
 
-@Preview
-@Composable
-fun previewUserLogiIn(){
-    UserLogIn()
-}
+//@Preview
+//@Composable
+//fun previewUserLogiIn(){
+//    UserLogIn()
+//}
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun UserLogIn(){
+fun UserLogIn(/*navController: NavController*/){
     val scaffoldState = rememberScaffoldState(rememberDrawerState(initialValue = DrawerValue.Closed))
     val scope = rememberCoroutineScope()
-//    val navController= rememberNavController()
+
     var userName by rememberSaveable { mutableStateOf("")}
     var userPassword by rememberSaveable { mutableStateOf("")}
 
-    Scaffold(modifier = Modifier.fillMaxSize(),bottomBar = { BotBar(scaffoldState,scope) },drawerContent = { bottDrawer(/*scaffoldState,scope,navController*/)}) {
+    Scaffold(modifier = Modifier.fillMaxSize()/*,bottomBar = { BotBar(scaffoldState,scope) },drawerContent = { bottDrawer()}*/) {
         Surface(modifier = Modifier.fillMaxHeight()/*.border(2.dp,color= Color.Red)*/,color = MaterialTheme.colors.background) {
 
             Image(painter = painterResource(id = R.drawable.agreement), contentDescription = ""/*,contentScale = ContentScale.Fit*/,alpha = .4f,alignment = Alignment.TopCenter)

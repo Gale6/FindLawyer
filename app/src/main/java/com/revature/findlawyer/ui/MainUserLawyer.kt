@@ -45,11 +45,11 @@ fun MainLawyer (navController: NavController){
 
             Text(text = "LOG IN OR REGISTER TO CONNECT WITH CLIENTS",textAlign = TextAlign.Center, modifier = Modifier.padding(2.dp).offset(y=-55.dp),color= Color.Black,fontFamily = Cormorantgaramond,fontWeight = FontWeight.Bold,fontSize = 17.sp )
 
-            Button(onClick = { /*navController.navigate(Screen.LawyerLogin.route)*/ },modifier= Modifier.padding(4.dp).width(330.dp).offset(y=-50.dp)/*.border(1.dp,color= Color.Black)*/) {
+            Button(onClick = { /*navController.navigate(DrawerScreens.LawyerLogin.route)*/ },modifier= Modifier.padding(4.dp).width(330.dp).offset(y=-50.dp)/*.border(1.dp,color= Color.Black)*/) {
                 Text(text = "Log In", modifier = Modifier.padding(2.dp),color= Color.White)
 
             }
-            Button(onClick = { /*navController.navigate(Screen."Lawyer Register Screen".route)*/ },modifier= Modifier.padding(4.dp).width(330.dp).offset(y=-50.dp)/*.border(1.dp,color= Color.Black)*/) {
+            Button(onClick = { /*navController.navigate(DrawerScreens."Lawyer Register Screen".route)*/ },modifier= Modifier.padding(4.dp).width(330.dp).offset(y=-50.dp)/*.border(1.dp,color= Color.Black)*/) {
                 Text(text = "Register", modifier = Modifier.padding(2.dp),color= Color.White)
 
             }

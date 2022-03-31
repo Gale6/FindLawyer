@@ -35,8 +35,10 @@ class MainActivity : ComponentActivity() {
                     //MainUser()
                     //LawyerLogIn()
                     //UserLogIn()
-                    navController = rememberNavController()
-                    NavHostGraph(navController= navController)
+
+
+//                    navController = rememberNavController()
+//                    NavHostGraph(navController= navController)
                 }
             }
         }

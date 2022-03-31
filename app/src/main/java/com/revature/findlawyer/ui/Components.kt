@@ -40,11 +40,11 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 
-@Preview
-@Composable
-fun botdrawer(){
-    bottDrawer()
-}
+//@Preview
+//@Composable
+//fun botdrawer(){
+//    bottDrawer()
+//}
 
 
 @OptIn(ExperimentalMaterialApi::class)
