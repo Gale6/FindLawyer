@@ -13,36 +13,26 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.revature.findlawyer.ui.*
+import com.revature.findlawyer.data.room_database.Appointment
+import com.revature.findlawyer.ui.CurrentAppointmentScreen
 import com.revature.findlawyer.ui.theme.FindLawyerTheme
+import com.revature.findlawyer.viewmodel.FetchAppointmentViewModel
 
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        var viewModel = FetchAppointmentViewModel()
         super.onCreate(savedInstanceState)
         setContent {
-            var navController: NavHostController
             FindLawyerTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    //AppBarBottom()
-                    //BottomAppBar ()
-                    //Logo()
-                    //MainOverllScreen ()
-                    //MainLawyer()
-                    //MainUser()
-                    //LawyerLogIn()
-                    //UserLogIn()
 
-
-//                    navController = rememberNavController()
-//                    NavHostGraph(navController= navController)
                 }
             }
         }
     }
 }
-
-
