@@ -20,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -46,7 +47,7 @@ class LawyerSearch : ComponentActivity() {
 
 @Composable
 fun LawyerSearchScreen() {
-
+    val context = LocalContext.current
     Scaffold(
         topBar = {
             TopAppBar(backgroundColor = MaterialTheme.colors.primary,
@@ -59,11 +60,12 @@ fun LawyerSearchScreen() {
             contentPadding = PaddingValues(horizontal = 12.dp, vertical = 8.dp)
         ) {
             item {
-                Row {
+                Row() {
                     filter1Menu()
+                    filter2Menu()
                 }
                 Row {
-                    filter2Menu()
+                    RatingBar(context).rating=4.5f
                 }
                 Row {
 
@@ -98,7 +100,7 @@ fun filter1Menu() {
         OutlinedTextField(
             value = selectedText,
             onValueChange = { selectedText = it },
-            modifier = Modifier.padding(10.dp)
+            modifier = Modifier.padding(10.dp).width(175.dp)
                 .onGloballyPositioned { coordinates ->
                     //This value is used to assign to the DropDown the same width
                     textfieldSize = coordinates.size.toSize()
@@ -107,7 +109,9 @@ fun filter1Menu() {
             trailingIcon = {
                 Icon(icon,"contentDescription",
                     Modifier.clickable { expanded = !expanded })
-            }
+            },
+            readOnly = true,
+            singleLine = true
         )
         DropdownMenu(
             expanded = expanded,
@@ -148,7 +152,7 @@ fun filter2Menu() {
         OutlinedTextField(
             value = selectedText,
             onValueChange = { selectedText = it },
-            modifier = Modifier.padding(10.dp)
+            modifier = Modifier.padding(10.dp).width(175.dp)
                 .onGloballyPositioned { coordinates ->
                     //This value is used to assign to the DropDown the same width
                     textfieldSize = coordinates.size.toSize()
@@ -157,7 +161,9 @@ fun filter2Menu() {
             trailingIcon = {
                 Icon(icon,"contentDescription",
                     Modifier.clickable { expanded = !expanded })
-            }
+            },
+            readOnly = true,
+            singleLine = true
         )
         DropdownMenu(
             expanded = expanded,
