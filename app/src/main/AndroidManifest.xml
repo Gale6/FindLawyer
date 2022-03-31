@@ -19,7 +19,6 @@
             android:theme="@style/Theme.FindLawyer" />
         <activity
             android:name=".ui.lawyersearch.LawyerSearch"
-            android:name=".ui.LawyerSearch"
             android:exported="false"
             android:label="@string/title_activity_lawyer_search"
             android:theme="@style/Theme.FindLawyer" />
