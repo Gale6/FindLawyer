@@ -13,7 +13,7 @@ object LawyerRetrofitHelper{
     init {
 
         val builder=Retrofit.Builder()
-            .baseUrl("https://private-d31530-lawyerloginlawyerfinder.apiary-mock.com")//add the api url here
+            .baseUrl("https://private-f6bc26-findlawyerapi.apiary-mock.com")//add the api url here
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
 

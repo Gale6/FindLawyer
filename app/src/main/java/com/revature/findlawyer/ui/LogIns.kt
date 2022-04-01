@@ -20,6 +20,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.revature.findlawyer.R
 import com.revature.findlawyer.ui.theme.Cormorantgaramond
+import com.revature.findlawyer.ui.theme.FindLawyerTheme
 import com.revature.findlawyer.viewmodel.LawyerLoginViewModel
 import com.revature.findlawyer.viewmodel.UserLoginViewModel
 
@@ -83,15 +84,18 @@ fun LawyerLogIn(viewModel:LawyerLoginViewModel,/*navController: NavController*/)
 ////////////////////////////////////  USER LOG-IN  /////////////////////////////////////////
 
 
-//@Preview
-//@Composable
-//fun previewUserLogiIn(){
-//    UserLogIn()
-//}
+@Preview
+@Composable
+fun previewUserLogiIn(){
+    FindLawyerTheme {
+        UserLogIn()
+    }
+
+}
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun UserLogIn(viewModel:UserLoginViewModel,/*navController: NavController*/){
+fun UserLogIn(/*viewModel:UserLoginViewModel,*//*navController: NavController*/){
     val scaffoldState = rememberScaffoldState(rememberDrawerState(initialValue = DrawerValue.Closed))
     val scope = rememberCoroutineScope()
 
@@ -130,7 +134,7 @@ fun UserLogIn(viewModel:UserLoginViewModel,/*navController: NavController*/){
 
                 )
 
-                Button(onClick = {viewModel.uLogin(userName,userPassword)/*, navigation here*/ },modifier= Modifier
+                Button(onClick = {/*viewModel.uLogin(userName,userPassword)*//*, navigation here*/ },modifier= Modifier
                     .padding(4.dp)
                     .width(330.dp)
                     .offset(y = 15.dp)/*.border(1.dp,color= Color.Black)*/) {

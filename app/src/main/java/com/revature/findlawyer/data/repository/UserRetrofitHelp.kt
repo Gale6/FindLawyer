@@ -13,7 +13,7 @@ object UserRetrofitHelper{
     init {
 
         val builder=Retrofit.Builder()
-            .baseUrl("https://private-6f489-userloginlawyerfinder.apiary-mock.com")//add the api url here
+            .baseUrl("https://private-f6bc26-findlawyerapi.apiary-mock.com")//add the api url here
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
 
