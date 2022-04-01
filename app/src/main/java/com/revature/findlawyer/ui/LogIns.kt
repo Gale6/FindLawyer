@@ -20,6 +20,8 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.revature.findlawyer.R
 import com.revature.findlawyer.ui.theme.Cormorantgaramond
+import com.revature.findlawyer.viewmodel.LawyerLoginViewModel
+import com.revature.findlawyer.viewmodel.UserLoginViewModel
 
 ////////////////////////////////////  LAWYER LOG-IN  /////////////////////////////////////////
 
@@ -30,7 +32,7 @@ import com.revature.findlawyer.ui.theme.Cormorantgaramond
 //}
 
 @Composable
-fun LawyerLogIn(/*navController: NavController*/){
+fun LawyerLogIn(viewModel:LawyerLoginViewModel,/*navController: NavController*/){
     var userName by rememberSaveable { mutableStateOf("")}
     var userPassword by rememberSaveable { mutableStateOf("")}
 
@@ -66,7 +68,7 @@ fun LawyerLogIn(/*navController: NavController*/){
 
             )
 
-            Button(onClick = { /*TODO*/ },modifier= Modifier
+            Button(onClick = { viewModel.lLogin(userName,userPassword)},modifier= Modifier
                 .padding(4.dp)
                 .width(330.dp)
                 .offset(y = 15.dp)/*.border(1.dp,color= Color.Black)*/) {
@@ -89,7 +91,7 @@ fun LawyerLogIn(/*navController: NavController*/){
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun UserLogIn(/*navController: NavController*/){
+fun UserLogIn(viewModel:UserLoginViewModel,/*navController: NavController*/){
     val scaffoldState = rememberScaffoldState(rememberDrawerState(initialValue = DrawerValue.Closed))
     val scope = rememberCoroutineScope()
 
@@ -128,7 +130,7 @@ fun UserLogIn(/*navController: NavController*/){
 
                 )
 
-                Button(onClick = { /*TODO*/ },modifier= Modifier
+                Button(onClick = {viewModel.uLogin(userName,userPassword)/*, navigation here*/ },modifier= Modifier
                     .padding(4.dp)
                     .width(330.dp)
                     .offset(y = 15.dp)/*.border(1.dp,color= Color.Black)*/) {
