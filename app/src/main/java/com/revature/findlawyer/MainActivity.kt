@@ -24,12 +24,16 @@ class MainActivity : ComponentActivity() {
         var viewModel = FetchAppointmentViewModel()
         super.onCreate(savedInstanceState)
         setContent {
+            var navController: NavHostController
             FindLawyerTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
+                    navController = rememberNavController()
+                    NavHostGraph(navController = navController)
+
 
                 }
             }
