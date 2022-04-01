@@ -28,6 +28,5 @@ fun postReviewScreen(name: String) {
 @Composable
 fun DefaultPreview2() {
     FindLawyerTheme {
-        Greeting2("Android")
     }
 }
