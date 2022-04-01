@@ -30,7 +30,7 @@ import com.revature.findlawyer.ui.ui.theme.FindLawyerTheme
 
 
 @Composable
-fun LawyerSearchScreen() {
+fun Screen_LawyerSearch() {
     val context = LocalContext.current
     Scaffold(
         topBar = {
@@ -84,7 +84,9 @@ fun filter1Menu() {
         OutlinedTextField(
             value = selectedText,
             onValueChange = { selectedText = it },
-            modifier = Modifier.padding(10.dp).width(175.dp)
+            modifier = Modifier
+                .padding(10.dp)
+                .width(175.dp)
                 .onGloballyPositioned { coordinates ->
                     //This value is used to assign to the DropDown the same width
                     textfieldSize = coordinates.size.toSize()
@@ -136,7 +138,9 @@ fun filter2Menu() {
         OutlinedTextField(
             value = selectedText,
             onValueChange = { selectedText = it },
-            modifier = Modifier.padding(10.dp).width(175.dp)
+            modifier = Modifier
+                .padding(10.dp)
+                .width(175.dp)
                 .onGloballyPositioned { coordinates ->
                     //This value is used to assign to the DropDown the same width
                     textfieldSize = coordinates.size.toSize()
@@ -179,6 +183,6 @@ fun filter2Menu() {
 @Preview
 @Composable
 fun testLawyerSearch() {
-    LawyerSearchScreen()
+    Screen_LawyerSearch()
 }
 
