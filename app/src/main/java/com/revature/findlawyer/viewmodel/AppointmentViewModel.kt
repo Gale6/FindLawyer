@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.revature.findlawyer.data.network.Appointment
+import com.revature.findlawyer.data.network.History
 import com.revature.findlawyer.data.network.Token
 import com.revature.findlawyer.data.repository.RetrofitHelper
 import kotlinx.coroutines.Dispatchers
@@ -17,6 +18,8 @@ class AppointmentViewModel:ViewModel() {
     private val fetchAppointmentRequestLiveData = MutableLiveData<Boolean>()
 
     var result: MutableState<ArrayList<Appointment>> = mutableStateOf(arrayListOf())
+
+    var histories: MutableState<List<History>> = mutableStateOf(listOf())
 
     var listOfAvailableTime: MutableState<List<String>> = mutableStateOf(listOf())
 
@@ -53,6 +56,37 @@ class AppointmentViewModel:ViewModel() {
 
             }
         }
+    }
+
+    fun newAppointment(name:String,targetName: String,time: String){
+
+        viewModelScope.launch {
+            try {
+                val newAppointmentService = RetrofitHelper.getAppointmentService()
+
+                val responseService = newAppointmentService.newAppointment(token = Token("adfadfadfaf"),Appointment(name,targetName,time)
+                )
+
+                if(responseService.isSuccessful){
+                    responseService.body()?.let{
+                    }
+
+                }else{
+                    responseService.errorBody()?.let{
+                            ResponseBody ->
+                        Log.d("appointments error",ResponseBody.toString())
+                        ResponseBody.close()
+                    }
+                }
+                fetchAppointmentRequestLiveData.postValue(responseService.isSuccessful)
+            }catch (e:Exception){
+
+                Log.d("appointments", "Expection in networking $e")
+
+            }
+        }
+
+
     }
 
     fun fetchAvailableAppointment(){
@@ -109,6 +143,60 @@ class AppointmentViewModel:ViewModel() {
 
                 Log.d("appointments", "Expection in networking $e")
 
+            }
+        }
+
+    }
+
+    fun deleteAppointment(name:String,targetName: String,time: String){
+
+        viewModelScope.launch {
+            try {
+                val deleteAppointmentService = RetrofitHelper.getAppointmentService()
+                val responseService = deleteAppointmentService.deleteAppointment(Appointment(name,targetName,time))
+
+                if(responseService.isSuccessful){
+                    responseService.body()?.let{
+                        Log.d("delete","appointment")
+                    }
+                }else{
+                    responseService.errorBody()?.let{
+                            ResponseBody ->
+                        Log.d("appointments error",ResponseBody.toString())
+                        ResponseBody.close()
+                    }
+                }
+                fetchAppointmentRequestLiveData.postValue(responseService.isSuccessful)
+            }catch (e:Exception){
+
+                Log.d("appointments", "Expection in networking $e")
+            }
+        }
+    }
+
+    fun fetchHistory(){
+        viewModelScope.launch {
+            try {
+                val fetchHistoryService = RetrofitHelper.getAppointmentService()
+                val responseService = fetchHistoryService.fetchHistory(Token("dafsdfafsdsaf"))
+
+                if(responseService.isSuccessful){
+                    responseService.body()?.let{
+                        it ->
+                        histories.value = it.histories
+
+                    }
+                }else{
+                    responseService.errorBody()?.let{
+                            ResponseBody ->
+                        Log.d("appointments error",ResponseBody.toString())
+                        ResponseBody.close()
+                    }
+                }
+                fetchAppointmentRequestLiveData.postValue(responseService.isSuccessful)
+            }catch (e:Exception){
+
+                Log.d("appointments", "Expection in networking $e")
             }
         }
 

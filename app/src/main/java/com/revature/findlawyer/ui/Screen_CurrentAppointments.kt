@@ -22,7 +22,6 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.revature.findlawyer.ui.theme.FindLawyerTheme
-import com.revature.findlawyer.ui.theme.NewScheduleAlertDialog
 import com.revature.findlawyer.viewmodel.AppointmentViewModel
 
 
@@ -46,11 +45,13 @@ fun Screen_CurrentAppointmentScreen(viewModel:AppointmentViewModel){
                 viewModel = viewModel,
                 selected = selected,
                 openConfirmationDialog = openCancelDialog
+
             )
+                UpdateAppointmentDialog(viewModel = viewModel,openDialogState,selected,"targetName",item.time)
             }
         }
-        NewScheduleAlertDialog(viewModel = viewModel,openDialogState,selected)
-        CancelConfirmationDialog(openDialogState = openCancelDialog)
+
+        CancelConfirmationDialog(openDialogState = openCancelDialog, viewModel = viewModel)
     }
 }
 
@@ -86,7 +87,7 @@ fun AppointmentCard(targetName:String,time:String,openDialogState:MutableState<B
                     onClick = {
                         viewModel.fetchAvailableAppointment()
                         openDialogState.value = true
-                        viewModel.updateAppointment("lawyer1",targetName,time,selected.value)
+
                     }) {
                     Text(text = "reschedule")
                 }
