@@ -4,6 +4,7 @@ import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
@@ -19,11 +20,12 @@ import com.revature.findlawyer.ui.lawyersearch.Screen_LawyerSearch
 //import com.revature.findlawyer.ui.CurrentAppointmentScreen
 import com.revature.findlawyer.ui.theme.FindLawyerTheme
 import com.revature.findlawyer.viewmodel.FetchAppointmentViewModel
+import com.revature.findlawyer.viewmodel.FetchLawyersViewModel
 
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        var viewModel = FetchAppointmentViewModel()
+        val viewModel=FetchLawyersViewModel()
         super.onCreate(savedInstanceState)
         setContent {
             FindLawyerTheme {
@@ -32,7 +34,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Screen_LawyerSearch()
+                    Screen_LawyerSearch(viewModel)
                 }
 
             }
