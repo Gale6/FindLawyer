@@ -43,84 +43,100 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
 import com.revature.findlawyer.R
+import com.revature.findlawyer.ui.lawyersearch.LawyerSearchScreen
 
 @Composable
 fun Screen_CustomerProfile() {
-    var userName: String = "BobbyTestUser"
-    val notification = rememberSaveable { (mutableStateOf("")) }
-    //val reviewArray:ArrayList<Review> = ArrayList<Review>()
-    if (notification.value.isNotEmpty()) {
-        Toast.makeText(LocalContext.current, notification.value, Toast.LENGTH_LONG).show()
-    }
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier
-            .padding(5.dp)
-            .fillMaxWidth()
-    ) {
-        Surface(
+
+    Scaffold(
+        topBar = {
+            TopAppBar(backgroundColor = MaterialTheme.colors.primary,
+                title = {Text("Profile")})
+        }
+    ){
+        var userName: String = "BobbyTestUser"
+        val notification = rememberSaveable { (mutableStateOf("")) }
+        //val reviewArray:ArrayList<Review> = ArrayList<Review>()
+        if (notification.value.isNotEmpty()) {
+            Toast.makeText(LocalContext.current, notification.value, Toast.LENGTH_LONG).show()
+        }
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
-                .size(120.dp)
-                .padding(15.dp),
-            shape = CircleShape,
+                .padding(5.dp)
+                .fillMaxWidth()
         ) {
-
-
-            val imageUri = rememberSaveable { mutableStateOf("") }
-            val painter = rememberAsyncImagePainter(
-                if (imageUri.value.isEmpty())
-                    R.drawable.ic_user
-                else
-                    imageUri.value
-            )
-            val launcher = rememberLauncherForActivityResult(
-                contract = ActivityResultContracts.GetContent()
-            ) { uri: Uri? ->
-                uri?.let { imageUri.value = it.toString() }
-            }
-            Card(
-                shape = CircleShape,
+            Surface(
                 modifier = Modifier
-                    .padding(8.dp)
-                    .size(100.dp)
+                    .size(120.dp)
+                    .padding(15.dp),
+                shape = CircleShape,
             ) {
-                Image(
-                    painter = painter,
-                    contentDescription = null,
+
+
+                val imageUri = rememberSaveable { mutableStateOf("") }
+                val painter = rememberAsyncImagePainter(
+                    if (imageUri.value.isEmpty())
+                        R.drawable.ic_user
+                    else
+                        imageUri.value
+                )
+                val launcher = rememberLauncherForActivityResult(
+                    contract = ActivityResultContracts.GetContent()
+                ) { uri: Uri? ->
+                    uri?.let { imageUri.value = it.toString() }
+                }
+                Card(
+                    shape = CircleShape,
                     modifier = Modifier
-                        .wrapContentSize()
-                        .clickable { launcher.launch("image/*") },
-                    contentScale = ContentScale.Crop
+                        .padding(8.dp)
+                        .size(100.dp)
+                ) {
+                    Image(
+                        painter = painter,
+                        contentDescription = null,
+                        modifier = Modifier
+                            .wrapContentSize()
+                            .clickable { launcher.launch("image/*") },
+                        contentScale = ContentScale.Crop
+                    )
+                }
+            }
+            Spacer(modifier = Modifier.padding(10.dp))
+            Surface(
+                modifier = Modifier,
+                //color = Color.White
+            ) {
+                Text(
+                    text = "${userName}",
+                    //color = Color.Black
+                )
+            }
+            Surface(
+                modifier = Modifier,
+                //color = Color.White
+            ) {
+                Text(
+                    text = "Password: ",
+                    //color = Color.Black
+                )
+            }
+            Surface(
+                modifier = Modifier,
+                //color = Color.White
+            ) {
+                Text(
+                    text = "Other info",
+                    //color = Color.Black
                 )
             }
         }
-        Spacer(modifier = Modifier.padding(10.dp))
-        Surface(
-            modifier = Modifier,
-            //color = Color.White
-        ) {
-            Text(
-                text = "${userName}",
-                //color = Color.Black
-            )
-        }
-        Surface(
-            modifier = Modifier,
-            //color = Color.White
-        ) {
-            Text(
-                text = "Password: ",
-                //color = Color.Black
-            )
-        }
-        Surface(
-            modifier = Modifier,
-            //color = Color.White
-        ) {
-            Text(
-                text = "Other info",
-                //color = Color.Black
-            )
-        }
     }
+
+}
+
+@Preview
+@Composable
+fun testCustomerProfile() {
+    Screen_CustomerProfile()
 }
