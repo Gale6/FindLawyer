@@ -16,8 +16,6 @@ import kotlinx.coroutines.launch
 @Composable
 fun NavHostGraph(navController: NavHostController) {
 
-    //val navController = rememberNavController()
-
 
     NavHost(navController = navController, startDestination = DrawerScreens.MainOverallScreen.route)
     {

@@ -13,6 +13,7 @@ import androidx.compose.material.icons.rounded.Menu
 import androidx.compose.material.icons.rounded.Person
 import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.BiasAlignment
@@ -27,6 +28,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.res.fontResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
@@ -35,6 +37,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.NavDestination.Companion.hierarchy
+import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
+import com.revature.findlawyer.AddItem
+import com.revature.findlawyer.DrawerScreens
 import com.revature.findlawyer.R
 import com.revature.findlawyer.Screens
 import com.revature.findlawyer.ui.theme.Cormorantgaramond
@@ -42,6 +51,65 @@ import com.revature.findlawyer.ui.theme.Shapes
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
+
+/////////////////////////////  BOTTOM NAV BAR  ///////////////////////////////
+
+@Preview
+@Composable
+fun previewNavBar(){
+    BottNavBar()
+}
+
+@Composable
+fun BottNavBar(/*navController:NavHostController*/){
+    val navController = rememberNavController()
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentDestination = navBackStackEntry?.destination
+    BottomNavigation() {
+        Screens.forEach { screen->//dont think we need to iterate over the Screens
+
+            AddItem(screen = screen, currentDestination = currentDestination, navController =navController )
+
+        }
+
+    }
+}
+
+
+//@Composable
+//fun BottomNavBar(){
+//    val navController = rememberNavController()
+//    Scaffold(bottomBar = {
+//        BottomNavigation {
+//            val navBackStackEntry by navController.currentBackStackEntryAsState()
+//            val currentDestination = navBackStackEntry?.destination
+//            Screens.forEach {screen ->
+//                BottomNavigationItem(icon = {Icon(Icons.Filled.Favorite, contentDescription = null)},
+//                selected = currentDestination?.hierarchy?.any{it.route== DrawerScreens.route}==true,
+//                onClick = {
+//                    navController.navigate(screen.route){
+//                        popUpTo(navController.graph.findStartDestination().id){
+//                            saveState = true
+//                        }
+//                        launchSingleTop = true
+//                        restoreState = true
+//                    }
+//                })
+//            }
+//
+//        }
+//    }) {
+//        //call navHost here
+//
+//    }
+//
+//
+//}
+
+
+
+
+/////////////////////////////  DRAWER  ///////////////////////////////
 
 //@Preview
 //@Composable
@@ -87,7 +155,6 @@ fun bottDrawer(/*onDestinationClicked:(route:String)->Unit,scaffoldState: Scaffo
     }
 
 }
-
 
 
 /////////////////////////////  Bot App Bar  ///////////////////////////////
