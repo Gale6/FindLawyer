@@ -33,7 +33,7 @@ import com.revature.findlawyer.viewmodel.UserLoginViewModel
 //}
 
 @Composable
-fun LawyerLogIn(viewModel:LawyerLoginViewModel,/*navController: NavController*/){
+fun LawyerLogIn(navController: NavController,viewModel:LawyerLoginViewModel){
     var userName by rememberSaveable { mutableStateOf("")}
     var userPassword by rememberSaveable { mutableStateOf("")}
 
@@ -69,7 +69,7 @@ fun LawyerLogIn(viewModel:LawyerLoginViewModel,/*navController: NavController*/)
 
             )
 
-            Button(onClick = { viewModel.lLogin(userName,userPassword)},modifier= Modifier
+            Button(onClick = { viewModel.lLogin(userName,userPassword)/*, navigation here*/},modifier= Modifier
                 .padding(4.dp)
                 .width(330.dp)
                 .offset(y = 15.dp)/*.border(1.dp,color= Color.Black)*/) {
@@ -84,25 +84,25 @@ fun LawyerLogIn(viewModel:LawyerLoginViewModel,/*navController: NavController*/)
 ////////////////////////////////////  USER LOG-IN  /////////////////////////////////////////
 
 
-@Preview
-@Composable
-fun previewUserLogiIn(){
-    FindLawyerTheme {
-        UserLogIn()
-    }
-
-}
+//@Preview
+//@Composable
+//fun previewUserLogiIn(){
+//    FindLawyerTheme {
+//        UserLogIn()
+//    }
+//
+//}
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun UserLogIn(/*viewModel:UserLoginViewModel,*//*navController: NavController*/){
-    val scaffoldState = rememberScaffoldState(rememberDrawerState(initialValue = DrawerValue.Closed))
-    val scope = rememberCoroutineScope()
+fun UserLogIn(navController: NavController,viewModel:UserLoginViewModel){
+//    val scaffoldState = rememberScaffoldState(rememberDrawerState(initialValue = DrawerValue.Closed))
+//    val scope = rememberCoroutineScope()
 
     var userName by rememberSaveable { mutableStateOf("")}
     var userPassword by rememberSaveable { mutableStateOf("")}
 
-    Scaffold(modifier = Modifier.fillMaxSize()/*,bottomBar = { BotBar(scaffoldState,scope) },drawerContent = { bottDrawer()}*/) {
+    Scaffold(modifier = Modifier.fillMaxSize()/*,bottomBar = { BottNavBar() },drawerContent = { bottDrawer()}*/) {
         Surface(modifier = Modifier.fillMaxHeight()/*.border(2.dp,color= Color.Red)*/,color = MaterialTheme.colors.background) {
 
             Image(painter = painterResource(id = R.drawable.agreement), contentDescription = ""/*,contentScale = ContentScale.Fit*/,alpha = .4f,alignment = Alignment.TopCenter)
@@ -134,7 +134,7 @@ fun UserLogIn(/*viewModel:UserLoginViewModel,*//*navController: NavController*/)
 
                 )
 
-                Button(onClick = {/*viewModel.uLogin(userName,userPassword)*//*, navigation here*/ },modifier= Modifier
+                Button(onClick = {viewModel.uLogin(userName,userPassword)/*, navigation here*/ },modifier= Modifier
                     .padding(4.dp)
                     .width(330.dp)
                     .offset(y = 15.dp)/*.border(1.dp,color= Color.Black)*/) {

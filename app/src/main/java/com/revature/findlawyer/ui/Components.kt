@@ -62,11 +62,11 @@ fun previewNavBar(){
 
 @Composable
 fun BottNavBar(/*navController:NavHostController*/){
-    val navController = rememberNavController()
+    val navController = rememberNavController()//comment this out and uncomment the parameter(just used to preview)
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
     BottomNavigation() {
-        Screens.forEach { screen->//dont think we need to iterate over the Screens
+        Screens.forEach { screen->
 
             AddItem(screen = screen, currentDestination = currentDestination, navController =navController )
 
@@ -76,51 +76,19 @@ fun BottNavBar(/*navController:NavHostController*/){
 }
 
 
-//@Composable
-//fun BottomNavBar(){
-//    val navController = rememberNavController()
-//    Scaffold(bottomBar = {
-//        BottomNavigation {
-//            val navBackStackEntry by navController.currentBackStackEntryAsState()
-//            val currentDestination = navBackStackEntry?.destination
-//            Screens.forEach {screen ->
-//                BottomNavigationItem(icon = {Icon(Icons.Filled.Favorite, contentDescription = null)},
-//                selected = currentDestination?.hierarchy?.any{it.route== DrawerScreens.route}==true,
-//                onClick = {
-//                    navController.navigate(screen.route){
-//                        popUpTo(navController.graph.findStartDestination().id){
-//                            saveState = true
-//                        }
-//                        launchSingleTop = true
-//                        restoreState = true
-//                    }
-//                })
-//            }
-//
-//        }
-//    }) {
-//        //call navHost here
-//
-//    }
-//
-//
-//}
-
-
-
 
 /////////////////////////////  DRAWER  ///////////////////////////////
 
-//@Preview
-//@Composable
-//fun botdrawer(){
-//    bottDrawer()
-//}
+@Preview
+@Composable
+fun Previewtopdrawer(){
+    topDrawer()
+}
 
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun bottDrawer(/*onDestinationClicked:(route:String)->Unit,scaffoldState: ScaffoldState,scope:CoroutineScope,navController: NavController*/){
+fun topDrawer(/*onDestinationClicked:(route:String)->Unit,scaffoldState: ScaffoldState,scope:CoroutineScope,navController: NavController*/){
 
     Column(horizontalAlignment = Alignment.CenterHorizontally,modifier= Modifier
         .fillMaxSize()) {
@@ -157,13 +125,13 @@ fun bottDrawer(/*onDestinationClicked:(route:String)->Unit,scaffoldState: Scaffo
 }
 
 
-/////////////////////////////  Bot App Bar  ///////////////////////////////
+/////////////////////////////  Top App Bar  ///////////////////////////////
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun BotBar(scaffoldState: ScaffoldState,scope:CoroutineScope){
+fun TopBar(scaffoldState: ScaffoldState,scope:CoroutineScope){
 
-    BottomAppBar() {
+    TopAppBar() {
         Icon(Icons.Rounded.Menu, contentDescription = "Menu", Modifier.clickable {
             scope.launch {
                 scaffoldState.drawerState.open()

@@ -16,7 +16,7 @@ import androidx.navigation.NavHostController
 
 sealed class DrawerScreens (val title: String,val icon:ImageVector /*ImageVector*/ ,val route:String){
 
-    object MainOverallScreen:DrawerScreens("Main_Screen", Icons.Default.Home,"main")
+    object MainOverallScreen:DrawerScreens("Home", Icons.Default.Home,"main")
     object MainLawyer:DrawerScreens("Lawyer_LogIn_Register",Icons.Default.Star,"lawyer_login_register")
     object MainUser:DrawerScreens("Lawyer_LogIn",Icons.Default.ArrowBack,"user_login_register")
     object LawyerLogin:DrawerScreens("Lawyer LogIn",Icons.Default.Face,"lawyer_login")
@@ -26,7 +26,7 @@ sealed class DrawerScreens (val title: String,val icon:ImageVector /*ImageVector
 
 }
 
-//These will show up on drawer list
+//These will show up on drawer list & the Bottom Nav Bar
 val Screens= listOf(
 
     //delete below and start from search

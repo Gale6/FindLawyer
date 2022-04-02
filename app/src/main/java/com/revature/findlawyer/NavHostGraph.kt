@@ -7,10 +7,10 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.revature.findlawyer.ui.MainLawyer
-import com.revature.findlawyer.ui.MainOverllScreen
-import com.revature.findlawyer.ui.MainUser
-import com.revature.findlawyer.ui.bottDrawer
+import com.revature.findlawyer.data.network.LawyerLogin
+import com.revature.findlawyer.ui.*
+import com.revature.findlawyer.viewmodel.LawyerLoginViewModel
+import com.revature.findlawyer.viewmodel.UserLoginViewModel
 import kotlinx.coroutines.launch
 
 @Composable
@@ -20,39 +20,29 @@ fun NavHostGraph(navController: NavHostController) {
     NavHost(navController = navController, startDestination = DrawerScreens.MainOverallScreen.route)
     {
 
-        composable(DrawerScreens.MainOverallScreen.route)//change name
-        {
-
-                    MainOverllScreen (navController = navController)
+        composable(DrawerScreens.MainOverallScreen.route) {
+            MainOverllScreen (navController = navController)
         }
 
 
-        composable(DrawerScreens.MainLawyer.route)//change name
-        {
-
-                    MainLawyer (navController = navController)
+        composable(DrawerScreens.MainLawyer.route) {
+            MainLawyer (navController = navController)
         }
 
 
 
-        composable(DrawerScreens.MainUser.route)//change name
-        {
-
-                    MainUser ( navController=navController)
+        composable(DrawerScreens.MainUser.route) {
+            MainUser ( navController=navController)
         }
 
 
-        composable(DrawerScreens.LawyerLogin.route)//change name
-        {
-
-//                    LawyerLogin ( navController=navController)
+        composable(DrawerScreens.LawyerLogin.route) {
+            LawyerLogIn ( navController=navController,viewModel = LawyerLoginViewModel())
         }
 
 
-        composable(DrawerScreens.UserLogIn.route)//change name
-        {
-
-//                    UserLogIn ( navController=navController)
+        composable(DrawerScreens.UserLogIn.route) {
+            UserLogIn ( navController=navController,viewModel = UserLoginViewModel())
         }
 
     }
