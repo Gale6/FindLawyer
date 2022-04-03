@@ -21,9 +21,10 @@ sealed class DrawerScreens (val title: String,val icon:ImageVector,val route:Str
     object MainUser:DrawerScreens("Lawyer_LogIn",Icons.Default.ArrowBack,"user_login_register")
     object LawyerLogin:DrawerScreens("Lawyer LogIn",Icons.Default.Face,"lawyer_login")
     object UserLogIn:DrawerScreens("User LogIn",Icons.Default.ShoppingCart,"user_login")
+
     object Screen_AppointmentMade:DrawerScreens("Screen_AppointmentMade",Icons.Default.ShoppingCart,"AppointmentMade")
-    object Screen_Histories:DrawerScreens("Screen_Histories",Icons.Default.ShoppingCart,"Histories")
-    object Screen_CurrentAppointments:DrawerScreens("CurrentAppointments",Icons.Default.ShoppingCart,"CurrentAppointments")
+    object Screen_Histories:DrawerScreens("Histories",Icons.Default.ShoppingCart,"Histories")
+    object Screen_CurrentAppointments:DrawerScreens("Appointment",Icons.Default.ShoppingCart,"CurrentAppointments")
     object Screen_ScheduleNewAppointment:DrawerScreens("ScheduleNewAppointment",Icons.Default.ShoppingCart,"ScheduleNewAppointment")
 
     object Screen_LawyerSearch:DrawerScreens("Lawyer Search",Icons.Default.ShoppingCart,"LawyerSearch")
@@ -34,22 +35,23 @@ sealed class DrawerScreens (val title: String,val icon:ImageVector,val route:Str
     object UserRegister:DrawerScreens("User Register",Icons.Default.ArrowDropDown,"user_register")
 
 
-
-
-
 }
 //These will show up on drawer list & the Bottom Nav Bar
 val Screens= listOf(
 
     //delete below and start from search
     DrawerScreens.MainOverallScreen,
-    DrawerScreens.MainLawyer,
-    DrawerScreens.MainUser,
-    DrawerScreens.LawyerLogin,
+    DrawerScreens.Screen_CurrentAppointments,
+    DrawerScreens.Screen_Histories,
     DrawerScreens.UserLogIn,
 
-    )
+//need search
+//need currentAppointment
+//profile
+//histories
 
+
+    )
 
 @Composable
 fun RowScope.AddItem(
@@ -61,10 +63,14 @@ fun RowScope.AddItem(
         label = {Text(text = screen.title)},
         icon = { Icon(imageVector =screen.icon, contentDescription = "Navigation Icon" ) },
         selected = currentDestination?.hierarchy?.any { it.route == screen.route}==true,
-        onClick = { navController.navigate(screen.route){
+        onClick = {
+            navController.navigate(screen.route)
+        {
             popUpTo(navController.graph.findStartDestination().id){ saveState=true }
             launchSingleTop=true
-            restoreState=true }
+            restoreState=true
+         }
         }
+
     )
 }

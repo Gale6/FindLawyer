@@ -15,17 +15,22 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
 import com.revature.findlawyer.R
 import com.revature.findlawyer.viewmodel.AppointmentViewModel
 
 @Composable
-fun Screen_Histories(viewModel: AppointmentViewModel){
+fun Screen_Histories(navController: NavHostController,viewModel: AppointmentViewModel){
 
     viewModel.fetchHistory()
 
-    Scaffold {
+    Scaffold (
+        bottomBar = {
+        BottNavBar(navController)
+    }){
+
 
         LazyColumn(){
 
