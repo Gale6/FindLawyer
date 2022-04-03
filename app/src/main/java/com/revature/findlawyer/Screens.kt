@@ -30,7 +30,7 @@ sealed class DrawerScreens (val title: String,val icon:ImageVector,val route:Str
     object Screen_CurrentAppointments:DrawerScreens("Appointment",Icons.Default.EventAvailable,"CurrentAppointments")
     object Screen_ScheduleNewAppointment:DrawerScreens("ScheduleNewAppointment",Icons.Default.ShoppingCart,"ScheduleNewAppointment")
 
-    object Screen_LawyerSearch:DrawerScreens("Lawyer Search",Icons.Default.ShoppingCart,"LawyerSearch")
+    object Screen_LawyerSearch:DrawerScreens("Search",Icons.Default.Search,"LawyerSearch")
     object Screen_PostReview:DrawerScreens("Post Review",Icons.Default.ShoppingCart,"PostReview")
 
 
@@ -43,7 +43,7 @@ sealed class DrawerScreens (val title: String,val icon:ImageVector,val route:Str
 val Screens= listOf(
 
     //delete below and start from search
-    DrawerScreens.MainOverallScreen,
+    DrawerScreens.Screen_LawyerSearch,
     DrawerScreens.Screen_CurrentAppointments,
     DrawerScreens.Screen_Histories,
 

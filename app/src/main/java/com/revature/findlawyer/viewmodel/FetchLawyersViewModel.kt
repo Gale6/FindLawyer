@@ -17,6 +17,8 @@ class FetchLawyersViewModel: ViewModel() {
     private val fetchLawyersLiveData=MutableLiveData<Lawyers>() // make list of Lawyer
     var lawyerResultList: MutableState<List<Lawyer>> = mutableStateOf(listOf())
 
+    lateinit var clickedLawyer:MutableState<Lawyer>
+
     init {
         lawyersList()
     }

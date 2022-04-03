@@ -21,7 +21,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val appointmentViewModel = AppointmentViewModel()
-        val viewModel=FetchLawyersViewModel()
+        val fetchLawyersViewModel=FetchLawyersViewModel()
 
         super.onCreate(savedInstanceState)
         setContent {
@@ -34,7 +34,7 @@ class MainActivity : ComponentActivity() {
                 ) {
                     navController = rememberNavController()
 
-                    NavHostGraph(navController,appointmentViewModel)
+                    NavHostGraph(navController,appointmentViewModel,fetchLawyersViewModel)
 
                 }
 

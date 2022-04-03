@@ -26,19 +26,24 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.toSize
+import androidx.navigation.NavHostController
 import com.revature.findlawyer.data.network.Lawyer
+import com.revature.findlawyer.ui.BottNavBar
 import com.revature.findlawyer.ui.ui.theme.FindLawyerTheme
 import com.revature.findlawyer.viewmodel.FetchLawyersViewModel
 
 
 @Composable
-fun Screen_LawyerSearch(viewModel: FetchLawyersViewModel) {
+fun Screen_LawyerSearch(navHostController: NavHostController,viewModel: FetchLawyersViewModel) {
     val context = LocalContext.current
     viewModel.lawyersList()
     Scaffold(
         topBar = {
             TopAppBar(backgroundColor = MaterialTheme.colors.primary,
                 title = {Text("Lawyer Search")})
+        },
+        bottomBar = {
+            BottNavBar(navHostController)
         }
     ) {
 
@@ -59,9 +64,9 @@ fun Screen_LawyerSearch(viewModel: FetchLawyersViewModel) {
 
             }
             items(viewModel.lawyerResultList.value) { lawyer ->
-                LawyerCard(firstName = lawyer.firstName, lastName = lawyer.lastName,
+                LawyerCard(navHostController = navHostController, fetchLawyersViewModel = viewModel, firstName = lawyer.firstName, lastName = lawyer.lastName,
                     typeOfPractice = lawyer.typeOfPractice, rating = lawyer.rating,
-                    image = lawyer.img, numCases = lawyer.numOfCases)
+                    image = lawyer.img, numCases = lawyer.numOfCases, id = lawyer.id)
             }
         }
     }

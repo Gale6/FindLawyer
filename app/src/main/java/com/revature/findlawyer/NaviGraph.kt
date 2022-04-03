@@ -1,24 +1,30 @@
 package com.revature.findlawyer
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.navigation.NavHostController
+import androidx.navigation.*
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.revature.findlawyer.data.network.LawyerLogin
 import com.revature.findlawyer.ui.*
+import com.revature.findlawyer.ui.lawyersearch.Screen_LawyerSearch
+import com.revature.findlawyer.ui.postreview.screen_postReview
 import com.revature.findlawyer.ui.ui.Screen_AppointmentMade
 import com.revature.findlawyer.viewmodel.AppointmentViewModel
+import com.revature.findlawyer.viewmodel.FetchLawyersViewModel
 import com.revature.findlawyer.viewmodel.LawyerLoginViewModel
 import com.revature.findlawyer.viewmodel.UserLoginViewModel
 import kotlinx.coroutines.launch
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
-fun NavHostGraph(navController: NavHostController,appointmentViewModel: AppointmentViewModel) {
+fun NavHostGraph(navController: NavHostController,appointmentViewModel: AppointmentViewModel,fetchLawyersViewModel: FetchLawyersViewModel) {
 
-    NavHost(navController = navController, startDestination = DrawerScreens.Screen_CurrentAppointments.route)
+    NavHost(navController = navController, startDestination = DrawerScreens.MainOverallScreen.route)
     {
 
         composable(DrawerScreens.MainOverallScreen.route) {
@@ -55,19 +61,28 @@ fun NavHostGraph(navController: NavHostController,appointmentViewModel: Appointm
         }
 
         composable(DrawerScreens.Screen_AppointmentUpdated.route){
-            Screen_AppointmentMade(navController,"your appointment has been updated"
-            ) { navController.navigate(DrawerScreens.Screen_CurrentAppointments.route) }
+            Screen_AppointmentMade(navController,"your appointment has been updated")
         }
 
         composable(DrawerScreens.Screen_AppointmentMade.route){
             Screen_AppointmentMade(navController,"your appointment has been made")
-            //TODO
-            { navController.navigate(DrawerScreens.Screen_CurrentAppointments.route) }
         }
 
         composable(DrawerScreens.Screen_AppointmentCanceled.route){
             Screen_AppointmentMade(navController,"your appointment has been Canceled")
-            { navController.navigate(DrawerScreens.Screen_CurrentAppointments.route) }
+        }
+
+        composable(DrawerScreens.Screen_LawyerSearch.route){
+            Screen_LawyerSearch(navHostController = navController, viewModel = fetchLawyersViewModel)
+        }
+
+        composable(DrawerScreens.Screen_PostReview.route){
+            screen_postReview()
+        }
+
+        composable(DrawerScreens.Screen_ScheduleNewAppointment.route){
+
+            Screen_ScheduleNewAppointment(navController = navController, appointmentViewModel = appointmentViewModel, lawyersViewModel = fetchLawyersViewModel)
         }
 
 

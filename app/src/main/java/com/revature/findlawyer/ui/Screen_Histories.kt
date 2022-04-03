@@ -16,8 +16,10 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
+import com.revature.findlawyer.DrawerScreens
 import com.revature.findlawyer.R
 import com.revature.findlawyer.viewmodel.AppointmentViewModel
 
@@ -27,6 +29,10 @@ fun Screen_Histories(navController: NavHostController,viewModel: AppointmentView
     viewModel.fetchHistory()
 
     Scaffold (
+        topBar = {
+            TopAppBar(backgroundColor = MaterialTheme.colors.primary,
+                title = {Text("History")})
+        },
         bottomBar = {
         BottNavBar(navController)
     }){
@@ -42,7 +48,8 @@ fun Screen_Histories(navController: NavHostController,viewModel: AppointmentView
                     rating = it.rating,
                     image = it.img,
                     numCases = it.numCases,
-                    time = it.time
+                    time = it.time,
+                    navController = navController
                 )
 
             }
@@ -54,7 +61,7 @@ fun Screen_Histories(navController: NavHostController,viewModel: AppointmentView
 
 @OptIn(ExperimentalCoilApi::class)
 @Composable
-fun HistoryCard(firstName:String,lastName:String,typeOfPractice:String,rating:Float,image:String,numCases:Int,time:String) {
+fun HistoryCard(navController: NavHostController,firstName:String,lastName:String,typeOfPractice:String,rating:Float,image:String,numCases:Int,time:String) {
     Card(
         modifier = Modifier
             .padding(10.dp)
@@ -123,7 +130,7 @@ fun HistoryCard(firstName:String,lastName:String,typeOfPractice:String,rating:Fl
                 }
                 Row(horizontalArrangement = Arrangement.SpaceBetween,modifier = Modifier.fillMaxWidth() ){
                     Spacer(modifier = Modifier.width(0.dp))
-                    Button(onClick = { /*TODO*/ }) {
+                    Button(onClick = { navController.navigate(DrawerScreens.Screen_PostReview.route) }) {
                         Text(text = "Post review")
                     }
                 }
@@ -136,6 +143,6 @@ fun HistoryCard(firstName:String,lastName:String,typeOfPractice:String,rating:Fl
 @Composable
 fun pre(){
 
-HistoryCard(firstName = "testf",lastName = "testl",typeOfPractice = "testp",rating = 4.5f,image = "dsfa",numCases = 43, time = "3/14/2422  13:23")
+HistoryCard(navController = rememberNavController(), firstName = "testf",lastName = "testl",typeOfPractice = "testp",rating = 4.5f,image = "dsfa",numCases = 43, time = "3/14/2422  13:23")
 
 }

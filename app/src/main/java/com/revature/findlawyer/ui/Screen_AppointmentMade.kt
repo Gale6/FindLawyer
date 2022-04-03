@@ -14,10 +14,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.revature.findlawyer.DrawerScreens
 import com.revature.findlawyer.R
 
 @Composable
-fun Screen_AppointmentMade(navController: NavHostController,typeOfChange:String, navMove: () -> Unit)
+fun Screen_AppointmentMade(navController: NavHostController,typeOfChange:String)
 {
     Scaffold(){
         Image(painter = painterResource(id = R.drawable.searching), contentDescription = "",contentScale = ContentScale.FillBounds,alpha = .4f)
@@ -50,12 +51,12 @@ fun Screen_AppointmentMade(navController: NavHostController,typeOfChange:String,
             Spacer(modifier = Modifier.height(50.dp))
 
             Button(
-                onClick = { navMove },
+                onClick = { navController.navigate(DrawerScreens.Screen_CurrentAppointments.route) },
                 modifier = Modifier
             )
             {
                 Text(
-                    "Back to Main",
+                    "Back",
                     fontSize = 30.sp
                 )
             }

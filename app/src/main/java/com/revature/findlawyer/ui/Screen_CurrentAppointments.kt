@@ -7,10 +7,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
-import androidx.compose.material.Card
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
@@ -37,6 +34,10 @@ fun Screen_CurrentAppointmentScreen(navController: NavHostController,viewModel:A
     val openCancelDialog = remember{ mutableStateOf(false)}
 
     Scaffold(modifier = Modifier.fillMaxSize(),
+        topBar = {
+            TopAppBar(backgroundColor = MaterialTheme.colors.primary,
+                title = {Text("Current Appointment")})
+        },
         bottomBar = {
             BottNavBar(navController)
         }
@@ -54,11 +55,12 @@ fun Screen_CurrentAppointmentScreen(navController: NavHostController,viewModel:A
                 openConfirmationDialog = openCancelDialog
 
             )
-                UpdateAppointmentDialog(viewModel = viewModel,openDialogState,selected,"targetName",item.time)
+                UpdateAppointmentDialog(navHostController = navController, viewModel = viewModel,openDialogState,selected,"targetName",item.time)
+                CancelConfirmationDialog(openDialogState = openCancelDialog, viewModel = viewModel, navHostController = navController)
             }
         }
 
-        CancelConfirmationDialog(openDialogState = openCancelDialog, viewModel = viewModel)
+
     }
 }
 

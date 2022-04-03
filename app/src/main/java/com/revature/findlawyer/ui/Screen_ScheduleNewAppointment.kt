@@ -18,16 +18,28 @@ import androidx.navigation.NavHostController
 import coil.compose.rememberImagePainter
 import com.revature.findlawyer.ui.theme.NewScheduleAlertDialog
 import com.revature.findlawyer.viewmodel.AppointmentViewModel
+import com.revature.findlawyer.viewmodel.FetchLawyersViewModel
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
-fun Screen_ScheduleNewAppointment(navController:NavHostController,viewModel: AppointmentViewModel = AppointmentViewModel(), firstName:String, lastName:String, typeOfPractice:String, rating:Float, image:String, numCases:Int) {
+fun Screen_ScheduleNewAppointment(navController:NavHostController,appointmentViewModel: AppointmentViewModel, lawyersViewModel: FetchLawyersViewModel) {
 
     val selected = remember{ mutableStateOf("") }
     val openDialogState = remember { mutableStateOf(false) }
 
+    val firstName = lawyersViewModel.clickedLawyer.value.firstName
+    val lastName = lawyersViewModel.clickedLawyer.value.lastName
+    val image = lawyersViewModel.clickedLawyer.value.img
+    val typeOfPractice = lawyersViewModel.clickedLawyer.value.typeOfPractice
+    val rating = lawyersViewModel.clickedLawyer.value.rating
+    val numCases = lawyersViewModel.clickedLawyer.value.numOfCases
 
-    Scaffold {
+
+
+    Scaffold (topBar = {
+        TopAppBar(backgroundColor = MaterialTheme.colors.primary,
+            title = {Text("New Appointment")})
+    },){
 
         Column (
             modifier = Modifier.fillMaxSize(),
@@ -93,8 +105,6 @@ fun Screen_ScheduleNewAppointment(navController:NavHostController,viewModel: App
 
                         }
 
-
-
                     }
 
                 }
@@ -102,7 +112,7 @@ fun Screen_ScheduleNewAppointment(navController:NavHostController,viewModel: App
             }
 
             Button(onClick = {
-                viewModel.fetchAvailableAppointment()
+                appointmentViewModel.fetchAvailableAppointment()
                 openDialogState.value = true
             }) {
 
@@ -111,6 +121,6 @@ fun Screen_ScheduleNewAppointment(navController:NavHostController,viewModel: App
             }
         }
     }
-    NewScheduleAlertDialog(navController,viewModel = viewModel,openDialogState,selected, firstName, lastName)
+    NewScheduleAlertDialog(navController,viewModel = appointmentViewModel,openDialogState,selected, firstName, lastName)
 
 }

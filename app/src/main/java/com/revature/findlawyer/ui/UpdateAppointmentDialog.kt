@@ -11,11 +11,13 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import com.revature.findlawyer.DrawerScreens
 import com.revature.findlawyer.data.network.Token
 import com.revature.findlawyer.viewmodel.AppointmentViewModel
 
 @Composable
-fun UpdateAppointmentDialog(viewModel: AppointmentViewModel, openDialogState: MutableState<Boolean>, selected: MutableState<String>,targetName:String,time:String) {
+fun UpdateAppointmentDialog(navHostController: NavHostController,viewModel: AppointmentViewModel, openDialogState: MutableState<Boolean>, selected: MutableState<String>,targetName:String,time:String) {
 
     if(openDialogState.value){
         AlertDialog(
@@ -27,6 +29,7 @@ fun UpdateAppointmentDialog(viewModel: AppointmentViewModel, openDialogState: Mu
                     viewModel.updateAppointment("lawyer1",targetName, time,selected.value)
                     viewModel.fetchAppointments(Token("dfadfdfa"))
                     openDialogState.value = false
+                    navHostController.navigate(DrawerScreens.Screen_AppointmentUpdated.route)
 
                 })
                 { Text(text = "Schedule") }
