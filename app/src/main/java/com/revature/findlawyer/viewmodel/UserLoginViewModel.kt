@@ -3,6 +3,8 @@ package com.revature.findlawyer.viewmodel
 import android.content.Context
 import android.util.Log
 import android.widget.Toast
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -17,6 +19,7 @@ import kotlinx.coroutines.launch
 class UserLoginViewModel: ViewModel() {
 
     private val userLoginLiveData=MutableLiveData<Boolean>()
+    val logincred: MutableState <Boolean> = mutableStateOf(true)
 
     fun uLogin(username:String,password:String){
 

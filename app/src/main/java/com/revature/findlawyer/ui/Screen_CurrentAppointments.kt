@@ -21,12 +21,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.revature.findlawyer.ui.theme.FindLawyerTheme
 import com.revature.findlawyer.viewmodel.AppointmentViewModel
 
 
 @Composable
-fun Screen_CurrentAppointmentScreen(viewModel:AppointmentViewModel){
+fun Screen_CurrentAppointmentScreen(navController: NavHostController,viewModel:AppointmentViewModel){
 
     val listState = rememberLazyListState()
     val selected = remember{ mutableStateOf("")}
@@ -34,7 +36,12 @@ fun Screen_CurrentAppointmentScreen(viewModel:AppointmentViewModel){
     val openDialogState = remember { mutableStateOf(false) }
     val openCancelDialog = remember{ mutableStateOf(false)}
 
-    Scaffold(modifier = Modifier.fillMaxSize()) {
+    Scaffold(modifier = Modifier.fillMaxSize(),
+        bottomBar = {
+            BottNavBar(navController)
+        }
+
+        ) {
 
         LazyColumn(state = listState){
             items(viewModel.result.value){
@@ -104,16 +111,6 @@ fun AppointmentCard(targetName:String,time:String,openDialogState:MutableState<B
                 }
             }
 
-
-
         }
-    }
-}
-
-@Preview
-@Composable
-fun CurrentAppointmentPreview() {
-    FindLawyerTheme {
-        Screen_CurrentAppointmentScreen(viewModel = AppointmentViewModel())
     }
 }

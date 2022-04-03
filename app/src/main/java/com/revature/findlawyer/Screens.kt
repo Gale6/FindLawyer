@@ -20,15 +20,22 @@ sealed class DrawerScreens (val title: String,val icon:ImageVector,val route:Str
     object MainLawyer:DrawerScreens("Lawyer_LogIn_Register",Icons.Default.Star,"lawyer_login_register")
     object MainUser:DrawerScreens("Lawyer_LogIn",Icons.Default.ArrowBack,"user_login_register")
     object LawyerLogin:DrawerScreens("Lawyer LogIn",Icons.Default.Face,"lawyer_login")
-    object UserLogIn:DrawerScreens("User LogIn",Icons.Default.ShoppingCart,"user_login")
+    object UserLogIn:DrawerScreens("User LogIn",Icons.Default.AccountCircle,"user_login")
+
     object Screen_AppointmentMade:DrawerScreens("Screen_AppointmentMade",Icons.Default.ShoppingCart,"AppointmentMade")
-    object Screen_Histories:DrawerScreens("Screen_Histories",Icons.Default.ShoppingCart,"Histories")
-    object Screen_CurrentAppointments:DrawerScreens("CurrentAppointments",Icons.Default.ShoppingCart,"CurrentAppointments")
+    object Screen_AppointmentUpdated:DrawerScreens("Screen_AppointmentUpdated",Icons.Default.ShoppingCart,"AppointmentUpdated")
+    object Screen_AppointmentCanceled:DrawerScreens("Screen_AppointmentCanceled",Icons.Default.ShoppingCart,"AppointmentCanceled")
+
+    object Screen_Histories:DrawerScreens("Histories",Icons.Default.History,"Histories")
+    object Screen_CurrentAppointments:DrawerScreens("Appointment",Icons.Default.EventAvailable,"CurrentAppointments")
     object Screen_ScheduleNewAppointment:DrawerScreens("ScheduleNewAppointment",Icons.Default.ShoppingCart,"ScheduleNewAppointment")
+
+    object Screen_LawyerSearch:DrawerScreens("Lawyer Search",Icons.Default.ShoppingCart,"LawyerSearch")
+    object Screen_PostReview:DrawerScreens("Post Review",Icons.Default.ShoppingCart,"PostReview")
+
+
     object LawyerRegister:DrawerScreens("Lawyer Register",Icons.Default.ArrowDropDown,"lawyer_register")
     object UserRegister:DrawerScreens("User Register",Icons.Default.ArrowDropDown,"user_register")
-
-
 
 
 }
@@ -37,13 +44,13 @@ val Screens= listOf(
 
     //delete below and start from search
     DrawerScreens.MainOverallScreen,
-    DrawerScreens.MainLawyer,
-    DrawerScreens.MainUser,
-    DrawerScreens.LawyerLogin,
+    DrawerScreens.Screen_CurrentAppointments,
+    DrawerScreens.Screen_Histories,
+
+    //placeHolder
     DrawerScreens.UserLogIn,
 
     )
-
 
 @Composable
 fun RowScope.AddItem(
@@ -55,10 +62,14 @@ fun RowScope.AddItem(
         label = {Text(text = screen.title)},
         icon = { Icon(imageVector =screen.icon, contentDescription = "Navigation Icon" ) },
         selected = currentDestination?.hierarchy?.any { it.route == screen.route}==true,
-        onClick = { navController.navigate(screen.route){
+        onClick = {
+            navController.navigate(screen.route)
+        {
             popUpTo(navController.graph.findStartDestination().id){ saveState=true }
             launchSingleTop=true
-            restoreState=true }
+            restoreState=true
+         }
         }
+
     )
 }
