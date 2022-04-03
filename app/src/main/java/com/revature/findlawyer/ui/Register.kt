@@ -1,5 +1,6 @@
 package com.revature.findlawyer.ui
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -12,6 +13,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -24,6 +26,7 @@ fun Registeruser(navController: NavController,userRegisterViewModel: UserRegiste
     var firstname= rememberSaveable { mutableStateOf("")}
     var lastname= rememberSaveable { mutableStateOf("")}
     var password= rememberSaveable { mutableStateOf("")}
+    val context=LocalContext.current
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Text("Register")
         Spacer(modifier = Modifier.height(15.dp))
@@ -56,7 +59,14 @@ fun Registeruser(navController: NavController,userRegisterViewModel: UserRegiste
             Spacer(modifier = Modifier.height(10.dp))
             Button(onClick = {
                 userRegisterViewModel.uRegister(username.value,password.value,firstname.value,lastname = lastname.value)
-
+                if(userRegisterViewModel.issuccessful()==true)
+                {
+                    Toast.makeText(context,"Register Successful",Toast.LENGTH_LONG).show()
+                }
+                else
+                {
+                    Toast.makeText(context,"Enter the empty fields",Toast.LENGTH_LONG).show()
+                }
             })
             {
                 Text(text = "Register")

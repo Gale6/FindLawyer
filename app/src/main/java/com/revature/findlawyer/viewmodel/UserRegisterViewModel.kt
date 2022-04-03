@@ -30,4 +30,7 @@ class UserRegisterViewModel: ViewModel() {
             }
         }
     }
+    fun issuccessful(): Boolean? {
+        return userRegisterLiveData.value
+    }
 }
