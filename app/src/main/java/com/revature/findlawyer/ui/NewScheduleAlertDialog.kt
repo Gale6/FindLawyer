@@ -11,10 +11,12 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import com.revature.findlawyer.DrawerScreens
 import com.revature.findlawyer.data.network.Token
 
 @Composable
-fun NewScheduleAlertDialog(viewModel: AppointmentViewModel,openDialogState:MutableState<Boolean>,selected:MutableState<String>,firstName:String, lastName:String) {
+fun NewScheduleAlertDialog(navHostController: NavHostController,viewModel: AppointmentViewModel,openDialogState:MutableState<Boolean>,selected:MutableState<String>,firstName:String, lastName:String) {
 
     if(openDialogState.value){
         AlertDialog(
@@ -26,6 +28,7 @@ fun NewScheduleAlertDialog(viewModel: AppointmentViewModel,openDialogState:Mutab
                     viewModel.newAppointment("client1",firstName+lastName, selected.value)
                     viewModel.fetchAppointments(Token("dfadfdfa"))
                     openDialogState.value = false
+                    navHostController.navigate(DrawerScreens.Screen_AppointmentMade.route)
                 })
                 { Text(text = "Schedule") }
             },

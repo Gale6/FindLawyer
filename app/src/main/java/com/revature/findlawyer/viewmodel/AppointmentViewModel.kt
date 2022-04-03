@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.revature.findlawyer.data.network.Appointment
 import com.revature.findlawyer.data.network.History
 import com.revature.findlawyer.data.network.Token
+import com.revature.findlawyer.data.repository.AppointmentRetrofitHelper
 import com.revature.findlawyer.data.repository.RetrofitHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -32,7 +33,7 @@ class AppointmentViewModel:ViewModel() {
         viewModelScope.launch (Dispatchers.IO){
 
             try {
-                val fetchAppointmentService = RetrofitHelper.getAppointmentService()
+                val fetchAppointmentService = AppointmentRetrofitHelper.getAppointmentService()
 
                 val responseService = fetchAppointmentService.getAppointments(token = token)
 
@@ -62,7 +63,7 @@ class AppointmentViewModel:ViewModel() {
 
         viewModelScope.launch {
             try {
-                val newAppointmentService = RetrofitHelper.getAppointmentService()
+                val newAppointmentService = AppointmentRetrofitHelper.getAppointmentService()
 
                 val responseService = newAppointmentService.newAppointment(token = Token("adfadfadfaf"),Appointment(name,targetName,time)
                 )
@@ -94,7 +95,7 @@ class AppointmentViewModel:ViewModel() {
         viewModelScope.launch {
 
             try {
-                val fetchAvailableAppointmentService = RetrofitHelper.getAppointmentService()
+                val fetchAvailableAppointmentService = AppointmentRetrofitHelper.getAppointmentService()
 
                 val responseService = fetchAvailableAppointmentService.getAvailableAppointments("lawyer1")
 
@@ -124,7 +125,7 @@ class AppointmentViewModel:ViewModel() {
 
         viewModelScope.launch {
             try {
-                val updateAppointmentService = RetrofitHelper.getAppointmentService()
+                val updateAppointmentService = AppointmentRetrofitHelper.getAppointmentService()
                 val responseService = updateAppointmentService.updateAppointment(Appointment(name, targetName,time),Appointment(name, targetName,newTime))
 
                 if(responseService.isSuccessful){
@@ -152,7 +153,7 @@ class AppointmentViewModel:ViewModel() {
 
         viewModelScope.launch {
             try {
-                val deleteAppointmentService = RetrofitHelper.getAppointmentService()
+                val deleteAppointmentService = AppointmentRetrofitHelper.getAppointmentService()
                 val responseService = deleteAppointmentService.deleteAppointment(Appointment(name,targetName,time))
 
                 if(responseService.isSuccessful){
@@ -177,7 +178,7 @@ class AppointmentViewModel:ViewModel() {
     fun fetchHistory(){
         viewModelScope.launch {
             try {
-                val fetchHistoryService = RetrofitHelper.getAppointmentService()
+                val fetchHistoryService = AppointmentRetrofitHelper.getAppointmentService()
                 val responseService = fetchHistoryService.fetchHistory(Token("dafsdfafsdsaf"))
 
                 if(responseService.isSuccessful){

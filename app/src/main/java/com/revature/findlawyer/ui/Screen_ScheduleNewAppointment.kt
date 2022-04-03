@@ -14,13 +14,14 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import coil.compose.rememberImagePainter
 import com.revature.findlawyer.ui.theme.NewScheduleAlertDialog
 import com.revature.findlawyer.viewmodel.AppointmentViewModel
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
-fun Screen_ScheduleNewAppointment(viewModel: AppointmentViewModel = AppointmentViewModel(), firstName:String, lastName:String, typeOfPractice:String, rating:Float, image:String, numCases:Int) {
+fun Screen_ScheduleNewAppointment(navController:NavHostController,viewModel: AppointmentViewModel = AppointmentViewModel(), firstName:String, lastName:String, typeOfPractice:String, rating:Float, image:String, numCases:Int) {
 
     val selected = remember{ mutableStateOf("") }
     val openDialogState = remember { mutableStateOf(false) }
@@ -110,6 +111,6 @@ fun Screen_ScheduleNewAppointment(viewModel: AppointmentViewModel = AppointmentV
             }
         }
     }
-    NewScheduleAlertDialog(viewModel = viewModel,openDialogState,selected, firstName, lastName)
+    NewScheduleAlertDialog(navController,viewModel = viewModel,openDialogState,selected, firstName, lastName)
 
 }
