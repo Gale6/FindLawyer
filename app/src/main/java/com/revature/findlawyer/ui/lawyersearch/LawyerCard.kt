@@ -14,12 +14,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import coil.annotation.ExperimentalCoilApi
-import coil.compose.rememberImagePainter
 import com.revature.findlawyer.R
 
 
-@OptIn(ExperimentalCoilApi::class)
 @Composable
 fun LawyerCard(firstName:String,lastName:String,typeOfPractice:String,rating:Float,image:String,numCases:Int) {
     var context = LocalContext.current
@@ -39,14 +36,6 @@ fun LawyerCard(firstName:String,lastName:String,typeOfPractice:String,rating:Flo
 
         ) {
 
-            Image(
-                painter = rememberImagePainter(image),
-                contentDescription = null,
-                modifier = Modifier
-                    .size(120.dp)
-                    .padding(8.dp),
-                contentScale = ContentScale.Fit
-            )
             Column(Modifier.padding(8.dp)) {
 
                 Text(
