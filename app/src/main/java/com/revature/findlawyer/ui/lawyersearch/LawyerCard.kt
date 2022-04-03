@@ -28,7 +28,6 @@ import com.revature.findlawyer.R
 fun LawyerCard(firstName:String,lastName:String,typeOfPractice:String,rating:Float,image:String,numCases:Int) {
     var context = LocalContext.current
     Card(
-
         modifier = Modifier
             .padding(10.dp)
             .fillMaxWidth()
