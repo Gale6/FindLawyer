@@ -109,19 +109,7 @@ fun UserLogIn(navController: NavController,viewModel:UserLoginViewModel){
     var userName by rememberSaveable { mutableStateOf("")}
     var userPassword by rememberSaveable { mutableStateOf("")}
 
-    Scaffold(modifier = Modifier.fillMaxSize(),topBar = {
-        TopAppBar(
-            title = { Text(text = "AppBar") },
-            navigationIcon = {
-                Icon(Icons.Rounded.Menu, contentDescription = "Localized description",
-                    modifier = Modifier.clickable(onClick = {
-                        scope.launch { scaffoldState.drawerState.open() }
-                    })
-                )
-            }
-        )
-    },
-        bottomBar = { /*BotBar(scaffoldState,scope)*/ },drawerContent = { /*bottDrawer(*//*scaffoldState,scope,navController*//*)*/}) {
+    Scaffold(modifier = Modifier.fillMaxSize()) {
 
         Surface(modifier = Modifier.fillMaxHeight()/*.border(2.dp,color= Color.Red)*/,color = MaterialTheme.colors.background) {
 
@@ -154,7 +142,9 @@ fun UserLogIn(navController: NavController,viewModel:UserLoginViewModel){
 
                 )
 
-                Button(onClick = { viewModel.uLogin(userName,userPassword) }
+                Button(onClick = {
+
+                    viewModel.uLogin(userName,userPassword) }
                     ,modifier= Modifier
                     .padding(4.dp)
                     .width(330.dp)
