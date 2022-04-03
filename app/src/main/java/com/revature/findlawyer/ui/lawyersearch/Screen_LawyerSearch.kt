@@ -26,12 +26,15 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.toSize
+import com.revature.findlawyer.data.network.Lawyer
 import com.revature.findlawyer.ui.ui.theme.FindLawyerTheme
+import com.revature.findlawyer.viewmodel.FetchLawyersViewModel
 
 
 @Composable
-fun LawyerSearchScreen() {
+fun Screen_LawyerSearch(viewModel: FetchLawyersViewModel) {
     val context = LocalContext.current
+    viewModel.lawyersList()
     Scaffold(
         topBar = {
             TopAppBar(backgroundColor = MaterialTheme.colors.primary,
@@ -49,17 +52,16 @@ fun LawyerSearchScreen() {
                     filter2Menu()
                 }
                 Row {
-                    RatingBar(context).rating=4.5f
                 }
                 Row {
 
                 }
 
             }
-            items(testListOfLawyers) { lawyer ->
+            items(viewModel.lawyerResultList.value) { lawyer ->
                 LawyerCard(firstName = lawyer.firstName, lastName = lawyer.lastName,
                     typeOfPractice = lawyer.typeOfPractice, rating = lawyer.rating,
-                    image = lawyer.img, numCases = lawyer.numCases)
+                    image = lawyer.img, numCases = lawyer.numOfCases)
             }
         }
     }
@@ -84,7 +86,9 @@ fun filter1Menu() {
         OutlinedTextField(
             value = selectedText,
             onValueChange = { selectedText = it },
-            modifier = Modifier.padding(10.dp).width(175.dp)
+            modifier = Modifier
+                .padding(10.dp)
+                .width(175.dp)
                 .onGloballyPositioned { coordinates ->
                     //This value is used to assign to the DropDown the same width
                     textfieldSize = coordinates.size.toSize()
@@ -136,7 +140,9 @@ fun filter2Menu() {
         OutlinedTextField(
             value = selectedText,
             onValueChange = { selectedText = it },
-            modifier = Modifier.padding(10.dp).width(175.dp)
+            modifier = Modifier
+                .padding(10.dp)
+                .width(175.dp)
                 .onGloballyPositioned { coordinates ->
                     //This value is used to assign to the DropDown the same width
                     textfieldSize = coordinates.size.toSize()
@@ -179,6 +185,6 @@ fun filter2Menu() {
 @Preview
 @Composable
 fun testLawyerSearch() {
-    LawyerSearchScreen()
+//    Screen_LawyerSearch()
 }
 

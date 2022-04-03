@@ -58,12 +58,11 @@ import kotlinx.coroutines.launch
 @Preview
 @Composable
 fun previewNavBar(){
-    BottNavBar()
+    BottNavBar(navController = rememberNavController())
 }
 
 @Composable
-fun BottNavBar(/*navController:NavHostController*/){
-    val navController = rememberNavController()//comment this out and uncomment the parameter(just used to preview)
+fun BottNavBar(navController:NavHostController){
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
     BottomNavigation() {
