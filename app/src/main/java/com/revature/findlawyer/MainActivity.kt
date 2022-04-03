@@ -19,7 +19,7 @@ class MainActivity : ComponentActivity() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
-        var viewModel = AppointmentViewModel()
+        var appointmentViewModel = AppointmentViewModel()
         super.onCreate(savedInstanceState)
         setContent {
             FindLawyerTheme {
@@ -28,19 +28,6 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-//                    Screen_ScheduleNewAppointment(
-//                        firstName = "dfsfa",
-//                        lastName = "dafadf",
-//                        typeOfPractice = "dfasdf",
-//                        rating = 4.5f,
-//                        image = "dfadfa",
-//                        numCases = 45)
-                    //Screen_CurrentAppointmentScreen(viewModel = viewModel)
-
-                    //Screen_AppointmentMade()
-
-                    Screen_Histories(viewModel = viewModel)
-
 
 
                 }
