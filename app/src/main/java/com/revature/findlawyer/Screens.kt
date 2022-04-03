@@ -1,5 +1,6 @@
 package com.revature.findlawyer
 
+
 sealed class DrawerScreens (val title: String,val icon:Int, val route:String){
 
     object MainOverallScreen:DrawerScreens("Main Screen",R.drawable.ic_baseline_keyboard_arrow_right_24,"main")
@@ -11,21 +12,53 @@ sealed class DrawerScreens (val title: String,val icon:Int, val route:String){
     object LawyerRegister:DrawerScreens("Lawyer Register",R.drawable.ic_baseline_keyboard_arrow_right_24,"lawyer_register")
     object LawyerSearch:DrawerScreens("Lawyer Search",R.drawable.ic_baseline_keyboard_arrow_right_24,"lawyer_search")
 
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.RowScope
+import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.Icon
+import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.*
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.navigation.NavDestination
+import androidx.navigation.NavDestination.Companion.hierarchy
+import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.NavHostController
+
 
 }
 
-//These will show up on drawer list
+//These will show up on drawer list & the Bottom Nav Bar
 val Screens= listOf(
 
     //delete below and start from search
-    DrawerScreens.LawyerLogin,
-    DrawerScreens.MainLawyer,
     DrawerScreens.MainOverallScreen,
+    DrawerScreens.MainLawyer,
     DrawerScreens.MainUser,
-    DrawerScreens.LawyerRegister,
+    DrawerScreens.LawyerLogin,
+
+)
     DrawerScreens.UserLogIn,
-    DrawerScreens.UserRegister,
-    DrawerScreens.LawyerSearch
 
 
 )
+
+@Composable
+fun RowScope.AddItem(
+    screen:DrawerScreens,
+    currentDestination: NavDestination?,
+    navController:NavHostController
+){
+    BottomNavigationItem(
+        label = {Text(text = screen.title)},
+        icon = { Icon(imageVector =screen.icon, contentDescription = "Navigation Icon" ) },
+        selected = currentDestination?.hierarchy?.any { it.route == screen.route}==true,
+        onClick = { navController.navigate(screen.route){
+            popUpTo(navController.graph.findStartDestination().id){ saveState=true }
+            launchSingleTop=true
+            restoreState=true }
+        }
+    )
+}
+

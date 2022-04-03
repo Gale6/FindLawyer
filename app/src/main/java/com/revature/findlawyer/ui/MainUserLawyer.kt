@@ -9,6 +9,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.BlendMode.Companion.Screen
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -18,6 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.revature.findlawyer.DrawerScreens
 import com.revature.findlawyer.R
 import com.revature.findlawyer.ui.theme.Cormorantgaramond
 
@@ -45,7 +47,7 @@ fun MainLawyer (navController: NavController){
 
             Text(text = "LOG IN OR REGISTER TO CONNECT WITH CLIENTS",textAlign = TextAlign.Center, modifier = Modifier.padding(2.dp).offset(y=-55.dp),color= Color.Black,fontFamily = Cormorantgaramond,fontWeight = FontWeight.Bold,fontSize = 17.sp )
 
-            Button(onClick = { /*navController.navigate(DrawerScreens.LawyerLogin.route)*/ },modifier= Modifier.padding(4.dp).width(330.dp).offset(y=-50.dp)/*.border(1.dp,color= Color.Black)*/) {
+            Button(onClick = { navController.navigate(DrawerScreens.LawyerLogin.route) },modifier= Modifier.padding(4.dp).width(330.dp).offset(y=-50.dp)/*.border(1.dp,color= Color.Black)*/) {
                 Text(text = "Log In", modifier = Modifier.padding(2.dp),color= Color.White)
 
             }
@@ -86,11 +88,11 @@ fun MainUser (navController: NavController){
 
             Text(text = "LOG IN OR REGISTER TO CONNECT WITH LAW PROFESSIONALS",textAlign = TextAlign.Center, modifier = Modifier.padding(2.dp).offset(y=-55.dp),color= Color.Black,fontFamily = Cormorantgaramond,fontWeight = FontWeight.Bold,fontSize = 17.sp )
 
-            Button(onClick = {/*navController.navigate(Screen.UserLogIn.route)*/},modifier= Modifier.padding(4.dp).width(330.dp).offset(y=-50.dp)/*.border(1.dp,color= Color.Black)*/) {
+            Button(onClick = {navController.navigate(DrawerScreens.UserLogIn.route)},modifier= Modifier.padding(4.dp).width(330.dp).offset(y=-50.dp)/*.border(1.dp,color= Color.Black)*/) {
                 Text(text = "Log In", modifier = Modifier.padding(2.dp),color= Color.White)
 
             }
-            Button(onClick = {/*navController.navigate(Screen."User Register Screen".route)*/ },modifier= Modifier.padding(4.dp).width(330.dp).offset(y=-50.dp)/*.border(1.dp,color= Color.Black)*/) {
+            Button(onClick = {/*navController.navigate(DrawerScreens.UserLogIn.route)*/ },modifier= Modifier.padding(4.dp).width(330.dp).offset(y=-50.dp)/*.border(1.dp,color= Color.Black)*/) {
                 Text(text = "Register", modifier = Modifier.padding(2.dp),color= Color.White)
 
             }
