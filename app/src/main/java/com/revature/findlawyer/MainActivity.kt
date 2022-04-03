@@ -32,9 +32,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-
-                    navController = rememberNavController()
-                    NavHostGraph(navController = navController)
+                    
 
                 }
             }
