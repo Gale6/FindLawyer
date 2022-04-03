@@ -14,18 +14,24 @@ import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 
-sealed class DrawerScreens (val title: String,val icon:ImageVector /*ImageVector*/ ,val route:String){
+sealed class DrawerScreens (val title: String,val icon:ImageVector,val route:String){
 
     object MainOverallScreen:DrawerScreens("Home", Icons.Default.Home,"main")
     object MainLawyer:DrawerScreens("Lawyer_LogIn_Register",Icons.Default.Star,"lawyer_login_register")
     object MainUser:DrawerScreens("Lawyer_LogIn",Icons.Default.ArrowBack,"user_login_register")
     object LawyerLogin:DrawerScreens("Lawyer LogIn",Icons.Default.Face,"lawyer_login")
     object UserLogIn:DrawerScreens("User LogIn",Icons.Default.ShoppingCart,"user_login")
+    object Screen_AppointmentMade:DrawerScreens("Screen_AppointmentMade",Icons.Default.ShoppingCart,"AppointmentMade")
+    object Screen_Histories:DrawerScreens("Screen_Histories",Icons.Default.ShoppingCart,"Histories")
+    object Screen_CurrentAppointments:DrawerScreens("CurrentAppointments",Icons.Default.ShoppingCart,"CurrentAppointments")
+    object Screen_ScheduleNewAppointment:DrawerScreens("ScheduleNewAppointment",Icons.Default.ShoppingCart,"ScheduleNewAppointment")
+    object LawyerRegister:DrawerScreens("Lawyer Register",Icons.Default.ArrowDropDown,"lawyer_register")
+    object UserRegister:DrawerScreens("User Register",Icons.Default.ArrowDropDown,"user_register")
+
 
 
 
 }
-
 //These will show up on drawer list & the Bottom Nav Bar
 val Screens= listOf(
 
@@ -36,8 +42,7 @@ val Screens= listOf(
     DrawerScreens.LawyerLogin,
     DrawerScreens.UserLogIn,
 
-
-)
+    )
 
 
 @Composable
