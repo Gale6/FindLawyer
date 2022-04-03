@@ -33,6 +33,8 @@ object UserRetrofitHelper{
         return retrofit.create(UserLoginService::class.java)
     }
 
-
+    fun getUserRegisterService(): UserRegisterService{
+        return retrofit.create(UserRegisterService::class.java)
+    }
 
 }

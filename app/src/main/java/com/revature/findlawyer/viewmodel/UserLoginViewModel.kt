@@ -45,6 +45,5 @@ class UserLoginViewModel: ViewModel() {
         }
     }
 
-
 }
 

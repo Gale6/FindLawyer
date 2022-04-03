@@ -15,7 +15,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
-import com.revature.findlawyer.ui.theme.NewScheduleAlertDialog
 import com.revature.findlawyer.viewmodel.AppointmentViewModel
 
 @RequiresApi(Build.VERSION_CODES.O)

@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
+import androidx.navigation.compose.rememberNavController
 import com.revature.findlawyer.ui.Screen_Histories
 import com.revature.findlawyer.ui.Screen_ScheduleNewAppointment
 import com.revature.findlawyer.ui.theme.FindLawyerTheme
@@ -31,7 +32,8 @@ class MainActivity : ComponentActivity() {
 
 
                 }
-
+                var navController= rememberNavController()
+                NavHostGraph(navController = navController)
             }
         }
     }
