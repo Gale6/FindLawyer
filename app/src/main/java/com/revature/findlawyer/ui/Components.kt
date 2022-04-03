@@ -1,5 +1,6 @@
 package com.revature.findlawyer.ui
 
+import android.util.Log
 import android.view.MenuItem
 import android.widget.GridLayout
 import androidx.compose.foundation.*
@@ -134,7 +135,10 @@ fun TopBar(scaffoldState: ScaffoldState,scope:CoroutineScope){
     TopAppBar() {
         Icon(Icons.Rounded.Menu, contentDescription = "Menu", Modifier.clickable {
             scope.launch {
-                scaffoldState.drawerState.open()
+                Log.d("hihi","hi")
+                scope.launch { scaffoldState.drawerState.open() }
+                Log.d("hihi","yio")
+
             }
         }
         )
