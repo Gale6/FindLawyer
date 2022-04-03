@@ -1,17 +1,5 @@
 package com.revature.findlawyer
 
-
-sealed class DrawerScreens (val title: String,val icon:Int, val route:String){
-
-    object MainOverallScreen:DrawerScreens("Main Screen",R.drawable.ic_baseline_keyboard_arrow_right_24,"main")
-    object MainLawyer:DrawerScreens("Lawyer_LogIn_Register",R.drawable.ic_baseline_keyboard_arrow_right_24,"lawyer_login_register")
-    object MainUser:DrawerScreens("Lawyer_LogIn",R.drawable.ic_baseline_keyboard_arrow_right_24,"user_login_register")
-    object LawyerLogin:DrawerScreens("Lawyer LogIn",R.drawable.ic_baseline_keyboard_arrow_right_24,"lawyer_login")
-    object UserLogIn:DrawerScreens("User LogIn", R.drawable.ic_baseline_keyboard_arrow_right_24,"user_login")
-    object UserRegister:DrawerScreens("User Register",R.drawable.ic_baseline_keyboard_arrow_right_24,"user_register")
-    object LawyerRegister:DrawerScreens("Lawyer Register",R.drawable.ic_baseline_keyboard_arrow_right_24,"lawyer_register")
-    object LawyerSearch:DrawerScreens("Lawyer Search",R.drawable.ic_baseline_keyboard_arrow_right_24,"lawyer_search")
-
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material.BottomNavigationItem
@@ -26,9 +14,22 @@ import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 
+sealed class DrawerScreens (val title: String,val icon:ImageVector,val route:String){
+
+    object MainOverallScreen:DrawerScreens("Home", Icons.Default.Home,"main")
+    object MainLawyer:DrawerScreens("Lawyer_LogIn_Register",Icons.Default.Star,"lawyer_login_register")
+    object MainUser:DrawerScreens("Lawyer_LogIn",Icons.Default.ArrowBack,"user_login_register")
+    object LawyerLogin:DrawerScreens("Lawyer LogIn",Icons.Default.Face,"lawyer_login")
+    object UserLogIn:DrawerScreens("User LogIn",Icons.Default.ShoppingCart,"user_login")
+    object Screen_AppointmentMade:DrawerScreens("Screen_AppointmentMade",Icons.Default.ShoppingCart,"AppointmentMade")
+    object Screen_Histories:DrawerScreens("Screen_Histories",Icons.Default.ShoppingCart,"Histories")
+    object Screen_CurrentAppointments:DrawerScreens("CurrentAppointments",Icons.Default.ShoppingCart,"CurrentAppointments")
+    object Screen_ScheduleNewAppointment:DrawerScreens("ScheduleNewAppointment",Icons.Default.ShoppingCart,"ScheduleNewAppointment")
+
+
+
 
 }
-
 //These will show up on drawer list & the Bottom Nav Bar
 val Screens= listOf(
 
@@ -37,12 +38,10 @@ val Screens= listOf(
     DrawerScreens.MainLawyer,
     DrawerScreens.MainUser,
     DrawerScreens.LawyerLogin,
-
-)
     DrawerScreens.UserLogIn,
 
+    )
 
-)
 
 @Composable
 fun RowScope.AddItem(
@@ -61,4 +60,3 @@ fun RowScope.AddItem(
         }
     )
 }
-
