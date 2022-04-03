@@ -1,6 +1,8 @@
 package com.revature.findlawyer.viewmodel
 
+import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -26,6 +28,7 @@ class UserLoginViewModel: ViewModel() {
                 if(responseService.isSuccessful){
                     responseService.body()?.let{UserToken->
                         Log.d( "User Login Success", "Response Token $UserToken")
+                        //Toast.makeText(context,"Airplane Mode Enabled", Toast.LENGTH_LONG).show()
                     }
                 }else{
                     responseService.errorBody()?.let{error->

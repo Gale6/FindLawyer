@@ -1,6 +1,8 @@
 package com.revature.findlawyer.viewmodel
 
+import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -28,6 +30,7 @@ class LawyerLoginViewModel:ViewModel() {
                 if(responseService.isSuccessful){
                     responseService.body()?.let{LawyerToken->
                         Log.d( "User Login Success", "Response Token $LawyerToken")
+
                     }
                 }else{
                     responseService.errorBody()?.let{error->

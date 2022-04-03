@@ -1,5 +1,6 @@
 package com.revature.findlawyer.ui
 
+import android.content.Context
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -134,7 +135,8 @@ fun UserLogIn(navController: NavController,viewModel:UserLoginViewModel){
 
                 )
 
-                Button(onClick = {viewModel.uLogin(userName,userPassword)/*, navigation here*/ },modifier= Modifier
+                Button(onClick = { viewModel.uLogin(userName,userPassword) }
+                    ,modifier= Modifier
                     .padding(4.dp)
                     .width(330.dp)
                     .offset(y = 15.dp)/*.border(1.dp,color= Color.Black)*/) {
