@@ -1,5 +1,6 @@
 package com.revature.findlawyer.ui
 
+import android.util.Log
 import android.view.MenuItem
 import android.widget.GridLayout
 import androidx.compose.foundation.*
@@ -13,6 +14,7 @@ import androidx.compose.material.icons.rounded.Menu
 import androidx.compose.material.icons.rounded.Person
 import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.BiasAlignment
@@ -27,11 +29,22 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.res.fontResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.NavDestination.Companion.hierarchy
+import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
+import com.revature.findlawyer.AddItem
+import com.revature.findlawyer.DrawerScreens
 import com.revature.findlawyer.R
 import com.revature.findlawyer.Screens
 import com.revature.findlawyer.ui.theme.Cormorantgaramond
@@ -40,16 +53,43 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 
-//@Preview
-//@Composable
-//fun botdrawer(){
-//    bottDrawer()
-//}
+/////////////////////////////  BOTTOM NAV BAR  ///////////////////////////////
+
+@Preview
+@Composable
+fun previewNavBar(){
+    BottNavBar()
+}
+
+@Composable
+fun BottNavBar(/*navController:NavHostController*/){
+    val navController = rememberNavController()//comment this out and uncomment the parameter(just used to preview)
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentDestination = navBackStackEntry?.destination
+    BottomNavigation() {
+        Screens.forEach { screen->
+
+            AddItem(screen = screen, currentDestination = currentDestination, navController =navController )
+
+        }
+
+    }
+}
+
+
+
+/////////////////////////////  DRAWER  ///////////////////////////////
+
+@Preview
+@Composable
+fun Previewtopdrawer(){
+    topDrawer()
+}
 
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun bottDrawer(/*onDestinationClicked:(route:String)->Unit,scaffoldState: ScaffoldState,scope:CoroutineScope,navController: NavController*/){
+fun topDrawer(/*onDestinationClicked:(route:String)->Unit,scaffoldState: ScaffoldState,scope:CoroutineScope,navController: NavController*/){
 
     Column(horizontalAlignment = Alignment.CenterHorizontally,modifier= Modifier
         .fillMaxSize()) {
@@ -86,17 +126,19 @@ fun bottDrawer(/*onDestinationClicked:(route:String)->Unit,scaffoldState: Scaffo
 }
 
 
-
-/////////////////////////////  Bot App Bar  ///////////////////////////////
+/////////////////////////////  Top App Bar  ///////////////////////////////
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun BotBar(scaffoldState: ScaffoldState,scope:CoroutineScope){
+fun TopBar(scaffoldState: ScaffoldState,scope:CoroutineScope){
 
-    BottomAppBar() {
+    TopAppBar() {
         Icon(Icons.Rounded.Menu, contentDescription = "Menu", Modifier.clickable {
             scope.launch {
-                scaffoldState.drawerState.open()
+                Log.d("hihi","hi")
+                scope.launch { scaffoldState.drawerState.open() }
+                Log.d("hihi","yio")
+
             }
         }
         )
@@ -138,5 +180,32 @@ fun LogoMain(){
                 .offset(x = 61.dp, y = 50.dp)
         )
     }
+}
+
+
+//////////////////////////////  HEADER ////////////////////////////////////
+
+@Preview
+@Composable
+fun headerPrieview(){
+    Header(text = "Hello Test")
+}
+
+@Composable
+fun Header(
+    text: String,
+    modifier: Modifier = Modifier
+) {
+    Text(fontFamily = Cormorantgaramond,
+        fontWeight = FontWeight.Bold,
+        fontSize = 25.sp,
+        text = text,
+        modifier = modifier
+            .fillMaxWidth()
+            .background(Color.LightGray)
+            .semantics { heading() }
+            .padding(horizontal = 16.dp, vertical = 8.dp)
+            .offset(130.dp)
+    )
 }
 
