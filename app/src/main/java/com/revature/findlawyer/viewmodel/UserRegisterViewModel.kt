@@ -5,15 +5,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.revature.findlawyer.data.network.UserRegister
-import com.revature.findlawyer.data.network.UserToken
 import com.revature.findlawyer.data.repository.UserRetrofitHelper
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import retrofit2.Response
 
 class UserRegisterViewModel: ViewModel() {
     private val userRegisterLiveData=MutableLiveData<Boolean>()
     fun uRegister(username: String,password: String,firstname:String,lastname:String){
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             try {
                 val authService = UserRetrofitHelper.getUserRegisterService()
                 val responseService = authService.getUserRegister(
