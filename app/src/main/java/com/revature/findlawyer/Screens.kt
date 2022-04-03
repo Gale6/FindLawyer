@@ -25,6 +25,8 @@ sealed class DrawerScreens (val title: String,val icon:ImageVector,val route:Str
     object Screen_Histories:DrawerScreens("Screen_Histories",Icons.Default.ShoppingCart,"Histories")
     object Screen_CurrentAppointments:DrawerScreens("CurrentAppointments",Icons.Default.ShoppingCart,"CurrentAppointments")
     object Screen_ScheduleNewAppointment:DrawerScreens("ScheduleNewAppointment",Icons.Default.ShoppingCart,"ScheduleNewAppointment")
+    object LawyerRegister:DrawerScreens("Lawyer Register",Icons.Default.ArrowDropDown,"lawyer_register")
+    object UserRegister:DrawerScreens("User Register",Icons.Default.ArrowDropDown,"user_register")
 
 
 
