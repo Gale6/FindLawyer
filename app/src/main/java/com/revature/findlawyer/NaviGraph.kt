@@ -95,5 +95,9 @@ fun NavHostGraph(navController: NavHostController,appointmentViewModel: Appointm
         composable(DrawerScreens.UserRegister.route) {
             Registeruser(navController = navController, UserRegisterViewModel())
         }
+
+        composable(DrawerScreens.Profile.route){
+            Screen_CustomerProfile(navController)
+        }
     }
 }

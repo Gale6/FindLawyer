@@ -16,6 +16,7 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import coil.compose.rememberImagePainter
+import com.revature.findlawyer.R
 import com.revature.findlawyer.viewmodel.AppointmentViewModel
 import com.revature.findlawyer.viewmodel.FetchLawyersViewModel
 
@@ -39,6 +40,7 @@ fun Screen_ScheduleNewAppointment(navController:NavHostController,appointmentVie
         TopAppBar(backgroundColor = MaterialTheme.colors.primary,
             title = {Text("New Appointment")})
     },){
+        Image(painter = painterResource(id = R.drawable.searching), contentDescription = "",contentScale = ContentScale.FillBounds,alpha = .4f)
 
         Column (
             modifier = Modifier.fillMaxSize(),

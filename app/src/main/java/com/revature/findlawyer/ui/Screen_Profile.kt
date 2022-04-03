@@ -17,16 +17,21 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.layout.ContentScale
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import coil.compose.rememberAsyncImagePainter
 import com.revature.findlawyer.R
 
 @Composable
-fun Screen_CustomerProfile() {
+fun Screen_CustomerProfile(navController:NavHostController) {
 
     Scaffold(
         topBar = {
             TopAppBar(backgroundColor = MaterialTheme.colors.primary,
                 title = {Text("Profile")})
+        },
+        bottomBar = {
+            BottNavBar(navController)
         }
     ){
         var userName: String = "BobbyTestUser"
@@ -52,7 +57,7 @@ fun Screen_CustomerProfile() {
                 val imageUri = rememberSaveable { mutableStateOf("") }
                 val painter = rememberAsyncImagePainter(
                     if (imageUri.value.isEmpty())
-                        R.drawable.ic
+                        R.drawable.ic_user
                     else
                         imageUri.value
                 )
@@ -113,5 +118,5 @@ fun Screen_CustomerProfile() {
 @Preview
 @Composable
 fun testCustomerProfile() {
-    Screen_CustomerProfile()
+    Screen_CustomerProfile(navController = rememberNavController())
 }
