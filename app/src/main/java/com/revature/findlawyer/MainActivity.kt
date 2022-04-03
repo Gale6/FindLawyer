@@ -26,14 +26,13 @@ class MainActivity : ComponentActivity() {
         setContent {
             var navController: NavHostController
             FindLawyerTheme {
-                navController = rememberNavController()
-                NavHostGraph(navController = navController)
-
 
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
+                    navController = rememberNavController()
+                    NavHostGraph(navController = navController)
 
 
                 }

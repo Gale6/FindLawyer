@@ -46,10 +46,10 @@ fun MainOverllScreen (navController: NavController){
                 Text(text = "Patron", modifier = Modifier.padding(2.dp),color=Color.White)
 
             }
-            Button(onClick = { navController.navigate(DrawerScreens.MainLawyer.route) },modifier=Modifier.padding(4.dp).width(220.dp).offset(x=-18.dp,y=-50.dp)/*.border(1.dp,color= Color.Black)*/) {
-                Text(text = "Lawyer", modifier = Modifier.padding(2.dp),color=Color.White)
-
-            }
+//            Button(onClick = { navController.navigate(DrawerScreens.MainLawyer.route) },modifier=Modifier.padding(4.dp).width(220.dp).offset(x=-18.dp,y=-50.dp)/*.border(1.dp,color= Color.Black)*/) {
+//                Text(text = "Lawyer", modifier = Modifier.padding(2.dp),color=Color.White)
+//
+//            }
 
         }
 
