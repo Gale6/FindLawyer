@@ -150,7 +150,7 @@ fun UserLogIn(navController: NavController,viewModel:UserLoginViewModel){
                 Button(onClick = {
                     if (viewModel.logincred.value){
                         viewModel.uLogin(userName,userPassword)
-                        //navController.navigate(DrawerScreens.UserLogIn.route)
+                        navController.navigate(DrawerScreens.Screen_LawyerSearch.route)
                     }
 
                     }

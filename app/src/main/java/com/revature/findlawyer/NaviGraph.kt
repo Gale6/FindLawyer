@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
 @Composable
 fun NavHostGraph(navController: NavHostController,appointmentViewModel: AppointmentViewModel) {
 
-    NavHost(navController = navController, startDestination = DrawerScreens.Screen_CurrentAppointments.route)
+    NavHost(navController = navController, startDestination = DrawerScreens.MainOverallScreen.route)
     {
 
         composable(DrawerScreens.MainOverallScreen.route) {

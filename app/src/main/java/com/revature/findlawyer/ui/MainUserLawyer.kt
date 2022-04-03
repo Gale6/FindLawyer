@@ -92,7 +92,7 @@ fun MainUser (navController: NavController){
                 Text(text = "Log In", modifier = Modifier.padding(2.dp),color= Color.White)
 
             }
-            Button(onClick = {/*navController.navigate(DrawerScreens.UserLogIn.route)*/ },modifier= Modifier.padding(4.dp).width(330.dp).offset(y=-50.dp)/*.border(1.dp,color= Color.Black)*/) {
+            Button(onClick = {navController.navigate(DrawerScreens.UserRegister.route) },modifier= Modifier.padding(4.dp).width(330.dp).offset(y=-50.dp)/*.border(1.dp,color= Color.Black)*/) {
                 Text(text = "Register", modifier = Modifier.padding(2.dp),color= Color.White)
 
             }
