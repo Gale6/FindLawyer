@@ -78,8 +78,8 @@ fun MainUser (navController: NavController){
 
     Surface(modifier = Modifier.fillMaxSize()/*.border(2.dp,color= Color.Red)*/) {
 
-        //Image(painter = painterResource(id = R.drawable.citypersp), contentDescription = "",contentScale = ContentScale.FillBounds,alpha = .3f)
-        Image(painter = painterResource(id = R.drawable.loginimg), contentDescription = "",contentScale = ContentScale.FillBounds,alpha = .4f)
+        Image(painter = painterResource(id = R.drawable.citypersp), contentDescription = "",contentScale = ContentScale.FillBounds,alpha = .3f)
+        //Image(painter = painterResource(id = R.drawable.loginimg), contentDescription = "",contentScale = ContentScale.FillBounds,alpha = .4f)
 
         Logo()
 

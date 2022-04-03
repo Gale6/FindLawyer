@@ -43,7 +43,7 @@ fun MainOverllScreen (navController: NavController){
         Column(modifier = Modifier.fillMaxSize()/*.border(2.dp,color= Color.Red)*/.padding(4.dp),verticalArrangement = Arrangement.Bottom,horizontalAlignment = Alignment.End) {
             Text(text = "IN THE WEEDS? ADVOCATE CAN HELP. ",textAlign = TextAlign.Center, modifier = Modifier.padding(2.dp).offset(x=-20.dp,y=-55.dp).width(220.dp),color= Color.Black,fontFamily = Cormorantgaramond,fontWeight = FontWeight.Bold,fontSize = 17.sp )
             Button(onClick = { navController.navigate(DrawerScreens.MainUser.route) },modifier=Modifier.padding(4.dp).width(220.dp).offset(x=-18.dp,y=-50.dp)/*.border(1.dp,color= Color.Black)*/) {
-                Text(text = "Patron", modifier = Modifier.padding(2.dp),color=Color.White)
+                Text(text = "Continue", modifier = Modifier.padding(2.dp),color=Color.White)
 
             }
 //            Button(onClick = { navController.navigate(DrawerScreens.MainLawyer.route) },modifier=Modifier.padding(4.dp).width(220.dp).offset(x=-18.dp,y=-50.dp)/*.border(1.dp,color= Color.Black)*/) {
