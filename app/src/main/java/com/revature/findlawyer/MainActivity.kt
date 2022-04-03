@@ -37,8 +37,6 @@ class MainActivity : ComponentActivity() {
                     NavHostGraph(navController,appointmentViewModel)
 
                 }
-                var navController= rememberNavController()
-                NavHostGraph(navController = navController)
             }
         }
     }
