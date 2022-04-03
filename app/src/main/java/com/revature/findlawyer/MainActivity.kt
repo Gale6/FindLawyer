@@ -9,6 +9,8 @@ import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.revature.findlawyer.ui.Screen_Histories
+import com.revature.findlawyer.ui.Screen_ScheduleNewAppointment
 import com.revature.findlawyer.ui.lawyersearch.Screen_LawyerSearch
 import com.revature.findlawyer.ui.theme.FindLawyerTheme
 import com.revature.findlawyer.viewmodel.AppointmentViewModel
@@ -23,6 +25,7 @@ class MainActivity : ComponentActivity() {
 
         super.onCreate(savedInstanceState)
         setContent {
+            var navController: NavHostController
             FindLawyerTheme {
 
                 Surface(
@@ -30,6 +33,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     navController = rememberNavController()
+
                     NavHostGraph(navController,appointmentViewModel)
 
                 }

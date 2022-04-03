@@ -3,6 +3,8 @@ package com.revature.findlawyer.viewmodel
 import android.content.Context
 import android.util.Log
 import android.widget.Toast
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -18,6 +20,7 @@ import okhttp3.Dispatcher
 class LawyerLoginViewModel:ViewModel() {
 
     private val lawerLoginLiveData=MutableLiveData<Boolean>()
+    val logincred: MutableState<Boolean> = mutableStateOf(true)
 
     fun lLogin(username:String, password:String){
 

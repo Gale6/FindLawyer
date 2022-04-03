@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.revature.findlawyer.DrawerScreens
 import com.revature.findlawyer.R
 import com.revature.findlawyer.ui.theme.Cormorantgaramond
 import com.revature.findlawyer.ui.theme.FindLawyerTheme
@@ -75,7 +76,13 @@ fun LawyerLogIn(navController: NavController,viewModel:LawyerLoginViewModel){
 
             )
 
-            Button(onClick = { viewModel.lLogin(userName,userPassword)/*, navigation here*/},modifier= Modifier
+            Button(onClick = {
+                if (viewModel.logincred.value){
+                    viewModel.lLogin(userName,userPassword)
+                    //navController.navigate(DrawerScreens.UserLogIn.route)
+                }
+
+                },modifier= Modifier
                 .padding(4.dp)
                 .width(330.dp)
                 .offset(y = 15.dp)/*.border(1.dp,color= Color.Black)*/) {
@@ -103,25 +110,11 @@ fun LawyerLogIn(navController: NavController,viewModel:LawyerLoginViewModel){
 @Composable
 fun UserLogIn(navController: NavController,viewModel:UserLoginViewModel){
 
-    val scaffoldState = rememberScaffoldState()
-    val scope = rememberCoroutineScope()
-//    val navController= rememberNavController()
+
     var userName by rememberSaveable { mutableStateOf("")}
     var userPassword by rememberSaveable { mutableStateOf("")}
 
-    Scaffold(modifier = Modifier.fillMaxSize(),topBar = {
-        TopAppBar(
-            title = { Text(text = "AppBar") },
-            navigationIcon = {
-                Icon(Icons.Rounded.Menu, contentDescription = "Localized description",
-                    modifier = Modifier.clickable(onClick = {
-                        scope.launch { scaffoldState.drawerState.open() }
-                    })
-                )
-            }
-        )
-    },
-        bottomBar = { /*BotBar(scaffoldState,scope)*/ },drawerContent = { /*bottDrawer(*//*scaffoldState,scope,navController*//*)*/}) {
+    Scaffold(modifier = Modifier.fillMaxSize()) {
 
         Surface(modifier = Modifier.fillMaxHeight()/*.border(2.dp,color= Color.Red)*/,color = MaterialTheme.colors.background) {
 
@@ -154,11 +147,17 @@ fun UserLogIn(navController: NavController,viewModel:UserLoginViewModel){
 
                 )
 
-                Button(onClick = { viewModel.uLogin(userName,userPassword) }
+                Button(onClick = {
+                    if (viewModel.logincred.value){
+                        viewModel.uLogin(userName,userPassword)
+                        //navController.navigate(DrawerScreens.UserLogIn.route)
+                    }
+
+                    }
                     ,modifier= Modifier
-                    .padding(4.dp)
-                    .width(330.dp)
-                    .offset(y = 15.dp)/*.border(1.dp,color= Color.Black)*/) {
+                        .padding(4.dp)
+                        .width(330.dp)
+                        .offset(y = 15.dp)/*.border(1.dp,color= Color.Black)*/) {
                     Text(text = "Log In", modifier = Modifier.padding(2.dp),color= Color.White)
 
                 }
