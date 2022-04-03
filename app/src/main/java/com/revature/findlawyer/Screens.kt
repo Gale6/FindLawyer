@@ -19,10 +19,13 @@ val Screens= listOf(
 
     //delete below and start from search
     DrawerScreens.LawyerLogin,
-    DrawerScreens.LawyerLogin,
-    DrawerScreens.LawyerLogin,
-    DrawerScreens.LawyerLogin,
-    DrawerScreens.LawyerLogin,
+    DrawerScreens.MainLawyer,
+    DrawerScreens.MainOverallScreen,
+    DrawerScreens.MainUser,
+    DrawerScreens.LawyerRegister,
+    DrawerScreens.UserLogIn,
+    DrawerScreens.UserRegister,
+    DrawerScreens.LawyerSearch
 
 
 )
