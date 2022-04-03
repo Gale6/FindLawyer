@@ -1,6 +1,7 @@
 package com.revature.findlawyer.ui
 
 
+import android.widget.Space
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -23,6 +24,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import coil.annotation.ExperimentalCoilApi
@@ -45,7 +47,7 @@ fun Screen_CurrentAppointmentScreen(navController: NavHostController,viewModel:A
     Scaffold(modifier = Modifier.fillMaxSize(),
         topBar = {
             TopAppBar(backgroundColor = MaterialTheme.colors.primary,
-                title = {Text("Current Appointment")})
+                title = {Text("Current Appointments")})
         },
         bottomBar = {
             BottNavBar(navController)
@@ -57,13 +59,18 @@ fun Screen_CurrentAppointmentScreen(navController: NavHostController,viewModel:A
         LazyColumn(state = listState, modifier = Modifier.fillMaxHeight(.8f)){
             items(viewModel.result.value){
                     item: com.revature.findlawyer.data.network.Appointment -> AppointmentCard(
-                targetName = item.time,
+                navController = navController,
+                firstName = item.firstName,
+                lastName = item.lastName,
+                typeOfPractice = item.typeOfPractice,
+                rating = item.rating,
+                image = item.img,
+                numCases = item.numOfCases,
                 time = item.time,
+                openConfirmationDialog = openCancelDialog,
                 openDialogState = openDialogState,
                 viewModel = viewModel,
-                selected = selected,
-                openConfirmationDialog = openCancelDialog
-
+                selected = selected
             )
                 UpdateAppointmentDialog(navHostController = navController, viewModel = viewModel,openDialogState,selected,"targetName",item.time)
                 CancelConfirmationDialog(openDialogState = openCancelDialog, viewModel = viewModel, navHostController = navController)
@@ -73,66 +80,13 @@ fun Screen_CurrentAppointmentScreen(navController: NavHostController,viewModel:A
 }
 
 
-@Composable
-fun AppointmentCard(targetName:String,time:String,openDialogState:MutableState<Boolean>,viewModel: AppointmentViewModel,selected:MutableState<String>,openConfirmationDialog:MutableState<Boolean>){
-
-    Card(modifier = Modifier
-        .fillMaxWidth()
-        .padding(6.dp)
-        .border(
-            width = 1.dp,
-            color = Color.Black,
-            shape = RectangleShape
-        )
-    ) {
-
-        Row(modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween) {
-
-            Spacer(modifier = Modifier)
-
-            Text(text = targetName)
-
-            Text(text = time)
-
-            Column (verticalArrangement = Arrangement.Center){
-                Button(modifier = Modifier
-                    .width(130.dp)
-                    .padding(1.dp),
-                    shape = RoundedCornerShape(6.dp),
-                    onClick = {
-                        viewModel.fetchAvailableAppointment()
-                        openDialogState.value = true
-
-                    }) {
-                    Text(text = "reschedule")
-                }
-
-                Button(modifier = Modifier
-                    .width(130.dp)
-                    .padding(1.dp),
-                    shape = RoundedCornerShape(6.dp),
-                    onClick = {
-                        openConfirmationDialog.value = true
-                        //todo
-                    }) {
-                    Text(text = "cancel")
-                }
-            }
-
-        }
-    }
-}
-
 @OptIn(ExperimentalCoilApi::class)
 @Composable
-fun testCard(navController: NavHostController,firstName:String,lastName:String,typeOfPractice:String,rating:Float,image:String,numCases:Int,time:String) {
+fun AppointmentCard(navController: NavHostController,firstName:String,lastName:String,typeOfPractice:String,rating:Float,image:String,numCases:Int,time:String,openDialogState:MutableState<Boolean>,viewModel: AppointmentViewModel,selected:MutableState<String>,openConfirmationDialog:MutableState<Boolean>) {
     Card(
         modifier = Modifier
             .padding(10.dp)
             .fillMaxWidth()
-            .clickable { }//go to other composable
             .wrapContentHeight(),
         shape = MaterialTheme.shapes.medium,
         elevation = 5.dp,
@@ -191,15 +145,28 @@ fun testCard(navController: NavHostController,firstName:String,lastName:String,t
                     )
                 }
 
-                Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                    Text(text = "last meeting: $time")
+                Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Start){
+                    Text(text = "Appointment Time: ")
                 }
-                Row(horizontalArrangement = Arrangement.SpaceBetween,modifier = Modifier.fillMaxWidth() ){
-                    Spacer(modifier = Modifier.width(0.dp))
-                    Button(onClick = { navController.navigate(DrawerScreens.Screen_PostReview.route) }) {
-                        Text(text = "Post review")
-                    }
+                Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Start){
+                    Text(text = "$time", fontSize = 25.sp)
                 }
+
+                Row(modifier = Modifier.fillMaxWidth().padding(15.dp), horizontalArrangement = Arrangement.End){
+
+                    Text(text = "Reschedule",
+                        modifier = Modifier.clickable {
+                        viewModel.fetchAvailableAppointment()
+                        openDialogState.value = true
+                    },
+                        color = MaterialTheme.colors.primary
+                    )
+
+                    Spacer(modifier = Modifier.width(20.dp))
+
+                    Text(text = "Cancel", modifier = Modifier.clickable { openConfirmationDialog.value = true }, color = Color.Red)
+                }
+
             }
         }
     }
