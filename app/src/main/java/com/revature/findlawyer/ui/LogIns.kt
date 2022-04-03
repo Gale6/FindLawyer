@@ -2,9 +2,13 @@ package com.revature.findlawyer.ui
 
 import android.content.Context
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.rounded.Menu
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
@@ -24,6 +28,7 @@ import com.revature.findlawyer.ui.theme.Cormorantgaramond
 import com.revature.findlawyer.ui.theme.FindLawyerTheme
 import com.revature.findlawyer.viewmodel.LawyerLoginViewModel
 import com.revature.findlawyer.viewmodel.UserLoginViewModel
+import kotlinx.coroutines.launch
 
 ////////////////////////////////////  LAWYER LOG-IN  /////////////////////////////////////////
 
@@ -97,13 +102,27 @@ fun LawyerLogIn(navController: NavController,viewModel:LawyerLoginViewModel){
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun UserLogIn(navController: NavController,viewModel:UserLoginViewModel){
-//    val scaffoldState = rememberScaffoldState(rememberDrawerState(initialValue = DrawerValue.Closed))
-//    val scope = rememberCoroutineScope()
 
+    val scaffoldState = rememberScaffoldState()
+    val scope = rememberCoroutineScope()
+//    val navController= rememberNavController()
     var userName by rememberSaveable { mutableStateOf("")}
     var userPassword by rememberSaveable { mutableStateOf("")}
 
-    Scaffold(modifier = Modifier.fillMaxSize()/*,bottomBar = { BottNavBar() },drawerContent = { bottDrawer()}*/) {
+    Scaffold(modifier = Modifier.fillMaxSize(),topBar = {
+        TopAppBar(
+            title = { Text(text = "AppBar") },
+            navigationIcon = {
+                Icon(Icons.Rounded.Menu, contentDescription = "Localized description",
+                    modifier = Modifier.clickable(onClick = {
+                        scope.launch { scaffoldState.drawerState.open() }
+                    })
+                )
+            }
+        )
+    },
+        bottomBar = { /*BotBar(scaffoldState,scope)*/ },drawerContent = { /*bottDrawer(*//*scaffoldState,scope,navController*//*)*/}) {
+
         Surface(modifier = Modifier.fillMaxHeight()/*.border(2.dp,color= Color.Red)*/,color = MaterialTheme.colors.background) {
 
             Image(painter = painterResource(id = R.drawable.agreement), contentDescription = ""/*,contentScale = ContentScale.Fit*/,alpha = .4f,alignment = Alignment.TopCenter)
