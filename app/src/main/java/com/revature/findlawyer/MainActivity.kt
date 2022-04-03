@@ -24,8 +24,7 @@ class MainActivity : ComponentActivity() {
         var viewModel = FetchAppointmentViewModel()
         super.onCreate(savedInstanceState)
         setContent {
-
-            var navController: NavHostController
+            
 
             FindLawyerTheme {
                 Surface(
