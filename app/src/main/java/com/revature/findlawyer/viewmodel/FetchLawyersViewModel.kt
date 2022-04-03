@@ -32,6 +32,7 @@ class FetchLawyersViewModel: ViewModel() {
                     //if you recieve a response from server
                     responseService.body()?.let { it ->
                         lawyerResultList.value = it.lawyers
+                        Log.d("Lawyer Service",responseService.body().toString())
                     }
                 } else {
 

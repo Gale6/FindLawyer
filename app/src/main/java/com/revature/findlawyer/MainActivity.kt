@@ -17,6 +17,7 @@ import androidx.navigation.compose.rememberNavController
 import com.revature.findlawyer.ui.*
 import com.revature.findlawyer.data.room_database.Appointment
 import com.revature.findlawyer.ui.lawyersearch.Screen_LawyerSearch
+import com.revature.findlawyer.ui.postreview.screen_postReview
 //import com.revature.findlawyer.ui.CurrentAppointmentScreen
 import com.revature.findlawyer.ui.theme.FindLawyerTheme
 import com.revature.findlawyer.viewmodel.FetchAppointmentViewModel
@@ -34,7 +35,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Screen_LawyerSearch(viewModel)
+                    Screen_LawyerSearch(viewModel = viewModel)
                 }
 
             }
