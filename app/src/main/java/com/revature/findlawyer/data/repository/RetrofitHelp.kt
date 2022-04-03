@@ -14,7 +14,7 @@ object RetrofitHelper {
     init {
 
         val builder = Retrofit.Builder()
-            .baseUrl("https://private-8a17fb-currentappointment.apiary-mock.com/")
+            .baseUrl("https://private-f6bc26-findlawyerapi.apiary-mock.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
 
