@@ -5,6 +5,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -23,6 +24,7 @@ class UserLoginViewModel: ViewModel() {
 
     fun uLogin(username:String,password:String){
 
+
         viewModelScope.launch(Dispatchers.IO){
 
             try {
@@ -31,7 +33,7 @@ class UserLoginViewModel: ViewModel() {
                 if(responseService.isSuccessful){
                     responseService.body()?.let{UserToken->
                         Log.d( "User Login Success", "Response Token $UserToken")
-                        //Toast.makeText(context,"Airplane Mode Enabled", Toast.LENGTH_LONG).show()
+
                     }
                 }else{
                     responseService.errorBody()?.let{error->
