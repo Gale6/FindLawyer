@@ -13,6 +13,7 @@ import com.revature.findlawyer.ui.ui.Screen_AppointmentMade
 import com.revature.findlawyer.viewmodel.AppointmentViewModel
 import com.revature.findlawyer.viewmodel.LawyerLoginViewModel
 import com.revature.findlawyer.viewmodel.UserLoginViewModel
+import com.revature.findlawyer.viewmodel.UserRegisterViewModel
 import kotlinx.coroutines.launch
 
 @Composable
@@ -29,7 +30,6 @@ fun NavHostGraph(navController: NavHostController,appointmentViewModel: Appointm
         composable(DrawerScreens.MainLawyer.route) {
             MainLawyer (navController = navController)
         }
-
 
 
         composable(DrawerScreens.MainUser.route) {
@@ -73,5 +73,12 @@ fun NavHostGraph(navController: NavHostController,appointmentViewModel: Appointm
 
 
 
+        composable(DrawerScreens.LawyerRegister.route) {
+            Registerlawyer(navController = navController)
+        }
+
+        composable(DrawerScreens.UserRegister.route) {
+            Registeruser(navController = navController, UserRegisterViewModel())
+        }
     }
 }

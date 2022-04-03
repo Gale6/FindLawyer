@@ -14,9 +14,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import com.revature.findlawyer.viewmodel.UserRegisterViewModel
 
 @Composable
-fun Registeruser()
+fun Registeruser(navController: NavController,userRegisterViewModel: UserRegisterViewModel)
 {
     var username= rememberSaveable { mutableStateOf("")}
     var firstname= rememberSaveable { mutableStateOf("")}
@@ -31,13 +33,13 @@ fun Registeruser()
             TextField(value = firstname.value, onValueChange = {
                 firstname.value = it
             }, label = {
-                Text(text = "firstname")
+                Text(text = "First name")
             })
             Spacer(modifier = Modifier.height(10.dp))
             TextField(value = lastname.value, onValueChange = {
                 lastname.value = it
             }, label = {
-                Text(text = "lastname")
+                Text(text = "Last name")
             })
             Spacer(modifier = Modifier.height(10.dp))
             TextField(value = username.value, onValueChange = {
@@ -52,7 +54,11 @@ fun Registeruser()
                 Text(text = "password")
             }, visualTransformation = PasswordVisualTransformation())
             Spacer(modifier = Modifier.height(10.dp))
-            Button(onClick = {  }) {
+            Button(onClick = {
+                userRegisterViewModel.uRegister(username.value,password.value,firstname.value,lastname = lastname.value)
+
+            })
+            {
                 Text(text = "Register")
             }
         }
@@ -60,7 +66,7 @@ fun Registeruser()
 }
 
 @Composable
-fun Registerlawyer()
+fun Registerlawyer(navController: NavController)
 {
     var username= rememberSaveable { mutableStateOf("")}
     var firstname= rememberSaveable { mutableStateOf("")}
