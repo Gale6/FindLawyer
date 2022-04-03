@@ -18,6 +18,7 @@ import com.revature.findlawyer.viewmodel.AppointmentViewModel
 import com.revature.findlawyer.viewmodel.FetchLawyersViewModel
 import com.revature.findlawyer.viewmodel.LawyerLoginViewModel
 import com.revature.findlawyer.viewmodel.UserLoginViewModel
+import com.revature.findlawyer.viewmodel.UserRegisterViewModel
 import kotlinx.coroutines.launch
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -35,7 +36,6 @@ fun NavHostGraph(navController: NavHostController,appointmentViewModel: Appointm
         composable(DrawerScreens.MainLawyer.route) {
             MainLawyer (navController = navController)
         }
-
 
 
         composable(DrawerScreens.MainUser.route) {
@@ -88,5 +88,12 @@ fun NavHostGraph(navController: NavHostController,appointmentViewModel: Appointm
 
 
 
+        composable(DrawerScreens.LawyerRegister.route) {
+            Registerlawyer(navController = navController)
+        }
+
+        composable(DrawerScreens.UserRegister.route) {
+            Registeruser(navController = navController, UserRegisterViewModel())
+        }
     }
 }

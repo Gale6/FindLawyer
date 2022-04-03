@@ -16,7 +16,6 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import coil.compose.rememberImagePainter
-import com.revature.findlawyer.ui.theme.NewScheduleAlertDialog
 import com.revature.findlawyer.viewmodel.AppointmentViewModel
 import com.revature.findlawyer.viewmodel.FetchLawyersViewModel
 
