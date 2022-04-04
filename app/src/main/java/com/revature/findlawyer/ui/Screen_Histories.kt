@@ -37,6 +37,8 @@ fun Screen_Histories(navController: NavHostController,viewModel: AppointmentView
         BottNavBar(navController)
     }){
 
+        Image(painter = painterResource(id = R.drawable.searching), contentDescription = "",contentScale = ContentScale.FillBounds,alpha = .4f)
+
 
         LazyColumn(){
 
