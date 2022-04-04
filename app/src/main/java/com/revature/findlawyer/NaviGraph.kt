@@ -77,7 +77,7 @@ fun NavHostGraph(navController: NavHostController,appointmentViewModel: Appointm
         }
 
         composable(DrawerScreens.Screen_PostReview.route){
-            screen_postReview()
+            screen_postReview(navHostController = navController)
         }
 
         composable(DrawerScreens.Screen_ScheduleNewAppointment.route){

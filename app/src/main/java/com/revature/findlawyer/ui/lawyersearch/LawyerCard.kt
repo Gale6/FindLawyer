@@ -17,9 +17,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import coil.annotation.ExperimentalCoilApi
-import coil.compose.AsyncImage
-import coil.compose.AsyncImagePainter
-import coil.compose.rememberAsyncImagePainter
 import coil.compose.rememberImagePainter
 import coil.request.ImageRequest
 import com.revature.findlawyer.DrawerScreens
@@ -54,28 +51,28 @@ fun LawyerCard(navHostController: NavHostController,fetchLawyersViewModel: Fetch
         ) {
 
 
-            val painter = rememberAsyncImagePainter(
-                model = ImageRequest.Builder(LocalContext.current)
-                    .data("http://thispix.com/wp-content/uploads/2015/06/Edit-3700-1.jpg")
-                    .build())
+//            val painter = rememberAsyncImagePainter(
+//                model = ImageRequest.Builder(LocalContext.current)
+//                    .data("http://thispix.com/wp-content/uploads/2015/06/Edit-3700-1.jpg")
+//                    .build())
+//
+//            Image(
+//                painter = painter,
+//                contentDescription = "Profile",
+//                contentScale = ContentScale.Fit,
+//                modifier = Modifier
+//                    .size(120.dp)
+//                    .padding(8.dp)
 
-            Image(
-                painter = painter,
-                contentDescription = "Profile",
-                contentScale = ContentScale.Fit,
-                modifier = Modifier
-                    .size(120.dp)
-                    .padding(8.dp)
-
-            )
-//                Image(
-//                    painter = rememberImagePainter(image),
-//                    contentDescription = null,
-//                    modifier = Modifier
-//                        .size(120.dp)
-//                        .padding(8.dp),
-//                    contentScale = ContentScale.Fit
-//                )
+//            )
+                Image(
+                    painter = rememberImagePainter(image),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(120.dp)
+                        .padding(8.dp),
+                    contentScale = ContentScale.Fit
+                )
 
 
             Column(Modifier.padding(8.dp)) {

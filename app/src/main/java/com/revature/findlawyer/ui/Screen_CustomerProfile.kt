@@ -43,7 +43,6 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
 import com.revature.findlawyer.R
-import com.revature.findlawyer.ui.lawyersearch.LawyerSearchScreen
 
 @Composable
 fun Screen_CustomerProfile() {

@@ -27,12 +27,14 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.toSize
+import androidx.navigation.NavHostController
+import com.revature.findlawyer.DrawerScreens
 import com.revature.findlawyer.ui.postreview.ui.theme.FindLawyerTheme
 
 
 
 @Composable
-fun screen_postReview() {
+fun screen_postReview(navHostController: NavHostController) {
     var headline = remember() {mutableStateOf("")}
     var body = remember() {mutableStateOf("")}
     var expanded by remember { mutableStateOf(false) }
@@ -129,7 +131,9 @@ fun screen_postReview() {
 
 
             Button(onClick = {
+
                 Toast.makeText(context, "Review submitted", Toast.LENGTH_SHORT).show()
+                navHostController.navigate(DrawerScreens.Screen_Histories.route)
             }) {
                 Text(text = "Submit")
             }
@@ -141,6 +145,6 @@ fun screen_postReview() {
 @Composable
 fun DefaultPreview2() {
     FindLawyerTheme {
-        screen_postReview()
+//        screen_postReview()
     }
 }
