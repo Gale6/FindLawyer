@@ -135,7 +135,7 @@ fun UserLogIn(navController: NavController,viewModel:UserLoginViewModel){
                     value = userName,
                     onValueChange = {userName=it},
                     shape = RoundedCornerShape(3.dp),
-                    label = { Text(text = "User Name") },
+                    label = { Text(text = "User Nam") },
                     modifier = Modifier.width(330.dp)/*.offset(60.dp)*/
 
                 )
