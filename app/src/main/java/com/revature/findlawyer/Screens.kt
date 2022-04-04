@@ -37,6 +37,8 @@ sealed class DrawerScreens (val title: String,val icon:ImageVector,val route:Str
     object LawyerRegister:DrawerScreens("Lawyer Register",Icons.Default.ArrowDropDown,"lawyer_register")
     object UserRegister:DrawerScreens("User Register",Icons.Default.ArrowDropDown,"user_register")
 
+    object Profile:DrawerScreens("Profile",Icons.Default.AccountCircle,"profile")
+
 
 }
 //These will show up on drawer list & the Bottom Nav Bar
@@ -46,9 +48,7 @@ val Screens= listOf(
     DrawerScreens.Screen_LawyerSearch,
     DrawerScreens.Screen_CurrentAppointments,
     DrawerScreens.Screen_Histories,
-
-    //placeHolder
-    DrawerScreens.UserLogIn,
+    DrawerScreens.Profile,
 
     )
 

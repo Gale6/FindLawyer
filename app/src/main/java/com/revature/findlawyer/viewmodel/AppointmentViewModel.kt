@@ -65,7 +65,7 @@ class AppointmentViewModel:ViewModel() {
             try {
                 val newAppointmentService = AppointmentRetrofitHelper.getAppointmentService()
 
-                val responseService = newAppointmentService.newAppointment(token = Token("adfadfadfaf"),Appointment(name,targetName,time)
+                val responseService = newAppointmentService.newAppointment(token = Token("adfadfadfaf"),Appointment(13, firstName = "john", lastName = "wick",rating = 4.5f,"marriage",34,"dfadfaf",time)
                 )
 
                 if(responseService.isSuccessful){
@@ -126,7 +126,7 @@ class AppointmentViewModel:ViewModel() {
         viewModelScope.launch {
             try {
                 val updateAppointmentService = AppointmentRetrofitHelper.getAppointmentService()
-                val responseService = updateAppointmentService.updateAppointment(Appointment(name, targetName,time),Appointment(name, targetName,newTime))
+                val responseService = updateAppointmentService.updateAppointment(Appointment(13, firstName = "john", lastName = "wick",rating = 4.5f,"marriage",34,"dfadfaf",time),Appointment(13, firstName = "john", lastName = "wick",rating = 4.5f,"marriage",34,"dfadfaf",time))
 
                 if(responseService.isSuccessful){
                     responseService.body()?.let{
@@ -154,7 +154,7 @@ class AppointmentViewModel:ViewModel() {
         viewModelScope.launch {
             try {
                 val deleteAppointmentService = AppointmentRetrofitHelper.getAppointmentService()
-                val responseService = deleteAppointmentService.deleteAppointment(Appointment(name,targetName,time))
+                val responseService = deleteAppointmentService.deleteAppointment(Appointment(13, firstName = "john", lastName = "wick",rating = 4.5f,"marriage",34,"dfadfaf",time))
 
                 if(responseService.isSuccessful){
                     responseService.body()?.let{
