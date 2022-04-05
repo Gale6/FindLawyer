@@ -2,13 +2,16 @@ package com.revature.findlawyer.ui.lawyersearch
 
 import android.widget.RatingBar
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -17,14 +20,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import coil.annotation.ExperimentalCoilApi
-import coil.compose.rememberImagePainter
+import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import com.google.accompanist.coil.rememberCoilPainter
 import com.revature.findlawyer.DrawerScreens
 import com.revature.findlawyer.R
 import com.revature.findlawyer.data.network.Lawyer
 import com.revature.findlawyer.viewmodel.FetchLawyersViewModel
-import java.net.URLEncoder
-import java.nio.charset.StandardCharsets
 
 
 @OptIn(ExperimentalCoilApi::class)
@@ -36,7 +38,17 @@ fun LawyerCard(navHostController: NavHostController,fetchLawyersViewModel: Fetch
             .padding(10.dp)
             .fillMaxWidth()
             .clickable {
-                fetchLawyersViewModel.clickedLawyer = mutableStateOf(Lawyer(firstName = firstName, lastName = lastName, typeOfPractice = typeOfPractice, rating = rating, img = image, numOfCases = numCases, id = id))
+                fetchLawyersViewModel.clickedLawyer = mutableStateOf(
+                    Lawyer(
+                        firstName = firstName,
+                        lastName = lastName,
+                        typeOfPractice = typeOfPractice,
+                        rating = rating,
+                        img = image,
+                        numOfCases = numCases,
+                        id = id
+                    )
+                )
                 navHostController.navigate(DrawerScreens.Screen_ScheduleNewAppointment.route)
             }//go to other composable
             .wrapContentHeight(),
@@ -51,29 +63,20 @@ fun LawyerCard(navHostController: NavHostController,fetchLawyersViewModel: Fetch
         ) {
 
 
-//            val painter = rememberAsyncImagePainter(
-//                model = ImageRequest.Builder(LocalContext.current)
-//                    .data("http://thispix.com/wp-content/uploads/2015/06/Edit-3700-1.jpg")
-//                    .build())
-//
-//            Image(
-//                painter = painter,
-//                contentDescription = "Profile",
-//                contentScale = ContentScale.Fit,
-//                modifier = Modifier
-//                    .size(120.dp)
-//                    .padding(8.dp)
-
-//            )
-                Image(
-                    painter = rememberImagePainter(image),
-                    contentDescription = null,
+                AsyncImage(
+                    model = ImageRequest.Builder(LocalContext.current)
+                        .data(image)
+                        .crossfade(true)
+                        .build(),
+                    placeholder = painterResource(id = R.drawable.ic_user),
+                    contentDescription = "",
                     modifier = Modifier
-                        .size(120.dp)
-                        .padding(8.dp),
+                        .size(110.dp)
+                        .padding(8.dp)
+                        .clip(CircleShape)
+                        .border(1.5.dp, MaterialTheme.colors.secondaryVariant, CircleShape),
                     contentScale = ContentScale.Fit
                 )
-
 
             Column(Modifier.padding(8.dp)) {
 

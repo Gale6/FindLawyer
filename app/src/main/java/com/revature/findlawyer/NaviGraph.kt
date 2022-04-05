@@ -14,11 +14,7 @@ import com.revature.findlawyer.ui.*
 import com.revature.findlawyer.ui.lawyersearch.Screen_LawyerSearch
 import com.revature.findlawyer.ui.postreview.screen_postReview
 import com.revature.findlawyer.ui.ui.Screen_AppointmentMade
-import com.revature.findlawyer.viewmodel.AppointmentViewModel
-import com.revature.findlawyer.viewmodel.FetchLawyersViewModel
-import com.revature.findlawyer.viewmodel.LawyerLoginViewModel
-import com.revature.findlawyer.viewmodel.UserLoginViewModel
-import com.revature.findlawyer.viewmodel.UserRegisterViewModel
+import com.revature.findlawyer.viewmodel.*
 import kotlinx.coroutines.launch
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -77,7 +73,7 @@ fun NavHostGraph(navController: NavHostController,appointmentViewModel: Appointm
         }
 
         composable(DrawerScreens.Screen_PostReview.route){
-            screen_postReview(navHostController = navController)
+            screen_postReview(navHostController = navController, viewModel = PostReviewViewModel())
         }
 
         composable(DrawerScreens.Screen_ScheduleNewAppointment.route){

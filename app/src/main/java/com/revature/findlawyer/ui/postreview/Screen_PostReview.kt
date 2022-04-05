@@ -5,6 +5,7 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.clickable
+import kotlin.math.roundToInt
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
@@ -30,14 +31,17 @@ import androidx.compose.ui.unit.toSize
 import androidx.navigation.NavHostController
 import com.revature.findlawyer.DrawerScreens
 import com.revature.findlawyer.ui.postreview.ui.theme.FindLawyerTheme
-
+import com.revature.findlawyer.viewmodel.PostReviewViewModel
 
 
 @Composable
-fun screen_postReview(navHostController: NavHostController) {
+fun screen_postReview(navHostController: NavHostController, viewModel:PostReviewViewModel) {
     var headline = remember() {mutableStateOf("")}
     var body = remember() {mutableStateOf("")}
     var expanded by remember { mutableStateOf(false) }
+    var ratingSliderValue = remember() { mutableStateOf(0f)}
+
+
     val suggestions = listOf("1","2", "3", "4", "5")
     var selectedText = remember() { mutableStateOf("")}
     var textfieldSize by remember { mutableStateOf(Size.Zero)}
@@ -47,6 +51,8 @@ fun screen_postReview(navHostController: NavHostController) {
         Icons.Filled.KeyboardArrowDown
     val context = LocalContext.current
     val focusManager = LocalFocusManager.current
+
+
 
 
     Scaffold(
@@ -94,44 +100,29 @@ fun screen_postReview(navHostController: NavHostController) {
                 )
             )
 
-
-//            OutlinedTextField(
-//                value = selectedText,
-//                onValueChange = { selectedText = it },
-//                modifier = Modifier
-//                    .padding(10.dp)
-//                    .width(75.dp)
-//                    .onGloballyPositioned { coordinates ->
-//                        //This value is used to assign to the DropDown the same width
-//                        textfieldSize = coordinates.size.toSize()
-//                    },
-//                label = {Text("Filter")},
-//                trailingIcon = {
-//                    Icon(icon,"contentDescription",
-//                        Modifier.clickable { expanded = !expanded })
-//                },
-//                readOnly = true,
-//                singleLine = true
-//            )
-//            DropdownMenu(
-//                expanded = expanded,
-//                onDismissRequest = { expanded = false },
-//                modifier = Modifier
-//                    .width(with(LocalDensity.current){textfieldSize.width.toDp()})
-//            ) {
-//                suggestions.forEach { label ->
-//                    DropdownMenuItem(onClick = {
-//                        selectedText = label
-//                        expanded = false
-//                    }) {
-//                        Text(text = label)
-//                    }
-//                }
-//            }
-
+//slider
+            Text(text = "Rating: ${ratingSliderValue.value.roundToInt()}"+"/5",
+                color = MaterialTheme.colors.primary,
+                modifier = Modifier.padding(top = 16.dp)
+            )
+            Slider(
+                value = ratingSliderValue.value,
+                valueRange = 0f..5f,
+                colors = SliderDefaults.colors(
+                    activeTrackColor = Color.Yellow,
+                    inactiveTrackColor = Color.LightGray,
+                    inactiveTickColor = Color.Black,
+                    thumbColor = Color.Yellow),
+                modifier = Modifier.padding(4.dp)
+                    .width(200.dp),
+                steps = 3,
+                onValueChange = { newValue ->
+                    ratingSliderValue.value = newValue
+                }
+            )
 
             Button(onClick = {
-
+                viewModel.newReview(ratingSliderValue.value,headline.value,body.value)
                 Toast.makeText(context, "Review submitted", Toast.LENGTH_SHORT).show()
                 navHostController.navigate(DrawerScreens.Screen_Histories.route)
             }) {

@@ -100,7 +100,7 @@ fun filter1Menu() {
                     //This value is used to assign to the DropDown the same width
                     textfieldSize = coordinates.size.toSize()
                 },
-            label = {Text("Filter")},
+            label = {Text("Sort")},
             trailingIcon = {
                 Icon(icon,"contentDescription",
                     Modifier.clickable { expanded = !expanded })

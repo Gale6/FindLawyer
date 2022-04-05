@@ -27,7 +27,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import coil.compose.rememberImagePainter
+//import coil.compose.rememberImagePainter
 
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterVertically
@@ -41,7 +41,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import coil.compose.rememberAsyncImagePainter
+//import coil.compose.rememberAsyncImagePainter
 import com.revature.findlawyer.R
 
 @Composable
@@ -73,12 +73,12 @@ fun Screen_LawyerProfile() {
 
 
                 val imageUri = rememberSaveable { mutableStateOf("") }
-                val painter = rememberAsyncImagePainter(
-                    if (imageUri.value.isEmpty())
-                        R.drawable.ic_user
-                    else
-                        imageUri.value
-                )
+//                val painter = rememberAsyncImagePainter(
+//                    if (imageUri.value.isEmpty())
+//                        R.drawable.ic_user
+//                    else
+//                        imageUri.value
+//                )
                 val launcher = rememberLauncherForActivityResult(
                     contract = ActivityResultContracts.GetContent()
                 ) { uri: Uri? ->
@@ -90,14 +90,14 @@ fun Screen_LawyerProfile() {
                         .padding(8.dp)
                         .size(100.dp)
                 ) {
-                    Image(
-                        painter = painter,
-                        contentDescription = null,
-                        modifier = Modifier
-                            .wrapContentSize()
-                            .clickable { launcher.launch("image/*") },
-                        contentScale = ContentScale.Crop
-                    )
+//                    Image(
+//                        painter = painter,
+//                        contentDescription = null,
+//                        modifier = Modifier
+//                            .wrapContentSize()
+//                            .clickable { launcher.launch("image/*") },
+//                        contentScale = ContentScale.Crop
+//                    )
                 }
             }
             Spacer(modifier = Modifier.padding(10.dp))
