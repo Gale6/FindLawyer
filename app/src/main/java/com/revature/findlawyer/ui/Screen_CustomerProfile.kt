@@ -19,7 +19,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.layout.ContentScale
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-//import coil.compose.rememberAsyncImagePainter
+import coil.compose.rememberAsyncImagePainter
+
+import coil.compose.rememberImagePainter
+
 import com.revature.findlawyer.R
 
 @Composable
@@ -55,12 +58,13 @@ fun Screen_CustomerProfile(navController:NavHostController) {
 
 
                 val imageUri = rememberSaveable { mutableStateOf("") }
-//                val painter = rememberAsyncImagePainter(
-//                    if (imageUri.value.isEmpty())
-//                        R.drawable.ic_user
-//                    else
-//                        imageUri.value
-//                )
+
+                val painter = rememberImagePainter(
+                    if (imageUri.value.isEmpty())
+                        R.drawable.ic_user
+                    else
+                        imageUri.value
+                )
                 val launcher = rememberLauncherForActivityResult(
                     contract = ActivityResultContracts.GetContent()
                 ) { uri: Uri? ->
