@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.revature.findlawyer.data.network.Appointment
 import com.revature.findlawyer.data.network.History
+import com.revature.findlawyer.data.network.Lawyer
 import com.revature.findlawyer.data.network.Token
 import com.revature.findlawyer.data.repository.AppointmentRetrofitHelper
 import com.revature.findlawyer.data.repository.RetrofitHelper
@@ -23,6 +24,8 @@ class AppointmentViewModel:ViewModel() {
     var histories: MutableState<List<History>> = mutableStateOf(listOf())
 
     var listOfAvailableTime: MutableState<List<String>> = mutableStateOf(listOf())
+
+    var clickedAppointment:Appointment ?= null
 
     init {
         fetchAppointments(token = Token("dfafafadfafdafd"))

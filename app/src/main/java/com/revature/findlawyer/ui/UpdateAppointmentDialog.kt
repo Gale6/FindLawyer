@@ -26,7 +26,10 @@ fun UpdateAppointmentDialog(navHostController: NavHostController,viewModel: Appo
             confirmButton = {
                 TextButton(onClick = {
 
-                    viewModel.updateAppointment("lawyer1",targetName, time,selected.value)
+                    viewModel.clickedAppointment?.time?.let {
+                        viewModel.updateAppointment("client",viewModel.clickedAppointment?.lastName+viewModel.clickedAppointment?.firstName,
+                            it,selected.value)
+                    }
                     viewModel.fetchAppointments(Token("dfadfdfa"))
                     openDialogState.value = false
                     navHostController.navigate(DrawerScreens.Screen_AppointmentUpdated.route)
