@@ -37,6 +37,7 @@ import coil.request.ImageRequest
 import com.google.accompanist.coil.rememberCoilPainter
 import com.revature.findlawyer.DrawerScreens
 import com.revature.findlawyer.R
+import com.revature.findlawyer.data.network.Appointment
 import com.revature.findlawyer.ui.theme.FindLawyerTheme
 import com.revature.findlawyer.viewmodel.AppointmentViewModel
 
@@ -66,13 +67,7 @@ fun Screen_CurrentAppointmentScreen(navController: NavHostController,viewModel:A
             items(viewModel.result.value){
                     item: com.revature.findlawyer.data.network.Appointment -> AppointmentCard(
                 navController = navController,
-                firstName = item.firstName,
-                lastName = item.lastName,
-                typeOfPractice = item.typeOfPractice,
-                rating = item.rating,
-                image = item.img,
-                numCases = item.numOfCases,
-                time = item.time,
+                appointment = item,
                 openConfirmationDialog = openCancelDialog,
                 openDialogState = openDialogState,
                 viewModel = viewModel,
@@ -88,7 +83,7 @@ fun Screen_CurrentAppointmentScreen(navController: NavHostController,viewModel:A
 
 @OptIn(ExperimentalCoilApi::class)
 @Composable
-fun AppointmentCard(navController: NavHostController,firstName:String,lastName:String,typeOfPractice:String,rating:Float,image:String,numCases:Int,time:String,openDialogState:MutableState<Boolean>,viewModel: AppointmentViewModel,selected:MutableState<String>,openConfirmationDialog:MutableState<Boolean>) {
+fun AppointmentCard(navController: NavHostController,appointment: Appointment,openDialogState:MutableState<Boolean>,viewModel: AppointmentViewModel,selected:MutableState<String>,openConfirmationDialog:MutableState<Boolean>) {
     Card(
         modifier = Modifier
             .padding(10.dp)
@@ -107,7 +102,7 @@ fun AppointmentCard(navController: NavHostController,firstName:String,lastName:S
 
             AsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)
-                    .data(image)
+                    .data(appointment.img)
                     .crossfade(true)
                     .build(),
                 placeholder = painterResource(R.drawable.ic_user),
@@ -123,20 +118,20 @@ fun AppointmentCard(navController: NavHostController,firstName:String,lastName:S
                     ) {
 
                 Text(
-                    text = firstName+" "+lastName,
+                    text = appointment.firstName+" "+appointment.lastName,
                     style = MaterialTheme.typography.h6,
                     color = MaterialTheme.colors.onSurface,
                     modifier = Modifier.padding(bottom = 6.dp)
                 )
                 Text(
-                    text = typeOfPractice,
+                    text = appointment.typeOfPractice,
                     style = MaterialTheme.typography.body1,
                     color = MaterialTheme.colors.onSurface,
                     modifier = Modifier.padding(bottom = 4.dp)
                 )
                 Row() {
                     Text(
-                        text = rating.toString(),
+                        text = appointment.rating.toString(),
                         style = MaterialTheme.typography.body2,
                         color = MaterialTheme.colors.onSurface,
                         modifier = Modifier.padding(bottom = 4.dp)
@@ -147,7 +142,7 @@ fun AppointmentCard(navController: NavHostController,firstName:String,lastName:S
                             .padding(2.dp))
 
                     Text(
-                        text = numCases.toString()+" cases",
+                        text = appointment.numOfCases.toString()+" cases",
                         style = MaterialTheme.typography.body2,
                         fontStyle = FontStyle.Italic,
                         color = MaterialTheme.colors.onSurface,
@@ -159,22 +154,27 @@ fun AppointmentCard(navController: NavHostController,firstName:String,lastName:S
                     Text(text = "Appointment Time: ")
                 }
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Start){
-                    Text(text = "$time", fontSize = 25.sp)
+                    Text(text = "${appointment.time}", fontSize = 25.sp)
                 }
 
                 Row(modifier = Modifier.fillMaxWidth().padding(15.dp), horizontalArrangement = Arrangement.End){
 
                     Text(text = "Reschedule",
                         modifier = Modifier.clickable {
-                        viewModel.fetchAvailableAppointment()
-                        openDialogState.value = true
+
+                            viewModel.clickedAppointment = appointment
+                            viewModel.fetchAvailableAppointment()
+                            openDialogState.value = true
                     },
                         color = MaterialTheme.colors.primary
                     )
 
                     Spacer(modifier = Modifier.width(20.dp))
 
-                    Text(text = "Cancel", modifier = Modifier.clickable { openConfirmationDialog.value = true }, color = Color.Red)
+                    Text(text = "Cancel", modifier = Modifier.clickable {
+                        viewModel.clickedAppointment = appointment
+                        openConfirmationDialog.value = true
+                                                                        }, color = Color.Red)
                 }
 
             }
