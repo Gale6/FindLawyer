@@ -1,6 +1,7 @@
 package com.revature.findlawyer.ui
 
 
+import android.util.Log
 import android.widget.Space
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
@@ -17,9 +18,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.tooling.preview.Preview
@@ -28,7 +31,10 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import coil.annotation.ExperimentalCoilApi
+import coil.compose.AsyncImage
 import coil.compose.rememberImagePainter
+import coil.request.ImageRequest
+import com.google.accompanist.coil.rememberCoilPainter
 import com.revature.findlawyer.DrawerScreens
 import com.revature.findlawyer.R
 import com.revature.findlawyer.ui.theme.FindLawyerTheme
@@ -99,10 +105,14 @@ fun AppointmentCard(navController: NavHostController,firstName:String,lastName:S
 
         ) {
 
-            Image(
-                painter = rememberImagePainter(image),
-                contentDescription = null,
-                modifier = Modifier
+            AsyncImage(
+                model = ImageRequest.Builder(LocalContext.current)
+                    .data(image)
+                    .crossfade(true)
+                    .build(),
+                placeholder = painterResource(R.drawable.ic_user),
+                contentDescription = "",
+                modifier =  Modifier
                     .size(120.dp)
                     .padding(8.dp),
                 contentScale = ContentScale.Fit
@@ -110,7 +120,7 @@ fun AppointmentCard(navController: NavHostController,firstName:String,lastName:S
             Column(
                 Modifier
                     .padding(8.dp)
-                    .fillMaxWidth()) {
+                    ) {
 
                 Text(
                     text = firstName+" "+lastName,

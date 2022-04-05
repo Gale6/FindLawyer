@@ -17,6 +17,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.revature.findlawyer.DrawerScreens
 import com.revature.findlawyer.viewmodel.UserRegisterViewModel
 
 @Composable
@@ -62,6 +63,7 @@ fun Registeruser(navController: NavController,userRegisterViewModel: UserRegiste
                 if(userRegisterViewModel.issuccessful()==true)
                 {
                     Toast.makeText(context,"Register Successful",Toast.LENGTH_LONG).show()
+                    navController.navigate(DrawerScreens.UserLogIn.route)
                 }
                 else
                 {

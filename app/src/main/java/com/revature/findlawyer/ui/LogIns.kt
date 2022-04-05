@@ -6,8 +6,12 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.LockOpen
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.rounded.Menu
 import androidx.compose.runtime.*
@@ -17,13 +21,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.revature.findlawyer.DrawerScreens
 import com.revature.findlawyer.R
@@ -108,13 +118,15 @@ fun LawyerLogIn(navController: NavController,viewModel:LawyerLoginViewModel){
 //
 //}
 
-@OptIn(ExperimentalMaterialApi::class)
+@OptIn(ExperimentalMaterialApi::class, androidx.compose.ui.ExperimentalComposeUiApi::class)
 @Composable
 fun UserLogIn(navController: NavController,viewModel:UserLoginViewModel){
 
     var context = LocalContext.current
     var userName by rememberSaveable { mutableStateOf("")}
     var userPassword by rememberSaveable { mutableStateOf("")}
+    val keyboardController=LocalSoftwareKeyboardController.current
+    var isPasswordVisible by remember{mutableStateOf(false)}
 
     Scaffold(modifier = Modifier.fillMaxSize()) {
 
@@ -127,9 +139,11 @@ fun UserLogIn(navController: NavController,viewModel:UserLoginViewModel){
                 .fillMaxSize()/*.border(2.dp,color= Color.Red)*/
                 .padding(4.dp),verticalArrangement = Arrangement.Center,horizontalAlignment = Alignment.CenterHorizontally) {
 
+                //Spacer(modifier = Modifier.height(8.dp))
+
                 Text(text = "PATRONS",textAlign = TextAlign.Center, modifier = Modifier
                     .padding(2.dp)
-                    .offset(y = -35.dp),color= Color.Black,fontFamily = Cormorantgaramond,fontWeight = FontWeight.Bold,fontSize = 25.sp )
+                    .offset(y = -15.dp),color= Color.Black,fontFamily = Cormorantgaramond,fontWeight = FontWeight.Bold,fontSize = 25.sp )
 
                 OutlinedTextField(
                     value = userName,
@@ -145,7 +159,16 @@ fun UserLogIn(navController: NavController,viewModel:UserLoginViewModel){
                     onValueChange = {userPassword=it},
                     shape = RoundedCornerShape(3.dp),
                     label = { Text(text = "Password") },
-                    modifier = Modifier.width(330.dp)
+                    modifier = Modifier.width(330.dp),
+                    singleLine = true,
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password,imeAction = ImeAction.Done),
+                    keyboardActions = KeyboardActions(onDone = {keyboardController?.hide()}),
+                    visualTransformation = if(isPasswordVisible) VisualTransformation.None else PasswordVisualTransformation(),
+                    trailingIcon = { IconButton(onClick = {isPasswordVisible=!isPasswordVisible}) {
+                        Icon(imageVector = if (isPasswordVisible)Icons.Default.LockOpen else Icons.Default.Lock, contentDescription = "Password Toggle" )
+
+                    }
+                    }
 
                 )
 
@@ -164,6 +187,21 @@ fun UserLogIn(navController: NavController,viewModel:UserLoginViewModel){
                     Text(text = "Log In", modifier = Modifier.padding(2.dp),color= Color.White)
 
                 }
+                Spacer(modifier = Modifier.height(8.dp))
+
+                Row(modifier = Modifier.fillMaxWidth(),Arrangement.SpaceEvenly,Alignment.CenterVertically) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Checkbox(checked = true, onCheckedChange = {},modifier = Modifier.offset(x=-20.dp))
+                        Text(text = "Remember Me", fontSize = 12.sp,modifier = Modifier.offset(x=-20.dp))
+                    }
+                    TextButton(onClick = { /*TODO*/ }) {
+                        Text(text = "Forgot Password?",fontSize = 12.sp,modifier = Modifier.offset(x=15.dp))
+                    }
+
+                }
+
+
+
             }
         }
     }
