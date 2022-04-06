@@ -19,7 +19,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.layout.ContentScale
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import coil.compose.rememberAsyncImagePainter
+
 import coil.compose.rememberImagePainter
+
 import com.revature.findlawyer.R
 
 @Composable
@@ -55,6 +58,7 @@ fun Screen_CustomerProfile(navController:NavHostController) {
 
 
                 val imageUri = rememberSaveable { mutableStateOf("") }
+
                 val painter = rememberImagePainter(
                     if (imageUri.value.isEmpty())
                         R.drawable.ic_user
@@ -72,14 +76,14 @@ fun Screen_CustomerProfile(navController:NavHostController) {
                         .padding(8.dp)
                         .size(100.dp)
                 ) {
-                    Image(
-                        painter = painter,
-                        contentDescription = null,
-                        modifier = Modifier
-                            .wrapContentSize()
-                            .clickable { launcher.launch("image/*") },
-                        contentScale = ContentScale.Crop
-                    )
+//                    Image(
+//                        painter = painter,
+//                        contentDescription = null,
+//                        modifier = Modifier
+//                            .wrapContentSize()
+//                            .clickable { launcher.launch("image/*") },
+//                        contentScale = ContentScale.Crop
+//                    )
                 }
             }
             Spacer(modifier = Modifier.padding(10.dp))
