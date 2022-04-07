@@ -89,7 +89,7 @@ fun Screen_LawyerSearch(navHostController: NavHostController,viewModel: FetchLaw
         LazyColumn(
             modifier = Modifier
                 .fillMaxWidth()
-                .fillMaxHeight(.8f),
+                .fillMaxHeight(.95f),
             contentPadding = PaddingValues(horizontal = 12.dp, vertical = 8.dp)
         ) {
             item {
