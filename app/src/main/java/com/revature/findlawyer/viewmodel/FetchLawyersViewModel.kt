@@ -1,8 +1,7 @@
 package com.revature.findlawyer.viewmodel
 
 import android.util.Log
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.*
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -16,11 +15,29 @@ class FetchLawyersViewModel: ViewModel() {
 
     private val fetchLawyersLiveData=MutableLiveData<Lawyers>() // make list of Lawyer
     var lawyerResultList: MutableState<List<Lawyer>> = mutableStateOf(listOf())
+    var selectedSortFilter: MutableState<String> = mutableStateOf("All")
+    var selectedLawyerFilter: MutableState<String> = mutableStateOf("All")
 
     lateinit var clickedLawyer:MutableState<Lawyer>
 
     init {
         lawyersList()
+    }
+
+    fun getSortFilter() : String {
+        return selectedSortFilter.value
+    }
+
+    fun setSortFilter(filter:String) {
+        selectedSortFilter.value = filter
+    }
+
+    fun getTypeFilter() : String {
+        return selectedLawyerFilter.value
+    }
+
+    fun setTypeFilter(filter:String) {
+        selectedLawyerFilter.value = filter
     }
 
     fun lawyersList() {
