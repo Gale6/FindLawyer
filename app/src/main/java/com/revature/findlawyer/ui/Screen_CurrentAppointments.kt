@@ -63,7 +63,7 @@ fun Screen_CurrentAppointmentScreen(navController: NavHostController,viewModel:A
         ) {
         Image(painter = painterResource(id = R.drawable.searching), contentDescription = "",contentScale = ContentScale.FillBounds,alpha = .4f)
 
-        LazyColumn(state = listState, modifier = Modifier.fillMaxHeight(.8f)){
+        LazyColumn(state = listState, modifier = Modifier.fillMaxHeight(.9f)){
             items(viewModel.result.value){
                     item: com.revature.findlawyer.data.network.Appointment -> AppointmentCard(
                 navController = navController,
