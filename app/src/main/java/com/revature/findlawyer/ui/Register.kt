@@ -88,10 +88,10 @@ fun Registerlawyer(navController: NavController)
     var types= rememberSaveable { mutableStateOf("")}
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Text("Register")
-        Spacer(modifier = Modifier.height(15.dp))
+
         Column {
 
-
+            Spacer(modifier = Modifier.height(100.dp))
             TextField(value = firstname.value, onValueChange = {
                 firstname.value = it
             }, label = {
