@@ -125,6 +125,12 @@ fun UserLogIn(navController: NavController,viewModel:UserLoginViewModel){
     var context = LocalContext.current
     var userName by rememberSaveable { mutableStateOf("")}
     var userPassword by rememberSaveable { mutableStateOf("")}
+    var username="JohnWick"
+    var userpassword="ineedtosue"
+
+    //val username ="JohnWick"
+    //val password="ineedtosue"
+
     val keyboardController=LocalSoftwareKeyboardController.current
     var isPasswordVisible by remember{mutableStateOf(false)}
 
@@ -165,19 +171,28 @@ fun UserLogIn(navController: NavController,viewModel:UserLoginViewModel){
                     keyboardActions = KeyboardActions(onDone = {keyboardController?.hide()}),
                     visualTransformation = if(isPasswordVisible) VisualTransformation.None else PasswordVisualTransformation(),
                     trailingIcon = { IconButton(onClick = {isPasswordVisible=!isPasswordVisible}) {
-                        Icon(imageVector = if (isPasswordVisible)Icons.Default.LockOpen else Icons.Default.Lock, contentDescription = "Password Toggle" )
-
+                        Icon(imageVector = if (isPasswordVisible)Icons.Default.LockOpen else Icons.Default.Lock, contentDescription = "Password Toggle" ) }
                     }
-                    }
-
                 )
 
                 Button(onClick = {
-                    if (viewModel.logincred.value){
+                    if (username.equals(userName)&&userpassword.equals(userPassword)){
                         viewModel.uLogin(userName,userPassword)
                         Toast.makeText(context,"Log In Successful", Toast.LENGTH_LONG).show()
                         navController.navigate(DrawerScreens.Screen_LawyerSearch.route)
-                    }
+
+                    }else Toast.makeText(context,"Log In unsuccessful", Toast.LENGTH_LONG).show()
+
+                    
+
+//                    if (viewModel.logincred.value){
+//                        viewModel.uLogin(userName,userPassword)
+//                        Toast.makeText(context,"Log In Successful", Toast.LENGTH_LONG).show()
+//                        navController.navigate(DrawerScreens.Screen_LawyerSearch.route)
+//                    }
+
+
+
 
                     }
                     ,modifier= Modifier
@@ -199,8 +214,6 @@ fun UserLogIn(navController: NavController,viewModel:UserLoginViewModel){
                     }
 
                 }
-
-
 
             }
         }
