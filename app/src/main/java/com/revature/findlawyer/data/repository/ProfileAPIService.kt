@@ -6,6 +6,7 @@ import com.revature.findlawyer.data.network.Lawyers
 import com.revature.findlawyer.data.network.Profile
 
 import retrofit2.Response
+import retrofit2.http.Body
 
 import retrofit2.http.GET
 

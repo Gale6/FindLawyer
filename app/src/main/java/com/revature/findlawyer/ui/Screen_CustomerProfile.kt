@@ -38,7 +38,7 @@ fun Screen_CustomerProfile(navController:NavHostController, viewModel: FetchProf
             BottNavBar(navController)
         }
     ){
-        var userName = "billiam"
+        val userName = viewModel.name
         val notification = rememberSaveable { (mutableStateOf("")) }
         //val reviewArray:ArrayList<Review> = ArrayList<Review>()
         if (notification.value.isNotEmpty()) {
