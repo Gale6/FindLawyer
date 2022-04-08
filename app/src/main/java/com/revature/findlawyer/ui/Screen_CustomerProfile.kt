@@ -24,10 +24,11 @@ import coil.compose.rememberAsyncImagePainter
 import coil.compose.rememberImagePainter
 
 import com.revature.findlawyer.R
+import com.revature.findlawyer.viewmodel.FetchProfileViewModel
 
 @Composable
-fun Screen_CustomerProfile(navController:NavHostController) {
-
+fun Screen_CustomerProfile(navController:NavHostController, viewModel: FetchProfileViewModel) {
+    val context = LocalContext.current
     Scaffold(
         topBar = {
             TopAppBar(backgroundColor = MaterialTheme.colors.primary,
@@ -37,7 +38,7 @@ fun Screen_CustomerProfile(navController:NavHostController) {
             BottNavBar(navController)
         }
     ){
-        var userName: String = "BobbyTestUser"
+        var userName = "billiam"
         val notification = rememberSaveable { (mutableStateOf("")) }
         //val reviewArray:ArrayList<Review> = ArrayList<Review>()
         if (notification.value.isNotEmpty()) {
@@ -59,7 +60,7 @@ fun Screen_CustomerProfile(navController:NavHostController) {
 
                 val imageUri = rememberSaveable { mutableStateOf("") }
 
-                val painter = rememberImagePainter(
+                val painter = rememberAsyncImagePainter(
                     if (imageUri.value.isEmpty())
                         R.drawable.ic_user
                     else
@@ -76,14 +77,14 @@ fun Screen_CustomerProfile(navController:NavHostController) {
                         .padding(8.dp)
                         .size(100.dp)
                 ) {
-//                    Image(
-//                        painter = painter,
-//                        contentDescription = null,
-//                        modifier = Modifier
-//                            .wrapContentSize()
-//                            .clickable { launcher.launch("image/*") },
-//                        contentScale = ContentScale.Crop
-//                    )
+                    Image(
+                        painter = painter,
+                        contentDescription = null,
+                        modifier = Modifier
+                            .wrapContentSize()
+                            .clickable { launcher.launch("image/*") },
+                        contentScale = ContentScale.Crop
+                 )
                 }
             }
             Spacer(modifier = Modifier.padding(10.dp))
@@ -122,5 +123,5 @@ fun Screen_CustomerProfile(navController:NavHostController) {
 @Preview
 @Composable
 fun testCustomerProfile() {
-    Screen_CustomerProfile(navController = rememberNavController())
+    Screen_CustomerProfile(navController = rememberNavController(), viewModel = FetchProfileViewModel())
 }

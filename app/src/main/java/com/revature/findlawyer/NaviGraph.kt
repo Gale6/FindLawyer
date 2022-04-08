@@ -93,7 +93,7 @@ fun NavHostGraph(navController: NavHostController,appointmentViewModel: Appointm
         }
 
         composable(DrawerScreens.Profile.route){
-            Screen_CustomerProfile(navController)
+            Screen_CustomerProfile(navController, FetchProfileViewModel())
         }
     }
 }
