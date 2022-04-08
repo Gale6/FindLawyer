@@ -18,6 +18,7 @@ class FetchLawyersViewModel: ViewModel() {
     var selectedSortFilter: MutableState<String> = mutableStateOf("All")
     var selectedLawyerFilter: MutableState<String> = mutableStateOf("All")
 
+
     lateinit var clickedLawyer:MutableState<Lawyer>
 
     init {
