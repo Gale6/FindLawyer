@@ -61,7 +61,7 @@ fun screen_postReview(navHostController: NavHostController, viewModel:PostReview
                 title = {Text("Post Review")})
         }
     ) {
-
+        Spacer(modifier = Modifier.height(18.dp))
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             TextField(
                 modifier = Modifier
@@ -113,7 +113,8 @@ fun screen_postReview(navHostController: NavHostController, viewModel:PostReview
                     inactiveTrackColor = Color.LightGray,
                     inactiveTickColor = Color.Black,
                     thumbColor = Color.Yellow),
-                modifier = Modifier.padding(4.dp)
+                modifier = Modifier
+                    .padding(4.dp)
                     .width(200.dp),
                 steps = 3,
                 onValueChange = { newValue ->
@@ -121,6 +122,7 @@ fun screen_postReview(navHostController: NavHostController, viewModel:PostReview
                 }
             )
 
+            Spacer(modifier = Modifier.height(50.dp))
             Button(onClick = {
                 viewModel.newReview(ratingSliderValue.value,headline.value,body.value)
                 Toast.makeText(context, "Review submitted", Toast.LENGTH_SHORT).show()

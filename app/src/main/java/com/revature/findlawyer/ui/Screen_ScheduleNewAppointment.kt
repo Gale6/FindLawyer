@@ -3,19 +3,25 @@ package com.revature.findlawyer.ui
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import coil.compose.AsyncImage
 import coil.compose.rememberImagePainter
+import coil.request.ImageRequest
 //import coil.compose.rememberImagePainter
 import com.revature.findlawyer.R
 import com.revature.findlawyer.viewmodel.AppointmentViewModel
@@ -59,16 +65,23 @@ fun Screen_ScheduleNewAppointment(navController:NavHostController,appointmentVie
             ) {
 
                 Row(
-                    verticalAlignment = Alignment.CenterVertically
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceEvenly
 
                 ) {
 
-                    Image(
-                        painter = rememberImagePainter(image),
-                        contentDescription = null,
+                    AsyncImage(
+                        model = ImageRequest.Builder(LocalContext.current)
+                            .data(image)
+                            .crossfade(true)
+                            .build(),
+                        placeholder = painterResource(id = R.drawable.ic_user),
+                        contentDescription = "",
                         modifier = Modifier
-                            .size(120.dp)
-                            .padding(8.dp),
+                            .size(110.dp)
+                            .padding(8.dp)
+                            .clip(CircleShape)
+                            .border(1.5.dp, MaterialTheme.colors.secondaryVariant, CircleShape),
                         contentScale = ContentScale.Fit
                     )
                     Column(Modifier.padding(8.dp)) {
