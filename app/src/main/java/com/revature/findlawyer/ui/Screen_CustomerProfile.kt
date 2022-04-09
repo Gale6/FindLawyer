@@ -1,6 +1,7 @@
 package com.revature.findlawyer.ui
 
 import android.net.Uri
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -24,21 +25,25 @@ import coil.compose.rememberAsyncImagePainter
 import coil.compose.rememberImagePainter
 
 import com.revature.findlawyer.R
-import com.revature.findlawyer.viewmodel.FetchProfileViewModel
+import com.revature.findlawyer.viewmodel.*
 
 @Composable
-fun Screen_CustomerProfile(navController:NavHostController, viewModel: FetchProfileViewModel) {
+fun Screen_CustomerProfile(navController:NavHostController, fetchCustomerViewModel: FetchProfileViewModel) {
     val context = LocalContext.current
     Scaffold(
         topBar = {
             TopAppBar(backgroundColor = MaterialTheme.colors.primary,
-                title = {Text("Profile")})
+                title = { Text("Profile") })
         },
         bottomBar = {
             BottNavBar(navController)
         }
-    ){
-        var userName = "billiam"
+    ) {
+        fetchCustomerViewModel.fetchProfile()
+        var userName = uname
+        var userPass = upass
+        var userAdd = uadd
+        var userPro = upro
         val notification = rememberSaveable { (mutableStateOf("")) }
         //val reviewArray:ArrayList<Review> = ArrayList<Review>()
         if (notification.value.isNotEmpty()) {
@@ -84,7 +89,7 @@ fun Screen_CustomerProfile(navController:NavHostController, viewModel: FetchProf
                             .wrapContentSize()
                             .clickable { launcher.launch("image/*") },
                         contentScale = ContentScale.Crop
-                 )
+                    )
                 }
             }
             Spacer(modifier = Modifier.padding(10.dp))
@@ -93,7 +98,7 @@ fun Screen_CustomerProfile(navController:NavHostController, viewModel: FetchProf
                 //color = Color.White
             ) {
                 Text(
-                    text = "${userName}",
+                    text = "Username: ${userName}",
                     //color = Color.Black
                 )
             }
@@ -102,7 +107,7 @@ fun Screen_CustomerProfile(navController:NavHostController, viewModel: FetchProf
                 //color = Color.White
             ) {
                 Text(
-                    text = "Password: ",
+                    text = "Password: ${userPass}",
                     //color = Color.Black
                 )
             }
@@ -111,17 +116,104 @@ fun Screen_CustomerProfile(navController:NavHostController, viewModel: FetchProf
                 //color = Color.White
             ) {
                 Text(
-                    text = "Other info",
+                    text = "${userName} Address:",
                     //color = Color.Black
                 )
+            }
+            Surface(
+                modifier = Modifier,
+                //color = Color.White
+            ) {
+                Text(
+                    text = "$userAdd",
+                    //color = Color.Black
+                )
+            }
+            Card(
+                modifier = Modifier
+                    .padding(10.dp)
+                    .fillMaxWidth()
+                    .wrapContentHeight(),
+                shape = MaterialTheme.shapes.medium,
+                elevation = 5.dp,
+                backgroundColor = MaterialTheme.colors.surface
+            ) {
+                Column(Modifier.padding(8.dp)) {
+                    Text(
+                        text = "Review Placeholder",
+                        style = MaterialTheme.typography.h6,
+                        color = MaterialTheme.colors.onSurface,
+                    )
+                    Text(
+                        //text = location,
+                        text = "lorem ipsum dolor sit",
+                        style = MaterialTheme.typography.body2,
+                    )/*
+            Text(
+                text = comments,
+                style = MaterialTheme.typography.body1,
+            )*/
+                }
+            }
+            Card(
+                modifier = Modifier
+                    .padding(10.dp)
+                    .fillMaxWidth()
+                    .wrapContentHeight(),
+                shape = MaterialTheme.shapes.medium,
+                elevation = 5.dp,
+                backgroundColor = MaterialTheme.colors.surface
+            ) {
+                Column(Modifier.padding(8.dp)) {
+                    Text(
+                        text = "Review Placeholder",
+                        style = MaterialTheme.typography.h6,
+                        color = MaterialTheme.colors.onSurface,
+                    )
+                    Text(
+                        //text = location,
+                        text = "lorem ipsum dolor sit",
+                        style = MaterialTheme.typography.body2,
+                    )/*
+            Text(
+                text = comments,
+                style = MaterialTheme.typography.body1,
+            )*/
+                }
+            }
+            Card(
+                modifier = Modifier
+                    .padding(10.dp)
+                    .fillMaxWidth()
+                    .wrapContentHeight(),
+                shape = MaterialTheme.shapes.medium,
+                elevation = 5.dp,
+                backgroundColor = MaterialTheme.colors.surface
+            ) {
+                Column(Modifier.padding(8.dp)) {
+                    Text(
+                        text = "Review Placeholder",
+                        style = MaterialTheme.typography.h6,
+                        color = MaterialTheme.colors.onSurface,
+                    )
+                    Text(
+                        //text = location,
+                        text = "lorem ipsum dolor sit",
+                        style = MaterialTheme.typography.body2,
+                    )/*
+            Text(
+                text = comments,
+                style = MaterialTheme.typography.body1,
+            )*/
+                }
             }
         }
+
     }
-
 }
 
-@Preview
-@Composable
-fun testCustomerProfile() {
-    Screen_CustomerProfile(navController = rememberNavController(), viewModel = FetchProfileViewModel())
-}
+//@Preview
+//@Composable
+//fun testCustomerProfile() {
+//    Screen_CustomerProfile(navController = rememberNavController(), viewModel = FetchProfileViewModel())
+//}
