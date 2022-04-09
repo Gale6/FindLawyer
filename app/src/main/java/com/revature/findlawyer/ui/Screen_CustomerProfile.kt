@@ -46,6 +46,9 @@ fun Screen_CustomerProfile(navController:NavHostController, fetchCustomerViewMod
         var userPro = upro
         val notification = rememberSaveable { (mutableStateOf("")) }
         //val reviewArray:ArrayList<Review> = ArrayList<Review>()
+        var str1 = "Amy Thompson"
+        
+        var
         if (notification.value.isNotEmpty()) {
             Toast.makeText(LocalContext.current, notification.value, Toast.LENGTH_LONG).show()
         }
@@ -92,6 +95,7 @@ fun Screen_CustomerProfile(navController:NavHostController, fetchCustomerViewMod
                     )
                 }
             }
+            var str2 = "Chadwick Grant"
             Spacer(modifier = Modifier.padding(10.dp))
             Surface(
                 modifier = Modifier,
@@ -129,6 +133,7 @@ fun Screen_CustomerProfile(navController:NavHostController, fetchCustomerViewMod
                     //color = Color.Black
                 )
             }
+            var str3 = "Cary Stephens"
             Card(
                 modifier = Modifier
                     .padding(10.dp)
@@ -140,13 +145,13 @@ fun Screen_CustomerProfile(navController:NavHostController, fetchCustomerViewMod
             ) {
                 Column(Modifier.padding(8.dp)) {
                     Text(
-                        text = "Review Placeholder",
+                        text = str1,
                         style = MaterialTheme.typography.h6,
                         color = MaterialTheme.colors.onSurface,
                     )
                     Text(
                         //text = location,
-                        text = "lorem ipsum dolor sit",
+                        text = "The best in the business",
                         style = MaterialTheme.typography.body2,
                     )/*
             Text(
@@ -166,13 +171,13 @@ fun Screen_CustomerProfile(navController:NavHostController, fetchCustomerViewMod
             ) {
                 Column(Modifier.padding(8.dp)) {
                     Text(
-                        text = "Review Placeholder",
+                        text = str2,
                         style = MaterialTheme.typography.h6,
                         color = MaterialTheme.colors.onSurface,
                     )
                     Text(
                         //text = location,
-                        text = "lorem ipsum dolor sit",
+                        text = "Great experience, good customer service",
                         style = MaterialTheme.typography.body2,
                     )/*
             Text(
@@ -192,13 +197,13 @@ fun Screen_CustomerProfile(navController:NavHostController, fetchCustomerViewMod
             ) {
                 Column(Modifier.padding(8.dp)) {
                     Text(
-                        text = "Review Placeholder",
+                        text = str3,
                         style = MaterialTheme.typography.h6,
                         color = MaterialTheme.colors.onSurface,
                     )
                     Text(
                         //text = location,
-                        text = "lorem ipsum dolor sit",
+                        text = "Really helped me out of a tight spot",
                         style = MaterialTheme.typography.body2,
                     )/*
             Text(
