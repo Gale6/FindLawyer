@@ -125,11 +125,9 @@ fun UserLogIn(navController: NavController,viewModel:UserLoginViewModel){
     var context = LocalContext.current
     var userName by rememberSaveable { mutableStateOf("")}
     var userPassword by rememberSaveable { mutableStateOf("")}
-    var username="JohnWick"
-    var userpassword="ineedtosue"
+    val username="JohnWick"
+    val userpassword="ineedtosue"
 
-    //val username ="JohnWick"
-    //val password="ineedtosue"
 
     val keyboardController=LocalSoftwareKeyboardController.current
     var isPasswordVisible by remember{mutableStateOf(false)}
