@@ -181,9 +181,9 @@ fun UserLogIn(navController: NavController,viewModel:UserLoginViewModel){
                         Toast.makeText(context,"Log In Successful", Toast.LENGTH_LONG).show()
                         navController.navigate(DrawerScreens.Screen_LawyerSearch.route)
 
-                    }else Toast.makeText(context,"Log In unsuccessful", Toast.LENGTH_LONG).show()
+                    }else Toast.makeText(context,"Invalid Authentication", Toast.LENGTH_LONG).show()
 
-                    
+
 
 //                    if (viewModel.logincred.value){
 //                        viewModel.uLogin(userName,userPassword)
