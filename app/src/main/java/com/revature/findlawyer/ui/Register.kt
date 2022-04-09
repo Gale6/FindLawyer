@@ -9,6 +9,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -33,33 +34,34 @@ fun Registeruser(navController: NavController,userRegisterViewModel: UserRegiste
     var password= rememberSaveable { mutableStateOf("")}
     val context=LocalContext.current
     Column(horizontalAlignment = Alignment.CenterHorizontally,verticalArrangement = Arrangement.Center) {
-        Image(painter = painterResource(id = R.drawable.agreement), contentDescription = ""/*,contentScale = ContentScale.Fit*/,alpha = .4f,alignment = Alignment.TopCenter)
-        Spacer(modifier = Modifier.height(10.dp))
+        Image(painter = painterResource(id = R.drawable.agreement),modifier = Modifier.size(width = 200.dp,height = 150.dp)
+                ,contentDescription = ""/*,contentScale = ContentScale.Fit*/,alpha = .4f,alignment = Alignment.TopCenter)
+
         Text("Register",fontWeight = FontWeight.Bold,fontSize = 25.sp)
-        Spacer(modifier = Modifier.height(30.dp))
+        Spacer(modifier = Modifier.height(10.dp))
         OutlinedTextField(value = firstname.value, onValueChange = {
             firstname.value = it
         }, label = {
             Text(text = "First name")
-        },modifier = Modifier.fillMaxWidth())
+        })
         Spacer(modifier = Modifier.height(10.dp))
         OutlinedTextField(value = lastname.value, onValueChange = {
             lastname.value = it
         }, label = {
             Text(text = "Last name")
-        },modifier = Modifier.fillMaxWidth())
+        })
         Spacer(modifier = Modifier.height(10.dp))
         OutlinedTextField(value = username.value, onValueChange = {
             username.value = it
         }, label = {
             Text(text = "Create Username")
-        },modifier = Modifier.fillMaxWidth())
+        })
         Spacer(modifier = Modifier.height(10.dp))
         OutlinedTextField(value = password.value, onValueChange = {
             password.value = it
         }, label = {
             Text(text = "Create Password")
-        }, visualTransformation = PasswordVisualTransformation(),modifier = Modifier.fillMaxWidth())
+        }, visualTransformation = PasswordVisualTransformation())
         Spacer(modifier = Modifier.height(10.dp))
         Button(onClick = {
             userRegisterViewModel.uRegister(
