@@ -46,12 +46,10 @@ fun Screen_CustomerProfile(navController:NavHostController, fetchCustomerViewMod
         var userPro = upro
         val notification = rememberSaveable { (mutableStateOf("")) }
         //val reviewArray:ArrayList<Review> = ArrayList<Review>()
-        var str1 = "Amy Thompson"
-        
-        var
         if (notification.value.isNotEmpty()) {
             Toast.makeText(LocalContext.current, notification.value, Toast.LENGTH_LONG).show()
         }
+        var str2 = "Chadwick Grant"
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
@@ -95,8 +93,8 @@ fun Screen_CustomerProfile(navController:NavHostController, fetchCustomerViewMod
                     )
                 }
             }
-            var str2 = "Chadwick Grant"
             Spacer(modifier = Modifier.padding(10.dp))
+            var str1 = "Amy Thompson"
             Surface(
                 modifier = Modifier,
                 //color = Color.White
@@ -216,6 +214,7 @@ fun Screen_CustomerProfile(navController:NavHostController, fetchCustomerViewMod
 
     }
 }
+
 
 //@Preview
 //@Composable
