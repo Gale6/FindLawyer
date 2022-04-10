@@ -71,12 +71,17 @@ fun Registeruser(navController: NavController,userRegisterViewModel: UserRegiste
                 lastname = lastname.value
             )
             if (userRegisterViewModel.issuccessful() == true) {
-                Toast.makeText(context, "Register Successful", Toast.LENGTH_LONG).show()
-                navController.navigate(DrawerScreens.UserLogIn.route)
+                if(password.value.length>=4&&username.value.length>=4) {
+                    Toast.makeText(context, "Register Successful", Toast.LENGTH_LONG).show()
+                    navController.navigate(DrawerScreens.UserLogIn.route)
+                }
+                else{
+                    Toast.makeText(context, "The password and username need to be longer", Toast.LENGTH_LONG).show()
+                }
             } else {
                 Toast.makeText(context, "Enter the empty fields", Toast.LENGTH_LONG).show()
             }
-        },modifier = Modifier.fillMaxWidth())
+        },modifier = Modifier.fillMaxWidth().padding(horizontal=50.dp))
         {
             Text(text = "Signup")
         }
