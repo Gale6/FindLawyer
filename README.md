@@ -50,6 +50,10 @@ List of ready features:
 This project uses the following license: Apache-2.0 (<https://www.apache.org/licenses/LICENSE-2.0.html>).
 
 
-![2](https://user-images.githubusercontent.com/99564293/163457358-4f43dd4c-ef51-4dbc-8689-5f8f3b0708be.png)
-![3](https://user-images.githubusercontent.com/99564293/163457380-083a96f6-401e-42df-853a-c9a6a1d85933.png)
-![4](https://user-images.githubusercontent.com/99564293/163457394-6664f87d-d1d8-4b82-98d5-dbbe67348c3a.png)
+![Screenshot_20220414_154923](https://user-images.githubusercontent.com/99564293/163466293-c823cc9f-e6bd-47a8-8101-549fc708b922.png)
+![Screenshot_20220414_154957](https://user-images.githubusercontent.com/99564293/163466302-dfc82293-8a08-4940-81cd-10c03da42e6c.png)
+![Screenshot_20220414_155034](https://user-images.githubusercontent.com/99564293/163466352-8ffabf46-2626-47e5-9eaf-bc7282b978c3.png)
+![Screenshot_20220414_155902](https://user-images.githubusercontent.com/99564293/163466515-c7eb798e-9f70-4abd-8d3b-1eb2803230d6.png)
+![Screenshot_20220414_155046](https://user-images.githubusercontent.com/99564293/163466354-9de36628-c723-43a5-8d25-011f2904d2f9.png)
+![Screenshot_20220414_155101](https://user-images.githubusercontent.com/99564293/163466360-b0002be7-7fa0-44e3-994f-680b9a3c8ede.png)
+![Screenshot_20220414_155433](https://user-images.githubusercontent.com/99564293/163466376-6f115e1b-ab12-4b24-b637-e2e052acf438.png)
