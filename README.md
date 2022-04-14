@@ -49,3 +49,7 @@ List of ready features:
 
 This project uses the following license: Apache-2.0 (<https://www.apache.org/licenses/LICENSE-2.0.html>).
 
+
+![2](https://user-images.githubusercontent.com/99564293/163457358-4f43dd4c-ef51-4dbc-8689-5f8f3b0708be.png)
+![3](https://user-images.githubusercontent.com/99564293/163457380-083a96f6-401e-42df-853a-c9a6a1d85933.png)
+![4](https://user-images.githubusercontent.com/99564293/163457394-6664f87d-d1d8-4b82-98d5-dbbe67348c3a.png)
