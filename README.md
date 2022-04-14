@@ -48,7 +48,7 @@ List of ready features:
 ## License
 
 This project uses the following license: Apache-2.0 (<https://www.apache.org/licenses/LICENSE-2.0.html>).
-
+## Screenshots
 
 ![Screenshot_20220414_154923](https://user-images.githubusercontent.com/99564293/163466293-c823cc9f-e6bd-47a8-8101-549fc708b922.png)
 ![Screenshot_20220414_154957](https://user-images.githubusercontent.com/99564293/163466302-dfc82293-8a08-4940-81cd-10c03da42e6c.png)
